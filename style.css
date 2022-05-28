@@ -1,0 +1,82 @@
+ /* alle */
+
+ body {
+     margin: 0;
+     font-family: 'PT Sans', sans-serif;
+     display: flex;
+ }
+
+ .sidebar {
+     background-color: #1E3190;
+     width: 150px;
+     height: 100vh;
+ }
+
+ .sidebar-logo {
+     display: flex;
+     padding: 32px;
+     height: 100px;
+ }
+
+ .sidebar-logo img {
+     width: 72px;
+     height: 72px;
+     object-fit: contain;
+ }
+
+ .navigation-bar {
+     display: flex;
+     flex-direction: column;
+     height: 60%;
+ }
+
+ .link {
+     color: white;
+     text-decoration: none;
+     padding-left: 32px;
+     padding-bottom: 16px;
+     font-size: 18px;
+ }
+
+ .link:hover {
+     border-left: 4px solid white;
+     cursor: pointer;
+ }
+
+ .user {
+     display: flex;
+     justify-content: center;
+ }
+
+ .user img {
+     width: 64px;
+     height: 64px;
+     object-fit: cover;
+     border-radius: 100%;
+     border: 2px solid white;
+ }
+
+ /* alle */
+
+
+ /* Ole */
+
+ /* Ole */
+
+
+
+ /* Fabian */
+
+ /* Fabian */
+
+
+
+ /* Hong Hanh */
+
+ /* Hong Hanh */
+
+
+
+ /* Impressum */
+
+ /* Impressum */
