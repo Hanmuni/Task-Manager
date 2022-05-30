@@ -75,7 +75,6 @@
  
  .headline {
      font-size: 22px;
-     font-weight: bold;
      margin: 16px 0 0 32px;
  }
  
@@ -85,8 +84,10 @@
      margin-left: 32px;
  }
  /* alle */
+
  /* Ole */
  /* Ole */
+
  /* Fabian */
  
  .reset-margin {
@@ -168,7 +169,7 @@
  
  .add-task-container {
      margin: 16px 32px auto 32px;
-     background-color: #F4F3FB;
+     background-color: #E7F8FD;
      width: auto;
      height: auto;
      border-radius: 10px;
