@@ -89,6 +89,15 @@
  /* Ole */
  /* Fabian */
  
+ .reset-margin {
+     margin-left: 0!important;
+ }
+ 
+ .backlog-container {
+     margin-left: 32px;
+     margin-right: 32px;
+ }
+ 
  .backlog-task {
      border-radius: 15px;
      background-color: rgb(231, 248, 253);
