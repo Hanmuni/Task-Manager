@@ -8,21 +8,47 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
-    <script src="script.js"> </script>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="script.js">
+    </script>
     <title> Task Manager </title>
 </head>
 
 <body onload="init()">
 
     <header class="sidebar" w3-include-html="templates/sidebar.html"></header>
-    <main>
-        <div class="headline-section">
-            <div class="headline"> <b> Backlog </b> </div>
-            <div class="subheading"> Learning Management System Project </div>
+    <div id="backlog-container" class="ms-4 mt-4 me-4">
+        <h1 class="fw-bold mb-0">Backlog</h1>
+        <p class="text-primary fw-bold fs-6 mb-5" style="--bs-text-opacity: .5">Learning Managemaent System Project</p>
+        <div id="backlog-subtitle-container" class="backlog-subtitle-container">
+            <div id="backlog-subtitle-container-left" class="backlog-subtitle-container-left">
+                <p class="$font-weight-bold">ASSIGNED TO</p>
+                <p id="backlog-subtitle-category" class="backlog-subtitle-category">CATEGORY</p>
+            </div>
+            <div id="backlog-subtitle-container-right" class="backlog-subtitle-container-right">
+                <p>DETAILS</p>
+            </div>
         </div>
-    </main>
+        <div id="backlog-task-container">
+            <div id="backlog-task" class="backlog-task">
+                <div id="backlog-task-left" class="backlog-task-left">
+                    <div id="backlog-task-assigned-to" class="backlog-task-assigned-to d-flex align-items-center">
+                        <img src="./img/user.png" class="ms-2">
+                        <div class="d-flex flex-column align-items-center justify-content-start ms-4 text-start">
+                            <p id="backlog-task-name" class="my-0">User Name</p>
+                            <p id="backlog-task-email" class="my-0">username@egal.com</p>
+                        </div>
+                    </div>
+                    <div id="backlog-task-category" class="backlog-task-category">
+                        <p>Marketing</p>
+                    </div>
+                </div>
+                <div id="backlog-task-details" class="backlog-task-details pt-3 pb-3">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta accusamus natus in non repudiandae inventore, dolorem id, architecto dignissimos vero quidem officiis nam beatae culpa maxime, iure harum? Amet, natus?</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 

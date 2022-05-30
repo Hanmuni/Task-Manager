@@ -1,40 +1,47 @@
  /* alle */
-
+ 
  body {
      margin: 0;
      font-family: 'PT Sans', sans-serif;
      display: flex;
  }
-
+ 
+ p {
+     margin-block-end: 0;
+     margin-block-start: 0;
+     margin-bottom: 0;
+ }
+ 
  main {
      width: 100%;
      height: 100vh;
  }
-
+ 
  .sidebar {
      background-color: #1E3190;
      width: 150px;
      height: 100vh;
+     box-sizing: unset;
  }
-
+ 
  .sidebar-logo {
      display: flex;
      padding: 32px;
      height: 100px;
  }
-
+ 
  .sidebar-logo img {
      width: 72px;
      height: 72px;
      object-fit: contain;
  }
-
+ 
  .navigation-bar {
      display: flex;
      flex-direction: column;
      height: 60%;
  }
-
+ 
  .link {
      color: white;
      text-decoration: none;
@@ -42,17 +49,17 @@
      padding-bottom: 16px;
      font-size: 18px;
  }
-
+ 
  .link:hover {
      border-left: 4px solid white;
      cursor: pointer;
  }
-
+ 
  .user {
      display: flex;
      justify-content: center;
  }
-
+ 
  .user img {
      width: 64px;
      height: 64px;
@@ -60,40 +67,96 @@
      border-radius: 100%;
      border: 2px solid white;
  }
-
+ 
  .headline-section {
      display: flex;
      flex-direction: column;
  }
-
+ 
  .headline {
      font-size: 22px;
      font-weight: bold;
      margin: 16px 0 0 32px;
  }
-
+ 
  .subheading {
      font-size: 12px;
      color: #4050A1;
      margin-left: 32px;
  }
-
  /* alle */
-
-
  /* Ole */
-
  /* Ole */
-
-
-
  /* Fabian */
-
+ 
+ .backlog-task {
+     border-radius: 15px;
+     background-color: rgb(231, 248, 253);
+     border-left: 7px solid blue;
+     line-height: 1.2;
+     display: flex;
+ }
+ 
+ .backlog-subtitle-container {
+     border-left: 7px solid white;
+     display: flex;
+     font-weight: bold;
+     color: #1E3190;
+ }
+ 
+ .backlog-subtitle-container-left {
+     width: 40%;
+     display: flex;
+     justify-content: space-between;
+ }
+ 
+ .backlog-subtitle-container-right {
+     width: 60%;
+     display: flex;
+     justify-content: flex-end;
+ }
+ 
+ .backlog-subtitle-category {
+     width: 30%;
+     text-align: center;
+ }
+ 
+ .backlog-task-assigned-to img {
+     height: 50px;
+     width: 50px;
+     object-fit: cover;
+     border-radius: 50px;
+ }
+ 
+ .backlog-task-assigned-to div p {
+     width: 100%;
+     color: #2d9dff;
+ }
+ 
+ .backlog-task-assigned-to div p:first-child {
+     width: 100%;
+     color: #1E3190;
+ }
+ 
+ .backlog-task-left {
+     width: 40%;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+ 
+ .backlog-task-details {
+     width: 60%;
+     padding-left: 5%;
+ }
+ 
+ .backlog-task-category {
+     width: 30%;
+     text-align: center;
+ }
  /* Fabian */
-
-
-
  /* Hong Hanh */
+ 
  .add-task-container {
      margin: 16px 32px auto 32px;
      background-color: #F4F3FB;
@@ -103,11 +166,11 @@
      display: flex;
      justify-content: space-evenly;
  }
-
+ 
  .add-task-colum {
      margin: 16px;
  }
-
+ 
  .add-task-headline {
      display: flex;
      flex-direction: column;
@@ -115,28 +178,27 @@
      font-weight: bold;
      color: #2D3E97;
  }
-
+ 
  .add-task-input {
      width: 300px;
      height: 50px;
      border: 2px solid lightgray;
      border-radius: 4px;
  }
-
+ 
  .add-task-description {
      width: 300px;
      height: 150px;
      border: 2px solid lightgray;
      border-radius: 4px;
-
  }
-
+ 
  .add-task-select {
      height: 50px;
      border: 2px solid lightgray;
      border-radius: 4px;
  }
-
+ 
  .add-task-assign {
      display: flex;
      flex-direction: column;
@@ -144,19 +206,19 @@
      font-weight: bold;
      color: #2D3E97;
  }
-
+ 
  .assign-section {
      display: flex;
      align-items: center;
  }
-
+ 
  .add-task-user-image {
      width: 64px;
      height: 64px;
      object-fit: cover;
      border-radius: 100%;
  }
-
+ 
  .add-user-btn {
      background-image: url(img/icon\ plus.png);
      background-size: cover;
@@ -166,11 +228,11 @@
      width: 32px;
      height: 32px;
  }
-
+ 
  .add-user-btn:hover {
      cursor: pointer;
  }
-
+ 
  .cancel-btn {
      width: 100px;
      height: 50px;
@@ -179,19 +241,19 @@
      background-color: #F4F3FB;
      border: none;
  }
-
+ 
  .cancel-btn:hover {
      background-color: white;
      border: 2px solid #2D3E97;
      border-radius: 10px;
      cursor: pointer;
  }
-
+ 
  .add-task-final {
      display: flex;
      justify-content: flex-end;
  }
-
+ 
  .create-btn {
      width: 120px;
      height: 50px;
@@ -203,18 +265,12 @@
      margin-left: 16px;
      margin-right: 16px;
  }
-
+ 
  .create-btn:hover {
      cursor: pointer;
      background-color: rgba(56, 133, 253, 0.5);
      border-radius: 10px;
-
  }
-
  /* Hong Hanh */
-
-
-
  /* Impressum */
-
  /* Impressum */
