@@ -95,8 +95,7 @@
 
  /* Hong Hanh */
  .add-task-container {
-     margin: 16px;
-     margin-left: 32px;
+     margin: 16px 32px auto 32px;
      background-color: #F4F3FB;
      width: auto;
      height: auto;
@@ -105,10 +104,14 @@
      justify-content: space-evenly;
  }
 
+ .add-task-colum {
+     margin: 16px;
+ }
+
  .add-task-headline {
      display: flex;
      flex-direction: column;
-     margin: 32px;
+     margin: 16px;
      font-weight: bold;
      color: #2D3E97;
  }
@@ -129,7 +132,6 @@
  }
 
  .add-task-select {
-     width: 300px;
      height: 50px;
      border: 2px solid lightgray;
      border-radius: 4px;
@@ -188,7 +190,6 @@
  .add-task-final {
      display: flex;
      justify-content: flex-end;
-     margin-right: 32px;
  }
 
  .create-btn {
@@ -200,6 +201,7 @@
      border: none;
      border-radius: 10px;
      margin-left: 16px;
+     margin-right: 16px;
  }
 
  .create-btn:hover {
