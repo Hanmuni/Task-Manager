@@ -83,9 +83,46 @@
      color: #4050A1;
      margin-left: 32px;
  }
+
  /* alle */
 
+
  /* Ole */
+
+ .bigscreen {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .totalbox {
+     margin: 20px;
+     text-align: center;
+ }
+
+ .emptyboxes {
+     background-color: rgba(211, 211, 211, 0.2);
+     height: 70vh;
+     width: 18vw;
+ }
+
+ @media (max-width: 1000px) {
+     .smallscreen {
+         display: flex;
+         flex-direction: column;
+     }
+
+     .totalbox {
+         margin-left: 10px;
+         margin-right: 10px;
+     }
+
+     .emptyboxes {
+         width: 54vw;
+         height: 40vh;
+     }
+ }
+
  /* Ole */
 
  /* Fabian */
