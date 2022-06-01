@@ -24,20 +24,19 @@
             <div class="subheading"> Learning Management System Project </div>
         </div>
 
-        <div class="add-task-container">
+        <form onsubmit="createTask()" class="add-task-container">
 
             <div class="add-task-colum">
 
                 <div class="add-task-headline">
                     <p>TITLE </p>
 
-                    <input class="add-task-input">
+                    <input required minlength="5" id="title" class="add-task-input">
                 </div>
-
                 <div class="add-task-headline">
                     <p> CATEGORY </p>
 
-                    <select class="add-task-select">
+                    <select id="category" class="add-task-select">
                         <option> HTML </option>
                         <option> CSS </option>
                         <option> JavaScript </option>
@@ -48,7 +47,7 @@
                 <div class="add-task-headline">
                     <p> DESCRIPTION </p>
 
-                    <input class="add-task-description">
+                    <input required minlength="5" id="description" class="add-task-description">
                 </div>
 
             </div>
@@ -58,13 +57,13 @@
                 <div class="add-task-headline">
                     <p> DUE DATE </p>
 
-                    <input type="date" class="add-task-input">
+                    <input id="date" type="date" class="add-task-input">
                 </div>
 
                 <div class="add-task-headline">
                     <p> URGENCY </p>
 
-                    <select class="add-task-select">
+                    <select id="urgency" class="add-task-select">
                         <option> Low </option>
                         <option> Medium </option>
                         <option> High </option>
@@ -81,14 +80,14 @@
 
                 <div class="add-task-final">
 
-                    <button class="cancel-btn"> CANCEL </button>
-                    <button class="create-btn"> CREATE TASK </button>
+                    <button class="cancel-btn" onclick="cancelTask()"> CANCEL </button>
+                    <button class="create-btn" onclick="createTask()"> CREATE TASK </button>
                 </div>
 
 
             </div>
 
-        </div>
+        </form>
 
     </main>
 
