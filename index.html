@@ -8,23 +8,30 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <script src="script.js"></script>
     <script src="./mini_backend.js"></script>
     <title> Task Manager </title>
 </head>
 
-<body onload="init()">
+<body>
 
-    <header class="sidebar" w3-include-html="templates/sidebar.html"></header>
-
-<main>
-    <div class="headline-section">
-        <div class="headline"> <b> Herzlich Willkommen! </b> </div>
-        <div class="subheading"> Learning Management System Project </div>
+    <div class="login-overcontainer">
+        <div class="login-container">
+            <p>Username</p>
+            <input id="login-username" placeholder="Username...">
+            <p>Passwort</p>
+            <div class="login-passwort-container">
+                <input id="login-passwort" type="password" placeholder="Passwort...">
+                <img class="passwort-image" onclick="change_passwort_button_type()" src="./img/eye-gbabc96aa1_640.png">
+            </div>
+            <button class="login-button" onclick="check_login()">LOGIN</button>
+            <button class="guest-login-button" onclick="guest_login()">GUEST LOGIN</button>
+        </div>
     </div>
-</main>
+
+
+
 </body>
 
 </html>

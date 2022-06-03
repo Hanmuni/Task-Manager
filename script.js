@@ -2,14 +2,14 @@
 
 let tasks = [];
 
-// Profil = [Name, Bild, Usesrname, Passwort]
-let profiles = [{
-    'profil01': ['Max Mustermann', './img/p24.jpg', 'Mustermann15', 'xasdfasfes'],
-    'profil02': ['Brigitte Beispiel', './img/p26.jpg', 'B.Beispiel', 'katzenliebhaberin'],
-    'profil03': ['Emily Example', './img/p30.jpg', 'Example92', 'passwort5'],
-    'profil04': ['Michelle Modell', './img/p33.jpg', 'M.odell', 'supermodell'],
-    'profil05': ['Victor Vorbild', './img/p36.jpg', 'Victory', 'venividi'],
-}]
+// Profil = [proilnummer Name, Bild, Usesrname, Passwort]
+let profiles = [
+    ['profil01', 'Max Mustermann', './img/p24.jpg', 'Mustermann15', 'xasdfasfes'],
+    ['profil02', 'Brigitte Beispiel', './img/p26.jpg', 'B.Beispiel', 'katzenliebhaberin'],
+    ['profil03', 'Emily Example', './img/p30.jpg', 'Example92', 'passwort5'],
+    ['profil04', 'Michelle Modell', './img/p33.jpg', 'M.odell', 'supermodell'],
+    ['profil05', 'Victor Vorbild', './img/p36.jpg', 'Victory', 'venividi'],
+]
 
 async function init() {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
@@ -49,6 +49,38 @@ async function includeHTML() {
 /* Fabian */
 
 /* Fabian*/
+
+// FAKE LOGIN
+
+function change_passwort_button_type() {
+    if (document.getElementById('login-passwort').type == 'password') {
+        document.getElementById('login-passwort').type = 'text';
+    } else { document.getElementById('login-passwort').type = 'password' }
+}
+
+function guest_login() {
+    window.location.href = './board.html';
+}
+
+function check_login() {
+    let input_user_field = document.getElementById('login-username').value;
+    let input_passwort_field = document.getElementById('login-passwort').value;
+
+    for (let i = 0; i < profiles.length; i++) {
+        if (profiles[i][3] == input_user_field) {
+            if (profiles[i][4] == input_passwort_field) {
+                window.location.href = './board.html';
+                return;
+            } else {
+                alert('Das eingegebene Passwort ist nicht korrekt');
+                return;
+            }
+        }
+    }
+    alert('Der eingebene Benutzername ist nicht vergeben.')
+}
+
+
 
 
 /* Hong Hanh */
