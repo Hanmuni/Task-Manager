@@ -12,9 +12,6 @@
         rel="stylesheet">
     <script src="script.js"></script>
     <script src="./mini_backend.js"></script>
-    <script>
-        setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever/');
-    </script>
     <title> Task Manager </title>
 </head>
 
@@ -78,21 +75,21 @@
                     <p> ASSIGNED TO </p>
                     <div class="assign-section">
                         <img src="img/HongHanh.jpg" class="add-task-user-image">
-                        <button class="add-user-btn"> </button>
+                        <button type="button" class="add-user-btn"> </button>
                     </div>
                 </div>
 
                 <div class="add-task-final">
 
-                    <button class="cancel-btn" onclick="cancelTask()"> CANCEL </button>
-                    <button class="create-btn" onclick="createTask()"> CREATE TASK </button>
+                    <button type="button" class="cancel-btn" onclick="cancelTask()"> CANCEL </button>
+                    <button type="submit" class="create-btn" onclick="createTask()"> CREATE TASK </button>
                 </div>
-
-
+                
+                
             </div>
-
+            
         </form>
-
+        
     </main>
 
 </body>
