@@ -4,12 +4,14 @@ let tasks = [];
 
 // Profil = [proilnummer Name, Bild, Usesrname, Passwort]
 let profiles = [
-    ['profil01', 'Max Mustermann', './img/p24.jpg', 'Mustermann15', 'xasdfasfes'],
+    ['profil01', 'Max Mustermann', './img/p24.jpg', 'Mustermann15', 'x'],
     ['profil02', 'Brigitte Beispiel', './img/p26.jpg', 'B.Beispiel', 'katzenliebhaberin'],
     ['profil03', 'Emily Example', './img/p30.jpg', 'Example92', 'passwort5'],
     ['profil04', 'Michelle Modell', './img/p33.jpg', 'M.odell', 'supermodell'],
     ['profil05', 'Victor Vorbild', './img/p36.jpg', 'Victory', 'venividi'],
 ]
+
+let current_user = [];
 
 async function init() {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
@@ -50,7 +52,16 @@ async function includeHTML() {
 
 /* Fabian*/
 
+
+// BACKEND DRÜBER GUCKEN, SETZT DEN WERT VON CURRENT USER AUF NULL; OBWOHL DER IM INDEX DEFINIERT WURDE
+
+
+
+
 // FAKE LOGIN
+
+
+
 
 function change_passwort_button_type() {
     if (document.getElementById('login-passwort').type == 'password') {
@@ -65,10 +76,12 @@ function guest_login() {
 function check_login() {
     let input_user_field = document.getElementById('login-username').value;
     let input_passwort_field = document.getElementById('login-passwort').value;
-
+    current_user = [];
     for (let i = 0; i < profiles.length; i++) {
         if (profiles[i][3] == input_user_field) {
             if (profiles[i][4] == input_passwort_field) {
+                current_user.push(profiles[i]);
+                console.log(current_user);
                 window.location.href = './board.html';
                 return;
             } else {
@@ -80,7 +93,9 @@ function check_login() {
     alert('Der eingebene Benutzername ist nicht vergeben.')
 }
 
-
+function test_function() {
+    window.location.href = './index.html';
+}
 
 
 /* Hong Hanh */

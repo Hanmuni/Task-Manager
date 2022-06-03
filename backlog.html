@@ -8,30 +8,24 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <script src="script.js"></script>
     <script src="./mini_backend.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
-    </script>
     <title> Task Manager </title>
 </head>
 
 <body onload="init()">
 
-    <header class="sidebar" w3-include-html="templates/sidebar.html"></header>
+    <header onclick="test_function()" class="sidebar" w3-include-html="templates/sidebar.html"></header>
     <main>
         <div id="backlog-container" class="backlog-container">
             <div class="headline-section reset-margin">
                 <div class="headline reset-margin"> <b> Backlog </b> </div>
                 <div class="subheading reset-margin"> Learning Management System Project </div>
             </div>
-            <div id="backlog-subtitle-container" class="backlog-subtitle-container mt-5">
+            <div id="backlog-subtitle-container" class="backlog-subtitle-container">
                 <div id="backlog-subtitle-container-left" class="backlog-subtitle-container-left">
-                    <p class="$font-weight-bold">ASSIGNED TO</p>
+                    <p class="">ASSIGNED TO</p>
                     <p id="backlog-subtitle-category" class="backlog-subtitle-category">CATEGORY</p>
                 </div>
                 <div id="backlog-subtitle-container-right" class="backlog-subtitle-container-right">
@@ -41,21 +35,19 @@
             <div id="backlog-task-container">
                 <div id="backlog-task" class="backlog-task">
                     <div id="backlog-task-left" class="backlog-task-left">
-                        <div id="backlog-task-assigned-to" class="backlog-task-assigned-to d-flex align-items-center">
-                            <img src="./img/user.png" class="ms-2">
-                            <div class="d-flex flex-column align-items-center justify-content-start ms-4 text-start">
-                                <p id="backlog-task-name" class="my-0">User Name</p>
-                                <p id="backlog-task-email" class="my-0">username@egal.com</p>
+                        <div id="backlog-task-assigned-to" class="backlog-task-assigned-to">
+                            <img src="./img/user.png" class="">
+                            <div class="">
+                                <p id="backlog-task-name" class="">User Name</p>
+                                <p id="backlog-task-email" class="">username@egal.com</p>
                             </div>
                         </div>
                         <div id="backlog-task-category" class="backlog-task-category">
                             <p>Marketing</p>
                         </div>
                     </div>
-                    <div id="backlog-task-details" class="backlog-task-details pt-3 pb-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta accusamus natus in non
-                            repudiandae inventore, dolorem id, architecto dignissimos vero quidem officiis nam beatae
-                            culpa maxime, iure harum? Amet, natus?</p>
+                    <div id="backlog-task-details" class="backlog-task-details">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta accusamus natus in non repudiandae inventore, dolorem id, architecto dignissimos vero quidem officiis nam beatae culpa maxime, iure harum? Amet, natus?</p>
                     </div>
                 </div>
             </div>
