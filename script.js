@@ -2,6 +2,15 @@
 
 let tasks = [];
 
+// Profil = [Name, Bild, Usesrname, Passwort]
+let profiles = [{
+    'profil01': ['Max Mustermann', './img/p24.jpg', 'Mustermann15', 'xasdfasfes'],
+    'profil02': ['Brigitte Beispiel', './img/p26.jpg', 'B.Beispiel', 'katzenliebhaberin'],
+    'profil03': ['Emily Example', './img/p30.jpg', 'Example92', 'passwort5'],
+    'profil04': ['Michelle Modell', './img/p33.jpg', 'M.odell', 'supermodell'],
+    'profil05': ['Victor Vorbild', './img/p36.jpg', 'Victory', 'venividi'],
+}]
+
 async function init() {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     await includeHTML();
