@@ -94,7 +94,7 @@ function check_login() {
 }
 
 function test_function() {
-    window.location.href = './index.html';
+    alert(current_user);
 }
 
 

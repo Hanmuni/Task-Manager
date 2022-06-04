@@ -121,10 +121,6 @@
  /* Ole */
  /* Fabian */
  
- .reset-margin {
-     margin-left: 0!important;
- }
- 
  .backlog-container {
      margin-left: 32px;
      margin-right: 32px;
@@ -136,6 +132,7 @@
      border-left: 7px solid blue;
      line-height: 1.2;
      display: flex;
+     height: 100px;
  }
  
  .backlog-subtitle-container {
@@ -143,6 +140,8 @@
      display: flex;
      font-weight: bold;
      color: #1E3190;
+     margin-top: 60px;
+     margin-bottom: 16px;
  }
  
  .backlog-subtitle-container-left {
@@ -162,11 +161,19 @@
      text-align: center;
  }
  
+ .backlog-task-assigned-to {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ 
  .backlog-task-assigned-to img {
      height: 50px;
      width: 50px;
      object-fit: cover;
      border-radius: 50px;
+     margin-right: 10px;
+     margin-left: 16px;
  }
  
  .backlog-task-assigned-to div p {
@@ -188,7 +195,12 @@
  
  .backlog-task-details {
      width: 60%;
-     padding-left: 5%;
+     display: flex;
+     align-items: center;
+ }
+ 
+ .backlog-task-details p {
+     padding: 10px;
  }
  
  .backlog-task-category {
