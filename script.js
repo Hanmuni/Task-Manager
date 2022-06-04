@@ -4,11 +4,12 @@ let tasks = [];
 
 // Profil = [proilnummer Name, Bild, Usesrname, Passwort]
 let profiles = [
+    ['profil00', 'GUEST', './img/person-g086296c94_640.png', 'GUEST', 'PASSWORT'],
     ['profil01', 'Max Mustermann', './img/p24.jpg', 'Mustermann15', 'x'],
     ['profil02', 'Brigitte Beispiel', './img/p26.jpg', 'B.Beispiel', 'katzenliebhaberin'],
     ['profil03', 'Emily Example', './img/p30.jpg', 'Example92', 'passwort5'],
     ['profil04', 'Michelle Modell', './img/p33.jpg', 'M.odell', 'supermodell'],
-    ['profil05', 'Victor Vorbild', './img/p36.jpg', 'Victory', 'venividi'],
+    ['profil05', 'Victor Vorbild', './img/p36.jpg', 'Victory', 'venividi']
 ]
 
 let current_user = [];
@@ -17,6 +18,7 @@ async function init() {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     await includeHTML();
     await loadAllTasks();
+    load_current_user_local();
 }
 
 async function loadAllTasks() {
@@ -70,7 +72,8 @@ function change_passwort_button_type() {
 }
 
 function guest_login() {
-    window.location.href = './board.html';
+    document.getElementById('login-username').value = profiles[0][3];
+    document.getElementById('login-passwort').value = profiles[0][4];
 }
 
 function check_login() {
@@ -81,8 +84,8 @@ function check_login() {
         if (profiles[i][3] == input_user_field) {
             if (profiles[i][4] == input_passwort_field) {
                 current_user.push(profiles[i]);
-                console.log(current_user);
-                window.location.href = './board.html';
+                save_current_user_local();
+                window.location.href = './welcome.html';
                 return;
             } else {
                 alert('Das eingegebene Passwort ist nicht korrekt');
@@ -97,6 +100,20 @@ function test_function() {
     console.log(tasks)
 }
 
+function save_current_user_local() {
+    let current_userAsText = JSON.stringify(current_user);
+    localStorage.setItem('current_user', current_userAsText);
+}
+
+function load_current_user_local() {
+    let current_userAsText = localStorage.getItem('current_user');
+    if (current_userAsText) {
+        current_user = JSON.parse(current_userAsText);
+    };
+
+    document.getElementById('sidebar-user-image').src = current_user[0][2];
+    document.getElementById('sidebar-user-name').innerHTML = current_user[0][3];
+}
 
 /* Hong Hanh */
 function createTask() {
