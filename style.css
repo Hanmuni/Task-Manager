@@ -121,6 +121,10 @@
  /* Ole */
  /* Fabian */
  
+ .reset-margin {
+     margin-left: 0!important;
+ }
+ 
  .backlog-container {
      margin-left: 32px;
      margin-right: 32px;
@@ -207,10 +211,11 @@
      width: 30%;
      text-align: center;
  }
- /* FAKE LOGIN */
+ /* LOGIN */
  
  .login-overcontainer {
-     background-color: black;
+     background-image: url(./img/workspace-g198d7dc8d_1280.jpg);
+     background-size: cover;
      height: 100vh;
      width: 100vw;
      display: flex;
@@ -219,19 +224,57 @@
  }
  
  .login-container {
-     background-color: white;
-     height: 50vh;
-     width: 50vw;
+     background-color: rgba(0, 0, 0, 0.75);
+     color: white;
+     width: 30vw;
      display: flex;
      flex-direction: column;
-     justify-content: center;
+     justify-content: space-around;
      align-items: center;
+     border-radius: 20px;
  }
  
- .login-container p,
- input {
+ .login-header img {
+     margin-top: 40px;
+     margin-bottom: 30px;
+     height: 80px;
+ }
+ 
+ .login-content {
+     margin-bottom: 40px;
+ }
+ 
+ .login-button-container {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     margin-top: 20px;
+ }
+ 
+ .login-button-container button {
+     background-color: #2b72dd;
+     padding-top: 10px;
+     padding-bottom: 10px;
+     color: white;
+     width: 120px;
+     border: 2px solid lightgray;
+     border-radius: 20px;
+ }
+ 
+ .login-container input {
      width: 150px;
      margin-top: 10px;
+     font-weight: bold;
+     line-height: 1.5;
+     outline: none;
+     border: none;
+ }
+ 
+ .login-container p {
+     width: 150px;
+     margin-top: 10px;
+     font-weight: bold;
+     font-size: 18px;
  }
  
  .login-container button {
@@ -246,14 +289,26 @@
      justify-content: center;
  }
  
+ #login-username {
+     width: 176px;
+     border: 2px solid lightgray;
+ }
+ 
+ #login-passwort {
+     border: 2px solid lightgray;
+ }
+ 
  .passwort-image {
-     height: 20px;
+     height: 22px;
      width: 20px;
      object-fit: contain;
      margin-top: 10px;
-     border: 1px solid gray;
-     border-radius: 2px;
+     padding-left: 2px;
+     padding-right: 2px;
      cursor: pointer;
+     background-color: white;
+     border: 2px solid lightgray;
+     border-left: 0;
  }
  /* Fabian */
  /* Hong Hanh */

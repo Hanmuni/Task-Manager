@@ -94,7 +94,7 @@ function check_login() {
 }
 
 function test_function() {
-    alert(current_user);
+    console.log(tasks)
 }
 
 
