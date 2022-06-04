@@ -55,15 +55,7 @@ async function includeHTML() {
 /* Fabian*/
 
 
-// BACKEND DRÜBER GUCKEN, SETZT DEN WERT VON CURRENT USER AUF NULL; OBWOHL DER IM INDEX DEFINIERT WURDE
-
-
-
-
-// FAKE LOGIN
-
-
-
+// LOGIN
 
 function change_passwort_button_type() {
     if (document.getElementById('login-passwort').type == 'password') {

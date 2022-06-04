@@ -132,6 +132,7 @@
  }
  
  .backlog-container {
+     width: calc(100% - 214px);
      margin-left: 32px;
      margin-right: 32px;
  }
@@ -319,17 +320,18 @@
  /* WELCOME */
  
  .welcome-quicklinks-container {
-     width: 100%;
+     width: calc(100vw - 150px);
      height: 85vh;
      position: absolute;
      bottom: 0;
      display: flex;
+     justify-content: space-around;
      flex-wrap: wrap;
  }
  
  .welcome-quicklink {
      height: 50%;
-     width: calc(50% - 75px);
+     width: 50%;
      position: relative;
      cursor: pointer;
      overflow: hidden;
