@@ -17,10 +17,19 @@
      height: 100vh;
  }
  
+ .sidebar-container {
+     position: relative;
+     top: 0px;
+     background-color: red;
+     min-height: 100%;
+ }
+ 
  .sidebar {
      background-color: #1E3190;
      width: 150px;
      height: 100vh;
+     position: sticky;
+     top: 0;
  }
  
  .sidebar-logo {
@@ -137,6 +146,10 @@
      margin-right: 32px;
  }
  
+ #backlog-task-container {
+     margin-top: 20px;
+ }
+ 
  .backlog-task {
      border-radius: 15px;
      background-color: rgb(231, 248, 253);
@@ -144,6 +157,7 @@
      line-height: 1.2;
      display: flex;
      height: 100px;
+     margin-bottom: 15px;
  }
  
  .backlog-subtitle-container {
