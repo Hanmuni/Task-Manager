@@ -136,6 +136,10 @@
  /* Ole */
  /* Fabian */
  
+ .fixed-height {
+     height: 15vh!important;
+ }
+ 
  .reset-margin {
      margin-left: 0!important;
  }
@@ -493,5 +497,63 @@
      border-radius: 10px;
  }
  /* Hong Hanh */
+ /* HELP */
+ 
+ .help-container {
+     width: calc(100% - 214px);
+     margin-left: 32px;
+     margin-right: 32px;
+ }
+ 
+ .help-content-container {
+     width: 100%;
+     height: 85vh;
+ }
+ 
+ .help-headline {
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     font-weight: bold;
+     height: 50px;
+ }
+ 
+ .help-headline p {
+     padding: 5px 15px;
+ }
+ 
+ .help-headline p:hover {
+     color: white;
+     background-color: gray;
+     border-radius: 20px;
+     cursor: pointer;
+ }
+ 
+ .aktive-help {
+     background-color: #1E3190;
+     color: white;
+     border-radius: 20px;
+ }
+ 
+ .help-choosed-content {
+     width: 100%;
+     height: calc(100% - 50px);
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: space-around;
+ }
+ 
+ .help-image {
+     height: 75%;
+     width: 65%;
+     object-fit: cover;
+ }
+ 
+ .help-choosed-content p {
+     font-weight: bold;
+     width: 60%;
+ }
+ /* HELP */
  /* Impressum */
  /* Impressum */

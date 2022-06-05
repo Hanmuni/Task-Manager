@@ -16,15 +16,30 @@
 
 <body onload="init()">
 
-    <header class="sidebar" w3-include-html="templates/sidebar.html"></header>
-
-    <div>
-        <div class="headline-section">
+    <div class="sidebar-container">
+        <div class="sidebar" w3-include-html="templates/sidebar.html"></div>
+    </div>
+    <div class="help-container">
+        <div class="headline-section fixed-height">
             <div class="headline"> <b> Help Section </b> </div>
             <div class="subheading"> Learning Management System Project </div>
         </div>
-    </div>
+        <div class="help-content-container">
+            <div class="help-headline">
+                <p class="aktive-help">First Steps</p>
+                <p>1. Add Task</p>
+                <p>2. Backlog</p>
+                <p>3. Board</p>
+                <p>Impressum / Datenschutz</p>
+            </div>
+            <div id="help-choosed-content" class="help-choosed-content">
+                <img class="help-image" src="./img/sunset-gf546bd15e_1280.jpg">
+                <p>BILD WIRD DURCH SCREENSHOT ERSETZT</p>
+                <p>WILLKOMMENSTEXT Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam voluptates, numquam corrupti vel repellendus quasi commodi sit et dignissimos, qui cupiditate provident aperiam dolorum? Est dolore quod ea atque accusamus!</p>
+            </div>
+        </div>
 
+    </div>
 </body>
 
 </html>
