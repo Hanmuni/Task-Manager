@@ -107,6 +107,58 @@ function load_current_user_local() {
     document.getElementById('sidebar-user-name').innerHTML = current_user[0][3];
 }
 
+// HELP
+
+function remove_aktive_help_class() {
+    document.getElementById('help-headline-first-steps').classList.remove('aktive-help');
+    document.getElementById('help-headline-add-task').classList.remove('aktive-help');
+    document.getElementById('help-headline-backlog').classList.remove('aktive-help');
+    document.getElementById('help-headline-board').classList.remove('aktive-help');
+    document.getElementById('help-headline-impressum').classList.remove('aktive-help');
+
+}
+
+function render_first_steps_at_help() {
+    remove_aktive_help_class();
+    document.getElementById('help-headline-first-steps').classList.add('aktive-help');
+    document.getElementById('help-choosed-image').classList.remove('d-none');
+    document.getElementById('help-choosed-image').src = './img/sunset-gf546bd15e_1280.jpg';
+    document.getElementById('help-choosed-text').innerHTML = `WILLKOMMENSTEXT Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam voluptates, numquam corrupti vel repellendus quasi commodi sit et dignissimos, qui cupiditate provident aperiam dolorum? Est dolore quod ea atque accusamus!`
+}
+
+function render_add_task_at_help() {
+    remove_aktive_help_class();
+    document.getElementById('help-headline-add-task').classList.add('aktive-help');
+    document.getElementById('help-choosed-image').classList.remove('d-none');
+    document.getElementById('help-choosed-image').src = './img/sunset-gf546bd15e_1280.jpg';
+    document.getElementById('help-choosed-text').innerHTML = `Hier können Sie Aufgaben erstellen, einer Kategorie zuordnen und die Priorität festlegen.
+    Optional können bereits hier einem oder mehreren Usern einer Aufgabe zugewiesen werden.`
+}
+
+function render_backlog_at_help() {
+    remove_aktive_help_class();
+    document.getElementById('help-headline-backlog').classList.add('aktive-help');
+    document.getElementById('help-choosed-image').classList.remove('d-none');
+    document.getElementById('help-choosed-image').src = './img/sunset-gf546bd15e_1280.jpg';
+    document.getElementById('help-choosed-text').innerHTML = `BIN IMMERNOCH UNSICHER WOFÜR BACKLOG JETZT EIGENTLICH DA IST`
+}
+
+function render_board_at_help() {
+    remove_aktive_help_class();
+    document.getElementById('help-headline-board').classList.add('aktive-help');
+    document.getElementById('help-choosed-image').classList.remove('d-none');
+    document.getElementById('help-choosed-image').src = './img/sunset-gf546bd15e_1280.jpg';
+    document.getElementById('help-choosed-text').innerHTML = `Im Board sind alle Aufgaben einer jeweiligen Liste zugeordnete. Die Aufgaben lassen sich per Drag an Drop jeweils einer anderen Liste zuordnen. Ebenfalls ist es möglich Aufgaben zu bearbeiten oder zu löschen. Zur besseren Übersichtlichkeit wurden die Aufgaben aufgrund ihrer Priorität nach dem Ampelsystem gekennzeichnet.`
+}
+
+function render_impressum_at_help() {
+    remove_aktive_help_class();
+    document.getElementById('help-headline-impressum').classList.add('aktive-help');
+    document.getElementById('help-choosed-image').classList.add('d-none');
+    document.getElementById('help-choosed-text').innerHTML = `IMPRESSUM / DATENSCHUTZ`
+}
+
+
 /* Hong Hanh */
 function createTask() {
     let title = document.getElementById('title').value;

@@ -545,8 +545,8 @@
  }
  
  .help-image {
-     height: 75%;
-     width: 65%;
+     height: 60%;
+     width: 60%;
      object-fit: cover;
  }
  
@@ -557,3 +557,9 @@
  /* HELP */
  /* Impressum */
  /* Impressum */
+ /* END */
+ 
+ .d-none {
+     display: none;
+ }
+ /* END */
