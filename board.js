@@ -1,3 +1,46 @@
+let currentDraggedElement;
+
+function updateBoardHTML() {
+    clearHTML();
+    showTaskbox('todo');
+    showTaskbox('inprogress');
+    showTaskbox('testing');
+    showTaskbox('done');
+    getCategory();
+    checkUrgency();
+    removeHighlightTaskbox('todo');
+    removeHighlightTaskbox('inprogress');
+    removeHighlightTaskbox('testing');
+    removeHighlightTaskbox('done');
+
+}
+
+function clearHTML() {
+    document.getElementById('todo-tasks').innerHTML = '';
+    document.getElementById('inprogress-tasks').innerHTML = '';
+    document.getElementById('testing-tasks').innerHTML = '';
+    document.getElementById('done-tasks').innerHTML = '';
+}
+
+function showTaskbox(taskBox) {
+    let boxes = tasks.filter(t => t['Taskbox'] == taskBox)
+
+    for (let i = 0; i < boxes.length; i++) {
+        document.getElementById(taskBox+'-tasks').innerHTML += `
+        <div class="task" draggable="true" ondragstart="startDragging(${boxes[i]['ID']})">
+          <span id="category${i}" class="category">${boxes[i].Category}</span>
+          <div id="urgency${boxes[i]['ID']}" class="urgency"></div>
+          <span class="tasktitle"><b>${boxes[i].Titel}</b></span>
+          <span class="taskmiddle">${boxes[i].Description}</span>
+         <div class="lowertask">
+          <span class="name">${boxes[i].Name}</span>
+          <div> <img onclick="deleteTicket(${boxes[i]['ID']})" class="trash" src="img/trash.png"></div>
+          <span class="date">${boxes[i].DueDate}</span>
+         </div>
+        </div>`;
+    }
+}
+
 function moveTo(Taskbox) {
     let currentDraggedTask = tasks.find(ticket => ticket.ID == currentDraggedElement);
     currentDraggedTask['Taskbox'] = Taskbox;
