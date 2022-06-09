@@ -560,6 +560,21 @@
      display: flex;
      align-items: center;
  }
+
+ .user-list {
+    width: 300px;
+    height: 100px;
+    border: 2px solid lightgray;
+    border-radius: 4px;
+    background-color: white;
+    padding: 8px;
+    text-align: center;
+ }
+
+ .user-list p:hover {
+    cursor: pointer;
+    background-color: #E7F8FD;
+ }
  
  .add-task-user-image {
      width: 64px;
