@@ -70,19 +70,28 @@
 
                 <div class="add-task-assign">
                     <p> ASSIGNED TO </p>
-                    <div class="assign-section">
-                        <img src="img/HongHanh.jpg" class="add-task-user-image">
-                        <button type="button" class="add-user-btn"> </button>
+
+                    <div class="assign-section" id="assign-section">
+
+                        <div id="selectedImage"> <img src="/img/change-user.png" class="add-task-user-image"> </div>
+
+                        <div id="add-user-btn"> <button type="button" class="add-user-btn" onclick="assignTo()">
+                            </button> </div>
+
+                    </div>
+
+                    <div id="user-list" class="user-list d-none">
+                        <div id="assignedToUser"></div>
+                        <div id="assignConfirm"></div>
+
                     </div>
                 </div>
 
-                <div class="add-task-final">
+                <div class="add-task-final" id="add-task-final">
 
                     <button type="button" class="cancel-btn" onclick="cancelTask()"> CANCEL </button>
                     <button type="submit" class="create-btn" onclick="createTask()"> CREATE TASK </button>
                 </div>
-
-
             </div>
 
         </form>
