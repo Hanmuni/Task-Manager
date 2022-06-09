@@ -100,6 +100,7 @@
      margin-left: 32px;
  }
  /* alle */
+ 
  /* Ole */
  
  .bigscreen {
@@ -118,7 +119,51 @@
      height: 70vh;
      width: 18vw;
  }
+
+ .bg-todo {
+    background-color: rgba(252, 150, 150, 0.75);
+}
+
+.bg-todo-highlight {
+    background-color: rgb(255, 150, 150);
+}
+
+.bg-inprogress {
+    background-color: rgba(255, 255, 150, 0.75);
+}
+
+.bg-inprogress-highlight {
+    background-color: rgb(255, 255, 150);
+}
+
+.bg-testing {
+    background-color: rgba(178, 150, 255, 0.75);
+}
+
+.bg-testing-highlight {
+    background-color: rgb(178, 150, 255);
+}
+
+.bg-done {
+    background-color: rgba(201, 255, 150, 0.75);
+}
+
+.bg-done-highlight {
+    background-color: rgb(201, 255, 150);
+}
  
+ .red {
+    background-color: #ff0000;
+}
+
+.yellow {
+    background-color: #ffff00;
+}
+
+.green {
+    background-color: #008000;
+}
+
  @media (max-width: 1000px) {
      .smallscreen {
          display: flex;

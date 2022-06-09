@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="board.js"></script>
     <script src="./mini_backend.js"></script>
     <title> Task Manager </title>
 </head>
@@ -16,25 +17,25 @@
 
     <header class="sidebar" w3-include-html="templates/sidebar.html"></header>
 
-    <div class="bigscreen smallscreen">
+    <div class="bigscreen smallscreen" id="board">
         <div class="totalbox">
             <h2> TO DO </h2>
-            <div class="emptyboxes"></div>
+            <div id="todo-tasks" class="emptyboxes" ondragleave="removeHighlightTaskbox('todo')" ondrop="moveTo('todo')" ondragover="allowDrop(event); highlightTaskbox('todo')"></div>
         </div>
 
         <div class="totalbox">
             <h2> IN PROGRESS </h2>
-            <div class="emptyboxes"></div>
+            <div id="inprogess-tasks" class="emptyboxes" ondragleave="removeHighlightTaskbox('inprogress')" ondrop="moveTo('inprogress')" ondragover="allowDrop(event); highlightTaskbox('inprogress')"></div>
         </div>
 
         <div class="totalbox">
             <h2> TESTING </h2>
-            <div class="emptyboxes"></div>
+            <div id="testing-tasks" class="emptyboxes"ondragleave="removeHighlightTaskbox('testing')" ondrop="moveTo('testing')" ondragover="allowDrop(event); highlightTaskbox('testing')"></div>
         </div>
 
         <div class="totalbox">
             <h2> DONE </h2>
-            <div class="emptyboxes"></div>
+            <div id="done-tasks" class="emptyboxes" ondragleave="removeHighlightTaskbox('done')" ondrop="moveTo('done')" ondragover="allowDrop(event); highlightTaskbox('done')"></div>
         </div>
 
     </div>
