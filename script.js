@@ -2,14 +2,14 @@
 
 let tasks = [];
 
-// Profil = [proilnummer Name, Bild, Usesrname, Passwort]
+// Profil = [proilnummer Name, Bild, Usesrname, Passwort, E-Mail]
 let profiles = [
-    ['profil00', 'GUEST', './img/person-g086296c94_640.png', 'GUEST', 'PASSWORT'],
-    ['profil01', 'Max Mustermann', './img/p24.jpg', 'Mustermann15', 'x'],
-    ['profil02', 'Brigitte Beispiel', './img/p26.jpg', 'B.Beispiel', 'katzenliebhaberin'],
-    ['profil03', 'Emily Example', './img/p30.jpg', 'Example92', 'passwort5'],
-    ['profil04', 'Michelle Modell', './img/p33.jpg', 'M.odell', 'supermodell'],
-    ['profil05', 'Victor Vorbild', './img/p36.jpg', 'Victory', 'venividi']
+    ['profil00', 'GUEST', './img/person-g086296c94_640.png', 'GUEST', 'PASSWORT', '123@mailvorbei.com'],
+    ['profil01', 'Max Mustermann', './img/p24.jpg', 'Mustermann15', 'x', 'beispiel123@mail.com'],
+    ['profil02', 'Brigitte Beispiel', './img/p26.jpg', 'B.Beispiel', 'katzenliebhaberin', 'beispiel123@mail.com'],
+    ['profil03', 'Emily Example', './img/p30.jpg', 'Example92', 'passwort5', 'beispiel123@mail.com'],
+    ['profil04', 'Michelle Modell', './img/p33.jpg', 'M.odell', 'supermodell', 'beispiel123@mail.com'],
+    ['profil05', 'Victor Vorbild', './img/p36.jpg', 'Victory', 'venividi', 'beispiel123@mail.com']
 ]
 
 let current_user = [];
@@ -52,6 +52,47 @@ async function includeHTML() {
 
 /* Fabian */
 
+async function init_backlog() {
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
+    await includeHTML();
+    await loadAllTasks();
+    load_current_user_local();
+    await render_backlog();
+}
+
+async function render_backlog() {
+    document.getElementById('backlog-task-container').innerHTML = '';
+    console.log(tasks)
+    for (let i = 0; i < tasks.length; i += 2) {
+        let date = new Date(tasks[i].date);
+        date_complete = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+        document.getElementById('backlog-task-container').innerHTML += `
+    <div id="backlog-task${i}" class="backlog-task">
+        <div id="backlog-task-assigned-to${i}" class="backlog-task-assigned-to backlog-17">
+            <img src="./img/user.png" class="">
+            <div class="">
+                <p id="backlog-task-name${i}" class="">User Name</p>
+            </div>
+        </div>
+        <div id="backlog-task-title${i}" class="backlog-17">
+            <p>${tasks[i].title}</p>
+        </div>
+        <div id="backlog-task-category${i}" class="backlog-17">
+            <p>${tasks[i].category}</p>
+        </div>
+        <div id="backlog-task-due-date${i}" class="backlog-17">
+            <p>${date_complete}</p>
+        </div>
+        <div id="backlog-task-details${i}" class="backlog-30">
+            <p>${tasks[i].description}</p>
+        </div>
+    </div>    
+    `;
+    }
+}
+
+
+
 /* Fabian*/
 
 
@@ -86,10 +127,6 @@ function check_login() {
         }
     }
     alert('Der eingebene Benutzername ist nicht vergeben.')
-}
-
-function test_function() {
-    console.log(tasks)
 }
 
 function save_current_user_local() {

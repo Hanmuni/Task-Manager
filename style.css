@@ -1,126 +1,129 @@
- /* alle */
- 
- body {
-     margin: 0;
-     font-family: 'PT Sans', sans-serif;
-     display: flex;
- }
- 
- p {
-     margin-block-end: 0;
-     margin-block-start: 0;
-     margin-bottom: 0;
- }
- 
- main {
-     width: 100%;
-     height: 100vh;
- }
- 
- .sidebar-container {
-     position: relative;
-     top: 0px;
-     background-color: red;
-     min-height: 100%;
- }
- 
- .sidebar {
-     background-color: #1E3190;
-     width: 150px;
-     height: 100vh;
-     position: sticky;
-     top: 0;
- }
- 
- .sidebar-logo {
-     display: flex;
-     padding: 32px;
-     height: 100px;
-     box-sizing: unset;
- }
- 
- .sidebar-logo img {
-     width: 72px;
-     height: 72px;
-     object-fit: contain;
- }
- 
- .navigation-bar {
-     display: flex;
-     flex-direction: column;
-     height: 60%;
- }
- 
- .link {
-     color: white;
-     text-decoration: none;
-     padding-left: 32px;
-     padding-bottom: 16px;
-     font-size: 18px;
- }
- 
- .link:hover {
-     border-left: 4px solid white;
-     cursor: pointer;
-     color: white!important;
- }
- 
- .user {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-     color: white;
-     font-size: 13px;
-     font-weight: bold;
- }
- 
- .user img {
-     width: 64px;
-     height: 64px;
-     object-fit: cover;
-     border-radius: 100%;
-     border: 2px solid white;
-     margin-bottom: 5px;
- }
- 
- .headline-section {
-     display: flex;
-     flex-direction: column;
- }
- 
- .headline {
-     font-size: 22px;
-     margin: 16px 0 0 32px;
- }
- 
- .subheading {
-     font-size: 12px;
-     color: #4050A1;
-     margin-left: 32px;
- }
- /* alle */
- 
- /* Ole */
- 
- .bigscreen {
-     display: flex;
-     justify-content: center;
-     align-items: center;
- }
- 
- .totalbox {
-     margin: 20px;
-     text-align: center;
- }
- 
- .emptyboxes {
-     background-color: rgba(211, 211, 211, 0.2);
-     height: 70vh;
-     width: 18vw;
- }
+/* alle */
 
- .bg-todo {
+body {
+    margin: 0;
+    font-family: 'PT Sans', sans-serif;
+    display: flex;
+}
+
+p {
+    margin-block-end: 0;
+    margin-block-start: 0;
+    margin-bottom: 0;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+}
+
+.sidebar-container {
+    position: relative;
+    top: 0px;
+    background-color: red;
+    min-height: 100%;
+}
+
+.sidebar {
+    background-color: #1E3190;
+    width: 150px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.sidebar-logo {
+    display: flex;
+    padding: 32px;
+    height: 100px;
+    box-sizing: unset;
+}
+
+.sidebar-logo img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+}
+
+.navigation-bar {
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    padding-left: 32px;
+    padding-bottom: 16px;
+    font-size: 18px;
+}
+
+.link:hover {
+    border-left: 4px solid white;
+    cursor: pointer;
+    color: white!important;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.user img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 100%;
+    border: 2px solid white;
+    margin-bottom: 5px;
+}
+
+.headline-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.headline {
+    font-size: 22px;
+    margin: 16px 0 0 32px;
+}
+
+.subheading {
+    font-size: 12px;
+    color: #4050A1;
+    margin-left: 32px;
+}
+
+
+/* alle */
+
+
+/* Ole */
+
+.bigscreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.totalbox {
+    margin: 20px;
+    text-align: center;
+}
+
+.emptyboxes {
+    background-color: rgba(211, 211, 211, 0.2);
+    height: 70vh;
+    width: 18vw;
+}
+
+.bg-todo {
     background-color: rgba(252, 150, 150, 0.75);
 }
 
@@ -151,8 +154,8 @@
 .bg-done-highlight {
     background-color: rgb(201, 255, 150);
 }
- 
- .red {
+
+.red {
     background-color: #ff0000;
 }
 
@@ -242,448 +245,450 @@
     justify-content: center;
 }
 
- @media (max-width: 1000px) {
-     .smallscreen {
-         display: flex;
-         flex-direction: column;
-     }
-     .totalbox {
-         margin-left: 10px;
-         margin-right: 10px;
-     }
-     .emptyboxes {
-         width: 54vw;
-         height: 40vh;
-     }
- }
- /* Ole */
- 
- /* Fabian */
- 
- .fixed-height {
-     height: 15vh!important;
- }
- 
- .reset-margin {
-     margin-left: 0!important;
- }
- 
- .backlog-container {
-     width: calc(100% - 214px);
-     margin-left: 32px;
-     margin-right: 32px;
- }
- 
- #backlog-task-container {
-     margin-top: 20px;
- }
- 
- .backlog-task {
-     border-radius: 15px;
-     background-color: rgb(231, 248, 253);
-     border-left: 7px solid blue;
-     line-height: 1.2;
-     display: flex;
-     height: 100px;
-     margin-bottom: 15px;
- }
- 
- .backlog-subtitle-container {
-     border-left: 7px solid white;
-     display: flex;
-     font-weight: bold;
-     color: #1E3190;
-     margin-top: 60px;
-     margin-bottom: 16px;
- }
- 
- .backlog-subtitle-container-left {
-     width: 40%;
-     display: flex;
-     justify-content: space-between;
- }
- 
- .backlog-subtitle-container-right {
-     width: 60%;
-     display: flex;
-     justify-content: flex-end;
- }
- 
- .backlog-subtitle-category {
-     width: 30%;
-     text-align: center;
- }
- 
- .backlog-task-assigned-to {
-     display: flex;
-     justify-content: center;
-     align-items: center;
- }
- 
- .backlog-task-assigned-to img {
-     height: 50px;
-     width: 50px;
-     object-fit: cover;
-     border-radius: 50px;
-     margin-right: 10px;
-     margin-left: 16px;
- }
- 
- .backlog-task-assigned-to div p {
-     width: 100%;
-     color: #2d9dff;
- }
- 
- .backlog-task-assigned-to div p:first-child {
-     width: 100%;
-     color: #1E3190;
- }
- 
- .backlog-task-left {
-     width: 40%;
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
- }
- 
- .backlog-task-details {
-     width: 60%;
-     display: flex;
-     align-items: center;
- }
- 
- .backlog-task-details p {
-     padding: 10px;
- }
- 
- .backlog-task-category {
-     width: 30%;
-     text-align: center;
- }
- /* LOGIN */
- 
- .login-overcontainer {
-     background-image: url(./img/workspace-g198d7dc8d_1280.jpg);
-     background-size: cover;
-     height: 100vh;
-     width: 100vw;
-     display: flex;
-     align-items: center;
-     justify-content: center;
- }
- 
- .login-container {
-     background-color: rgba(0, 0, 0, 0.75);
-     color: white;
-     width: 30vw;
-     display: flex;
-     flex-direction: column;
-     justify-content: space-around;
-     align-items: center;
-     border-radius: 20px;
- }
- 
- .login-header img {
-     margin-top: 40px;
-     margin-bottom: 30px;
-     height: 80px;
- }
- 
- .login-content {
-     margin-bottom: 40px;
- }
- 
- .login-button-container {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     margin-top: 20px;
- }
- 
- .login-button-container button {
-     background-color: #2b72dd;
-     padding-top: 10px;
-     padding-bottom: 10px;
-     color: white;
-     width: 120px;
-     border: 2px solid lightgray;
-     border-radius: 20px;
- }
- 
- .login-container input {
-     width: 150px;
-     margin-top: 10px;
-     font-weight: bold;
-     line-height: 1.5;
-     outline: none;
-     border: none;
- }
- 
- .login-container p {
-     width: 150px;
-     margin-top: 10px;
-     font-weight: bold;
-     font-size: 18px;
- }
- 
- .login-container button {
-     margin-top: 20px;
-     font-weight: bold;
-     cursor: pointer;
- }
- 
- .login-passwort-container {
-     display: flex;
-     align-items: center;
-     justify-content: center;
- }
- 
- #login-username {
-     width: 176px;
-     border: 2px solid lightgray;
- }
- 
- #login-passwort {
-     border: 2px solid lightgray;
- }
- 
- .passwort-image {
-     height: 22px;
-     width: 20px;
-     object-fit: contain;
-     margin-top: 10px;
-     padding-left: 2px;
-     padding-right: 2px;
-     cursor: pointer;
-     background-color: white;
-     border: 2px solid lightgray;
-     border-left: 0;
- }
- /* WELCOME */
- 
- .welcome-quicklinks-container {
-     width: calc(100vw - 150px);
-     height: 85vh;
-     position: absolute;
-     bottom: 0;
-     display: flex;
-     justify-content: space-around;
-     flex-wrap: wrap;
- }
- 
- .welcome-quicklink {
-     height: 50%;
-     width: 50%;
-     position: relative;
-     cursor: pointer;
-     overflow: hidden;
- }
- 
- .welcome-quicklink img {
-     height: 100%;
-     width: 100%;
-     object-fit: cover;
- }
- 
- .welcome-quicklink:hover .welcome-quicklink-image {
-     transform: scale(1.1);
-     opacity: 0.8;
- }
- 
- .welcome-quicklink p {
-     color: white;
-     font-size: x-large;
-     font-weight: bolder;
-     object-fit: cover;
-     position: absolute;
-     transform: translate(-50%, -50%);
-     left: 50%;
-     top: 50%;
-     padding: 2px 15px;
-     background-color: rgba(0, 0, 0, 0.7);
-     border-radius: 20px;
- }
- /* Fabian */
- /* Hong Hanh */
- 
- .add-task-container {
-     margin: 16px 32px auto 32px;
-     background-color: #E7F8FD;
-     width: auto;
-     height: auto;
-     border-radius: 10px;
-     display: flex;
-     justify-content: space-evenly;
- }
- 
- .add-task-colum {
-     margin: 16px;
- }
- 
- .add-task-headline {
-     display: flex;
-     flex-direction: column;
-     margin: 16px;
-     font-weight: bold;
-     color: #2D3E97;
- }
- 
- .add-task-input {
-     width: 300px;
-     height: 50px;
-     border: 2px solid lightgray;
-     border-radius: 4px;
- }
- 
- .add-task-description {
-     width: 300px;
-     height: 150px;
-     border: 2px solid lightgray;
-     border-radius: 4px;
- }
- 
- .add-task-select {
-     height: 50px;
-     border: 2px solid lightgray;
-     border-radius: 4px;
- }
- 
- .add-task-assign {
-     display: flex;
-     flex-direction: column;
-     margin: 32px;
-     font-weight: bold;
-     color: #2D3E97;
- }
- 
- .assign-section {
-     display: flex;
-     align-items: center;
- }
- 
- .add-task-user-image {
-     width: 64px;
-     height: 64px;
-     object-fit: cover;
-     border-radius: 100%;
- }
- 
- .add-user-btn {
-     background-image: url(img/icon\ plus.png);
-     background-size: cover;
-     border-radius: 100%;
-     border: none;
-     margin: 8px;
-     width: 32px;
-     height: 32px;
- }
- 
- .add-user-btn:hover {
-     cursor: pointer;
- }
- 
- .cancel-btn {
-     width: 100px;
-     height: 50px;
-     color: #2D3E97;
-     font-weight: bold;
-     background-color: #F4F3FB;
-     border: none;
- }
- 
- .cancel-btn:hover {
-     background-color: white;
-     border: 2px solid #2D3E97;
-     border-radius: 10px;
-     cursor: pointer;
- }
- 
- .add-task-final {
-     display: flex;
-     justify-content: flex-end;
- }
- 
- .create-btn {
-     width: 120px;
-     height: 50px;
-     color: white;
-     font-weight: bold;
-     background-color: #2D3E97;
-     border: none;
-     border-radius: 10px;
-     margin-left: 16px;
-     margin-right: 16px;
- }
- 
- .create-btn:hover {
-     cursor: pointer;
-     background-color: rgba(56, 133, 253, 0.5);
-     border-radius: 10px;
- }
- /* Hong Hanh */
- /* HELP */
- 
- .help-container {
-     width: calc(100% - 214px);
-     margin-left: 32px;
-     margin-right: 32px;
- }
- 
- .help-content-container {
-     width: 100%;
-     height: 85vh;
- }
- 
- .help-headline {
-     display: flex;
-     justify-content: space-around;
-     align-items: center;
-     font-weight: bold;
-     height: 50px;
- }
- 
- .help-headline p {
-     padding: 5px 15px;
- }
- 
- .help-headline p:hover {
-     color: white;
-     background-color: gray;
-     border-radius: 20px;
-     cursor: pointer;
- }
- 
- .aktive-help {
-     background-color: #1E3190;
-     color: white;
-     border-radius: 20px;
- }
- 
- .help-choosed-content {
-     width: 100%;
-     height: calc(100% - 50px);
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: space-around;
- }
- 
- .help-image {
-     height: 60%;
-     width: 60%;
-     object-fit: cover;
- }
- 
- .help-choosed-content p {
-     font-weight: bold;
-     width: 60%;
- }
- /* HELP */
- /* Impressum */
- /* Impressum */
- /* END */
- 
- .d-none {
-     display: none;
- }
- /* END */
+@media (max-width: 1000px) {
+    .smallscreen {
+        display: flex;
+        flex-direction: column;
+    }
+    .totalbox {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .emptyboxes {
+        width: 54vw;
+        height: 40vh;
+    }
+}
+
+
+/* Ole */
+
+
+/* Fabian */
+
+.fixed-height {
+    height: 15vh!important;
+}
+
+.reset-margin {
+    margin-left: 0!important;
+}
+
+.backlog-container {
+    width: calc(100% - 214px);
+    margin-left: 32px;
+    margin-right: 32px;
+}
+
+#backlog-task-container {
+    margin-top: 20px;
+}
+
+.backlog-task {
+    border-radius: 15px;
+    background-color: rgb(231, 248, 253);
+    border-left: 7px solid blue;
+    line-height: 1.2;
+    display: flex;
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.backlog-subtitle-container {
+    border-left: 7px solid white;
+    display: flex;
+    font-weight: bold;
+    color: #1E3190;
+    margin-top: 60px;
+    margin-bottom: 16px;
+}
+
+.backlog-17 {
+    width: 17.5%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.backlog-30 {
+    width: 30%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.backlog-task-assigned-to {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backlog-task-assigned-to img {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50px;
+    margin-right: 10px;
+    margin-left: 0px;
+    border: 2px solid gray;
+}
+
+.backlog-task-assigned-to div p {
+    font-weight: bold;
+    color: #1E3190;
+}
+
+#backlog-task-details p {
+    padding-right: 10px;
+}
+
+
+/* LOGIN */
+
+.login-overcontainer {
+    background-image: url(./img/workspace-g198d7dc8d_1280.jpg);
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.login-header img {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    height: 80px;
+}
+
+.login-content {
+    margin-bottom: 40px;
+}
+
+.login-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.login-button-container button {
+    background-color: #2b72dd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    width: 120px;
+    border: 2px solid lightgray;
+    border-radius: 20px;
+}
+
+.login-container input {
+    width: 150px;
+    margin-top: 10px;
+    font-weight: bold;
+    line-height: 1.5;
+    outline: none;
+    border: none;
+}
+
+.login-container p {
+    width: 150px;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.login-container button {
+    margin-top: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-passwort-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-username {
+    width: 176px;
+    border: 2px solid lightgray;
+}
+
+#login-passwort {
+    border: 2px solid lightgray;
+}
+
+.passwort-image {
+    height: 22px;
+    width: 20px;
+    object-fit: contain;
+    margin-top: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid lightgray;
+    border-left: 0;
+}
+
+
+/* WELCOME */
+
+.welcome-quicklinks-container {
+    width: calc(100vw - 150px);
+    height: 85vh;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.welcome-quicklink {
+    height: 50%;
+    width: 50%;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.welcome-quicklink img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.welcome-quicklink:hover .welcome-quicklink-image {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.welcome-quicklink p {
+    color: white;
+    font-size: x-large;
+    font-weight: bolder;
+    object-fit: cover;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    padding: 2px 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+}
+
+
+/* Fabian */
+
+
+/* Hong Hanh */
+
+.add-task-container {
+    margin: 16px 32px auto 32px;
+    background-color: #E7F8FD;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.add-task-colum {
+    margin: 16px;
+}
+
+.add-task-headline {
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+    font-weight: bold;
+    color: #2D3E97;
+}
+
+.add-task-input {
+    width: 300px;
+    height: 50px;
+    border: 2px solid lightgray;
+    border-radius: 4px;
+}
+
+.add-task-description {
+    width: 300px;
+    height: 150px;
+    border: 2px solid lightgray;
+    border-radius: 4px;
+}
+
+.add-task-select {
+    height: 50px;
+    border: 2px solid lightgray;
+    border-radius: 4px;
+}
+
+.add-task-assign {
+    display: flex;
+    flex-direction: column;
+    margin: 32px;
+    font-weight: bold;
+    color: #2D3E97;
+}
+
+.assign-section {
+    display: flex;
+    align-items: center;
+}
+
+.add-task-user-image {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.add-user-btn {
+    background-image: url(img/icon\ plus.png);
+    background-size: cover;
+    border-radius: 100%;
+    border: none;
+    margin: 8px;
+    width: 32px;
+    height: 32px;
+}
+
+.add-user-btn:hover {
+    cursor: pointer;
+}
+
+.cancel-btn {
+    width: 100px;
+    height: 50px;
+    color: #2D3E97;
+    font-weight: bold;
+    background-color: #F4F3FB;
+    border: none;
+}
+
+.cancel-btn:hover {
+    background-color: white;
+    border: 2px solid #2D3E97;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.add-task-final {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-btn {
+    width: 120px;
+    height: 50px;
+    color: white;
+    font-weight: bold;
+    background-color: #2D3E97;
+    border: none;
+    border-radius: 10px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.create-btn:hover {
+    cursor: pointer;
+    background-color: rgba(56, 133, 253, 0.5);
+    border-radius: 10px;
+}
+
+
+/* Hong Hanh */
+
+
+/* HELP */
+
+.help-container {
+    width: calc(100% - 214px);
+    margin-left: 32px;
+    margin-right: 32px;
+}
+
+.help-content-container {
+    width: 100%;
+    height: 85vh;
+}
+
+.help-headline {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+    height: 50px;
+}
+
+.help-headline p {
+    padding: 5px 15px;
+}
+
+.help-headline p:hover {
+    color: white;
+    background-color: gray;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.aktive-help {
+    background-color: #1E3190;
+    color: white;
+    border-radius: 20px;
+}
+
+.help-choosed-content {
+    width: 100%;
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.help-image {
+    height: 60%;
+    width: 60%;
+    object-fit: cover;
+}
+
+.help-choosed-content p {
+    font-weight: bold;
+    width: 60%;
+}
+
+
+/* HELP */
+
+
+/* Impressum */
+
+
+/* Impressum */
+
+
+/* END */
+
+.d-none {
+    display: none;
+}
+
+
+/* END */
