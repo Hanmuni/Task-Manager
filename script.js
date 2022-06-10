@@ -21,7 +21,7 @@ let assignToUsers = [{
     },
     {
         'name': 'Fabian Kalus',
-        'user-image': './img/fabian.png',
+        'user-image': './img/p24.jpg',
         'email': 'fabian.kalus@email.com'
     }, {
         'name': 'Hong Hanh Chu',
@@ -87,10 +87,7 @@ async function render_backlog() {
         document.getElementById('backlog-task-container').innerHTML += `
     <div id="backlog-task${i}" class="backlog-task">
         <div id="backlog-task-assigned-to${i}" class="backlog-task-assigned-to backlog-17">
-            <img src="./img/user.png" class="">
-            <div class="">
-                <p id="backlog-task-name${i}" class="">User Name</p>
-            </div>
+           
         </div>
         <div id="backlog-task-title${i}" class="backlog-17">
             <p>${tasks[i].title}</p>
@@ -106,6 +103,18 @@ async function render_backlog() {
         </div>
     </div>    
     `;
+        document.getElementById(`backlog-task-assigned-to${i}`).innerHTML = `
+        <div id="backlog-task-image">
+            <img src=${tasks[i].user[0]['user-image']} class="">
+        </div>
+        <div id="backlog-task-name${i}" class="">    
+        </div>
+        `;
+        document.getElementById(`backlog-task-name${i}`).innerHTML = '';
+        for (let j = 0; j < tasks[i].user.length; j++) {
+            document.getElementById(`backlog-task-name${i}`).innerHTML += `
+                <p class="" > ${tasks[i].user[j].name} </p>`
+        }
     }
 }
 
