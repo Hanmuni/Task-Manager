@@ -124,13 +124,13 @@ function startDragging(id) {
     currentDraggedElement = id;
 }
 
-function allowDrop (ev) {
-    ev.preventDefault ();
+function allowDrop(ev) {
+    ev.preventDefault();
 }
 
-function moveTo (category) {
-    todos[currentDraggedElement] ['category'] = category;
-    updateHTML ();
+function moveTo(category) {
+    todos[currentDraggedElement]['category'] = category;
+    updateHTML();
 }
 
 /* Ole*/
@@ -154,19 +154,19 @@ async function render_backlog() {
         date_complete = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
         document.getElementById('backlog-task-container').innerHTML += `
     <div id="backlog-task${i}" class="backlog-task">
-        <div id="backlog-task-assigned-to${i}" class="backlog-task-assigned-to backlog-17">
+        <div id="backlog-task-assigned-to${i}" class="backlog-task-assigned-to backlog-20">
            
         </div>
-        <div id="backlog-task-title${i}" class="backlog-17">
+        <div id="backlog-task-title${i}" class="backlog-15">
             <p>${tasks[i].title}</p>
         </div>
-        <div id="backlog-task-category${i}" class="backlog-17">
+        <div id="backlog-task-category${i}" class="backlog-15">
             <p>${tasks[i].category}</p>
         </div>
-        <div id="backlog-task-due-date${i}" class="backlog-17">
+        <div id="backlog-task-due-date${i}" class="backlog-15">
             <p>${date_complete}</p>
         </div>
-        <div id="backlog-task-details${i}" class="backlog-30">
+        <div id="backlog-task-details${i}" class="backlog-15">
             <p>${tasks[i].description}</p>
         </div>
     </div>    

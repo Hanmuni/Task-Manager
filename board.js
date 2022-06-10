@@ -57,12 +57,11 @@ function startDragging(id) {
     currentDraggedElement = id;
 }
 
-function allowDrop (ev) {
-    ev.preventDefault ();
+function allowDrop(ev) {
+    ev.preventDefault();
 }
 
-function moveTo (category) {
-    todos[currentDraggedElement] ['category'] = category;
-    updateHTML ();
+function moveTo(category) {
+    todos[currentDraggedElement]['category'] = category;
+    updateHTML();
 }
-
