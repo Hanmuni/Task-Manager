@@ -16,26 +16,27 @@
 <body onload="init()">
 
     <header class="sidebar" w3-include-html="templates/sidebar.html"></header>
+    <button onclick="updateHTML()">Klicke</button>
 
-    <div class="bigscreen smallscreen" id="board">
+    <div class="bigscreen smallscreen">
         <div class="totalbox">
             <h2> TO DO </h2>
-            <div id="todo-tasks" class="emptyboxes" ondragleave="removeHighlightTaskbox('todo')" ondrop="moveTo('todo')" ondragover="allowDrop(event); highlightTaskbox('todo')"></div>
+            <div class="emptyboxes" id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event)"></div>
         </div>
 
         <div class="totalbox">
             <h2> IN PROGRESS </h2>
-            <div id="inprogess-tasks" class="emptyboxes" ondragleave="removeHighlightTaskbox('inprogress')" ondrop="moveTo('inprogress')" ondragover="allowDrop(event); highlightTaskbox('inprogress')"></div>
+            <div class="emptyboxes" id="inprogress" ondrop="moveTo('inprogress')" ondragover="allowDrop(event)"></div>
         </div>
 
         <div class="totalbox">
             <h2> TESTING </h2>
-            <div id="testing-tasks" class="emptyboxes" ondragleave="removeHighlightTaskbox('testing')" ondrop="moveTo('testing')" ondragover="allowDrop(event); highlightTaskbox('testing')"></div>
+            <div class="emptyboxes" id="testing" ondrop="moveTo('testing')" ondragover="allowDrop(event)"></div>
         </div>
 
         <div class="totalbox">
             <h2> DONE </h2>
-            <div id="done-tasks" class="emptyboxes" ondragleave="removeHighlightTaskbox('done')" ondrop="moveTo('done')" ondragover="allowDrop(event); highlightTaskbox('done')"></div>
+            <div class="emptyboxes" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
         </div>
 
     </div>

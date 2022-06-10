@@ -1,99 +1,68 @@
+let todos = [{
+    'id': 0,
+    'title': 'Coden',
+    'category': 'todo',
+}, {
+    'id': 1,
+    'title': 'Planen',
+    'category': 'inprogress',
+}];
+
 let currentDraggedElement;
 
-function updateBoardHTML() {
-    clearHTML();
-    showTaskbox('todo');
-    showTaskbox('inprogress');
-    showTaskbox('testing');
-    showTaskbox('done');
-    getCategory();
-    checkUrgency();
-    removeHighlightTaskbox('todo');
-    removeHighlightTaskbox('inprogress');
-    removeHighlightTaskbox('testing');
-    removeHighlightTaskbox('done');
+function updateHTML() {
 
-}
+    let todo = todos.filter(t => t['category'] == 'todo');
 
-function clearHTML() {
-    document.getElementById('todo-tasks').innerHTML = '';
-    document.getElementById('inprogress-tasks').innerHTML = '';
-    document.getElementById('testing-tasks').innerHTML = '';
-    document.getElementById('done-tasks').innerHTML = '';
-}
+    document.getElementbyID('todo').innerHTML = '';
 
-function showTaskbox(taskBox) {
-    let boxes = tasks.filter(t => t['Taskbox'] == taskBox)
+    for (let index = 0; index < todo.length; index++) {
+        const element = todo[index];
+        document.getElementById('todo').innerHTML += generateTodoHTML(element);
+    }
 
-    for (let i = 0; i < boxes.length; i++) {
-        document.getElementById(taskBox+'-tasks').innerHTML += `
-        <div class="task" draggable="true" ondragstart="startDragging(${boxes[i]['ID']})">
-          <span id="category${i}" class="category">${boxes[i].Category}</span>
-          <div id="urgency${boxes[i]['ID']}" class="urgency"></div>
-          <span class="tasktitle"><b>${boxes[i].Titel}</b></span>
-          <span class="taskmiddle">${boxes[i].Description}</span>
-         <div class="lowertask">
-          <span class="name">${boxes[i].Name}</span>
-          <div> <img onclick="deleteTicket(${boxes[i]['ID']})" class="trash" src="img/trash.png"></div>
-          <span class="date">${boxes[i].DueDate}</span>
-         </div>
-        </div>`;
+    let inprogress = todos.filter(t => t['category'] == 'inprogress');
+
+    document.getElementbyID('inprogress').innerHTML = '';
+
+    for (let index = 0; index < inprogress.length; index++) {
+        const element = inprogress[index];
+        document.getElementById('inprogress').innerHTML += generateTodoHTML(element);
+    }
+
+    let testing = todos.filter(t => t['category'] == 'testing');
+
+    document.getElementbyID('testing').innerHTML = '';
+
+    for (let index = 0; index < testing.length; index++) {
+        const element = testing[index];
+        document.getElementById('testing').innerHTML += generateTodoHTML(element);
+    }
+
+    let done = todos.filter(t => t['category'] == 'done');
+
+    document.getElementbyID('done').innerHTML = '';
+
+    for (let index = 0; index < done.length; index++) {
+        const element = done[index];
+        document.getElementById('done').innerHTML += generateTodoHTML(element);
     }
 }
 
-function moveTo(Taskbox) {
-    let currentDraggedTask = tasks.find(ticket => ticket.ID == currentDraggedElement);
-    currentDraggedTask['Taskbox'] = Taskbox;
-    backend.setItem('tasks', JSON.stringify(tasks));
-    updateBoardHTML();
+function generateTodoHTML(element) {
+    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
 }
 
-function highlightTaskbox(taskBox){
-    document.getElementById(taskBox+'-tasks').classList.add('bg-'+taskBox+'-highlight');
+function startDragging(id) {
+    currentDraggedElement = id;
 }
 
-function removeHighlightTaskbox(taskBox){
-    document.getElementById(taskBox+'-tasks').classList.remove('bg-'+taskBox+'-highlight');
+function allowDrop (ev) {
+    ev.preventDefault ();
 }
 
-function getCategory() {
-    for (let i = 0; i < tasks.length; i++) {
-
-        let categories = tasks[i]['Category'];
-        backend.setItem('tasks', JSON.stringify(tasks));
-    }
+function moveTo (category) {
+    todos[currentDraggedElement] ['category'] = category;
+    updateHTML ();
 }
 
-function checkUrgency() {
-    
-    for (let i = 0; i < tasks.length; i++) {
-        let urgency = tasks[i]['Urgency'];
-        
-        if (urgency == 'High') {
-            document.getElementById(`urgency${tasks[i]['ID']}`).classList.add('red');
-        } else if (urgency == 'Medium') {
-            document.getElementById(`urgency${tasks[i]['ID']}`).classList.add('yellow');
-        }
-        else if (urgency == 'Low') {
-            document.getElementById(`urgency${tasks[i]['ID']}`).classList.add('green');
-        }
-        backend.setItem('tasks', JSON.stringify(tasks));
-    }
-}
-
-function deleteTicket(id) {
-    tasks = JSON.parse(backend.getItem("tasks"));
-    let getID = tasks.findIndex(obj => obj.ID==id);
-    tasks.splice(getID, 1);
-    backend.setItem('tasks', JSON.stringify(tasks));
-    if (window.location.href.indexOf('board') > -1) {
-        document.getElementById('todo-tasks').innerHTML = '';
-        document.getElementById('inprogress-tasks').innerHTML = '';
-        document.getElementById('testing-tasks').innerHTML = '';
-        document.getElementById('done-tasks').innerHTML = '';
-    }
-    if (window.location.href.indexOf("board") > -1) {
-
-    }
-    updateBoardHTML();
-}
