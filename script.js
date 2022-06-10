@@ -11,6 +11,7 @@ let profiles = [
 ]
 
 let current_user = [];
+let todos2 = [];
 
 async function init() {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
@@ -137,13 +138,12 @@ async function init_backlog() {
 async function render_backlog() {
     document.getElementById('backlog-task-container').innerHTML = '';
     console.log(tasks)
-    for (let i = 0; i < tasks.length; i += 2) {
+    for (let i = 0; i < tasks.length; i++) {
         let date = new Date(tasks[i].date);
         date_complete = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
         document.getElementById('backlog-task-container').innerHTML += `
     <div id="backlog-task${i}" class="backlog-task">
         <div id="backlog-task-assigned-to${i}" class="backlog-task-assigned-to backlog-20">
-           
         </div>
         <div id="backlog-task-title${i}" class="backlog-15">
             <p>${tasks[i].title}</p>
@@ -157,6 +157,13 @@ async function render_backlog() {
         <div id="backlog-task-details${i}" class="backlog-15">
             <p>${tasks[i].description}</p>
         </div>
+        <div onclick="deleteTask(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-10">
+            <p ><img src="./img/trash-2-32.png"></p>
+        </div>
+        <div id="backlog-task-details${i}" class="backlog-10">
+            <p onclick="add_to_board()"><img src="./img/right-circular-32.png"></p>
+        </div>
+        
     </div>    
     `;
         document.getElementById(`backlog-task-assigned-to${i}`).innerHTML = `
