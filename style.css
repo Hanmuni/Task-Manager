@@ -155,6 +155,10 @@ main {
     height: 15vh!important;
 }
 
+.cursor {
+    cursor: pointer;
+}
+
 .reset-margin {
     margin-left: 0!important;
 }
