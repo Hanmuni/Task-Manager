@@ -17,7 +17,7 @@ async function init() {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     await includeHTML();
     await loadAllTasks();
-    load_current_user_local();
+    await load_current_user_local();
 }
 
 async function loadAllTasks() {
@@ -58,7 +58,7 @@ async function init_backlog() {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     await includeHTML();
     await loadAllTasks();
-    load_current_user_local();
+    await load_current_user_local();
     await render_backlog();
 }
 
@@ -182,7 +182,7 @@ function save_current_user_local() {
     localStorage.setItem('current_user', current_userAsText);
 }
 
-function load_current_user_local() {
+async function load_current_user_local() {
     let current_userAsText = localStorage.getItem('current_user');
     if (current_userAsText) {
         current_user = JSON.parse(current_userAsText);

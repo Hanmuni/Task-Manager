@@ -1,6 +1,6 @@
+let selectedUsers = [];
 let tasks = [];
 
-let selectedUsers = [];
 
 let assignToUsers = [{
         'name': 'Ole Engelhardt',
