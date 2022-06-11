@@ -11,7 +11,7 @@ let profiles = [
 ]
 
 let current_user = [];
-let todos2 = [];
+let todos = [];
 
 async function init() {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
@@ -23,7 +23,8 @@ async function init() {
 async function loadAllTasks() {
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
-    console.log(tasks);
+    todos = JSON.parse(backend.getItem('todos')) || [];
+
 }
 
 async function includeHTML() {
@@ -46,81 +47,7 @@ async function includeHTML() {
 
 /* Ole */
 
-// async function init_board() {
-//     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
-//     await includeHTML();
-//     await loadAllTasks();
-//     load_current_user_local();
-//     updateHTML();
-// }
 
-// let todos = [{
-//     'id': 0,
-//     'title': 'Coden',
-//     'category': 'todo',
-// }, {
-//     'id': 1,
-//     'title': 'Planen',
-//     'category': 'inprogress',
-// }];
-
-// let currentDraggedElement;
-
-// function updateHTML() {
-
-//     let todo = todos.filter(t => t['category'] == 'todo');
-
-//     document.getElementbyID('todo').innerHTML = '';
-
-//     for (let index = 0; index < todo.length; index++) {
-//         const element = todo[index];
-//         document.getElementById('todo').innerHTML += generateTodoHTML(element);
-//     }
-
-//     let inprogress = todos.filter(t => t['category'] == 'inprogress');
-
-//     document.getElementbyID('inprogress').innerHTML = '';
-
-//     for (let index = 0; index < inprogress.length; index++) {
-//         const element = inprogress[index];
-//         document.getElementById('inprogress').innerHTML += generateTodoHTML(element);
-//     }
-
-//     let testing = todos.filter(t => t['category'] == 'testing');
-
-//     document.getElementbyID('testing').innerHTML = '';
-
-//     for (let index = 0; index < testing.length; index++) {
-//         const element = testing[index];
-//         document.getElementById('testing').innerHTML += generateTodoHTML(element);
-//     }
-
-//     let done = todos.filter(t => t['category'] == 'done');
-
-//     document.getElementbyID('done').innerHTML = '';
-
-//     for (let index = 0; index < done.length; index++) {
-//         const element = done[index];
-//         document.getElementById('done').innerHTML += generateTodoHTML(element);
-//     }
-// }
-
-// function generateTodoHTML(element) {
-//     return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
-// }
-
-// function startDragging(id) {
-//     currentDraggedElement = id;
-// }
-
-// function allowDrop(ev) {
-//     ev.preventDefault();
-// }
-
-// function moveTo(category) {
-//     todos[currentDraggedElement]['category'] = category;
-//     updateHTML();
-// }
 
 /* Ole*/
 
@@ -183,24 +110,32 @@ async function render_backlog() {
 
 
 function create_todo(position) {
-    let todo2 = {
+    let todo = {
+
+        'id': '',
         'title': tasks[position].title,
         'category': tasks[position].category,
         'description': tasks[position].description,
         'date': tasks[position].date,
         'urgency': tasks[position].urgency,
         'user': tasks[position].user,
-        'status': 'toDo',
+        'status': 'todo',
     };
-
-    todos2.push(todo2);
-
+    todos.push(todo);
     tasks.splice(position, 1);
     backend.setItem('tasks', JSON.stringify(tasks));
 
-    let todos2AsString = JSON.stringify(todos2);
-    backend.setItem('todos2', todos2AsString);
-    console.log(todo2);
+    let todosAsString = JSON.stringify(todos);
+    backend.setItem('todos', todosAsString);
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
+    console.log(todos);
+}
+
+function delete_todo() {
+    let position = todos.length - 1;
+    todos.splice(position, 1);
+    backend.setItem('todos', JSON.stringify(todos));
+    console.log(todos);
 }
 
 

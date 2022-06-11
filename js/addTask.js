@@ -2,8 +2,7 @@ let tasks = [];
 
 let selectedUsers = [];
 
-let assignToUsers = [
-    {
+let assignToUsers = [{
         'name': 'Ole Engelhardt',
         'user-image': './img/ole.png',
         'email': 'ole.engelhardt@email.com'

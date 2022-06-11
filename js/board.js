@@ -1,20 +1,20 @@
-let todos = [{
-    'id': 0,
-    'title': 'planen',
-    'status': 'todo',
-}, {
-    'id': 1,
-    'title': 'coden',
-    'status': 'inprogress',
-}, {
-    'id': 2,
-    'title': 'fine tuning',
-    'status': 'testing',
-}, {
-    'id': 3,
-    'title': 'chillen',
-    'status': 'done',
-}];
+// let todos = [{
+//     'id': 0,
+//     'title': 'planen',
+//     'status': 'todo',
+// }, {
+//     'id': 1,
+//     'title': 'coden',
+//     'status': 'inprogress',
+// }, {
+//     'id': 2,
+//     'title': 'fine tuning',
+//     'status': 'testing',
+// }, {
+//     'id': 3,
+//     'title': 'chillen',
+//     'status': 'done',
+// }];
 
 let currentDraggedElement;
 
@@ -23,10 +23,14 @@ async function init_board() {
     await includeHTML();
     await loadAllTasks();
     load_current_user_local();
+    await order_todos_ids();
     await updateHTML();
+
+    console.log(todos);
+
 }
 
-function updateHTML() {
+async function updateHTML() {
 
     let todo = todos.filter(t => t['status'] == 'todo');
 
@@ -66,18 +70,31 @@ function updateHTML() {
 }
 
 function generateTodoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
+    return `<div draggable="true" id="${element['id']}" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
 }
 
 function startDragging(id) {
     currentDraggedElement = id;
+    console.log(currentDraggedElement)
+
 }
 
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(category) {
-    todos[currentDraggedElement]['category'] = category;
+function moveTo(status) {
+    todos[currentDraggedElement]['status'] = status;
     updateHTML();
+    console.log(todos);
+    let todosAsString = JSON.stringify(todos);
+    backend.setItem('todos', todosAsString);
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
+    console.log(todos);
+}
+
+async function order_todos_ids() {
+    for (let o = 0; o < todos.length; o++) {
+        todos[o].id = o;
+    }
 }
