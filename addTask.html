@@ -12,7 +12,7 @@
     <script src="./js/board.js"></script>
     <script src="./js/login.js"></script>
     <script src="./js/mini_backend.js"></script>
-    <title> Task Manager </title>
+    <title> addTask - Task Manager </title>
 </head>
 
 <body onload="init()">
@@ -25,77 +25,80 @@
             <div class="subheading"> Learning Management System Project </div>
         </div>
 
-        <form onsubmit="createTask()" class="add-task-container">
+        <form onsubmit="createTask(event)">
+            <div class="add-task-container">
+                <div class="add-task-colum">
 
-            <div class="add-task-colum">
+                    <div class="add-task-headline">
+                        <p>TITLE </p>
 
-                <div class="add-task-headline">
-                    <p>TITLE </p>
+                        <input required minlength="5" id="title" class="add-task-input">
+                    </div>
+                    <div class="add-task-headline">
+                        <p> CATEGORY </p>
 
-                    <input required minlength="5" id="title" class="add-task-input">
+                        <select id="category" required class="add-task-select">
+                            <option> HTML </option>
+                            <option> CSS </option>
+                            <option> JavaScript </option>
+                        </select>
+
+                    </div>
+
+                    <div class="add-task-headline">
+                        <p> DESCRIPTION </p>
+
+                        <input required minlength="5" id="description" class="add-task-description">
+                    </div>
+
                 </div>
-                <div class="add-task-headline">
-                    <p> CATEGORY </p>
 
-                    <select id="category" class="add-task-select">
-                        <option> HTML </option>
-                        <option> CSS </option>
-                        <option> JavaScript </option>
-                    </select>
+                <div class="add-task-colum">
 
-                </div>
+                    <div class="add-task-headline">
+                        <p> DUE DATE </p>
 
-                <div class="add-task-headline">
-                    <p> DESCRIPTION </p>
+                        <input id="date" required type="date" class="add-task-input">
+                    </div>
 
-                    <input required minlength="5" id="description" class="add-task-description">
+                    <div class="add-task-headline">
+                        <p> URGENCY </p>
+
+                        <select id="urgency" required class="add-task-select">
+                            <option> Low </option>
+                            <option> Medium </option>
+                            <option> High </option>
+                        </select>
+                    </div>
+
+                    <div class="add-task-assign">
+                        <p> ASSIGNED TO </p>
+
+                        <div class="assign-section" id="assign-section">
+
+                            <div id="selectedImage"> <img src="/img/change-user.png" class="add-task-user-image"> </div>
+
+                            <div id="add-user-btn"> <button type="button" class="add-user-btn" onclick="assignTo()">
+                                </button> </div>
+
+                        </div>
+
+                        <div id="user-list" class="user-list d-none">
+                            <div id="assignedToUser"></div>
+                            <div id="assignConfirm"></div>
+
+                        </div>
+                    </div>
+
+                    <div class="add-task-final" id="add-task-final">
+
+                        <button type="button" class="cancel-btn" onclick="resetTask()"> CANCEL </button>
+                        <button type="submit" class="create-btn" onclick="createTask()"> CREATE TASK </button>
+                    </div>
                 </div>
 
             </div>
 
-            <div class="add-task-colum">
-
-                <div class="add-task-headline">
-                    <p> DUE DATE </p>
-
-                    <input id="date" type="date" class="add-task-input">
-                </div>
-
-                <div class="add-task-headline">
-                    <p> URGENCY </p>
-
-                    <select id="urgency" class="add-task-select">
-                        <option> Low </option>
-                        <option> Medium </option>
-                        <option> High </option>
-                    </select>
-                </div>
-
-                <div class="add-task-assign">
-                    <p> ASSIGNED TO </p>
-
-                    <div class="assign-section" id="assign-section">
-
-                        <div id="selectedImage"> <img src="/img/change-user.png" class="add-task-user-image"> </div>
-
-                        <div id="add-user-btn"> <button type="button" class="add-user-btn" onclick="assignTo()">
-                            </button> </div>
-
-                    </div>
-
-                    <div id="user-list" class="user-list d-none">
-                        <div id="assignedToUser"></div>
-                        <div id="assignConfirm"></div>
-
-                    </div>
-                </div>
-
-                <div class="add-task-final" id="add-task-final">
-
-                    <button type="button" class="cancel-btn" onclick="cancelTask()"> CANCEL </button>
-                    <button type="submit" class="create-btn" onclick="createTask()"> CREATE TASK </button>
-                </div>
-            </div>
 
         </form>
 

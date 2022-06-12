@@ -1,29 +1,35 @@
 let selectedUsers = [];
 let tasks = [];
-
-
-let assignToUsers = [{
-        'name': 'Ole Engelhardt',
-        'user-image': './img/ole.png',
-        'email': 'ole.engelhardt@email.com',
-        'shortcut': 'OE',
-    },
-    {
-        'name': 'Fabian Kalus',
-        'user-image': './img/p24.jpg',
-        'email': 'fabian.kalus@email.com',
-        'shortcut': 'FK',
-    }, {
-        'name': 'Hong Hanh Chu',
-        'user-image': './img/HongHanh.jpg',
-        'email': 'hong-hanh.chu@email.com',
-        'shortcut': 'HC',
-    }
+let userList = [{
+    'name': 'Ole Engelhardt',
+    'user-image': './img/ole.png',
+    'email': 'ole.engelhardt@email.com',
+    'shortcut': 'OE',
+},
+{
+    'name': 'Fabian Kalus',
+    'user-image': './img/p24.jpg',
+    'email': 'fabian.kalus@email.com',
+    'shortcut': 'FK',
+}, {
+    'name': 'Hong Hanh Chu',
+    'user-image': './img/HongHanh.jpg',
+    'email': 'hong-hanh.chu@email.com',
+    'shortcut': 'HHC',
+}
 ];
 
-function createTask() {
+function createTask(event) {
+    event.preventDefault();
+    writeTask();
+    saveTaskToBackend();
+    resetTask();
+}
+
+function writeTask() {
     let title = document.getElementById('title').value;
     let category = document.getElementById('category').value;
+    let date = document.getElementById('date').value;
     let description = document.getElementById('description').value;
     let urgency = document.getElementById('urgency').value;
 
@@ -31,23 +37,30 @@ function createTask() {
         'title': title,
         'category': category,
         'description': description,
-        'date': new Date().getTime(),
+        'date': date,
         'urgency': urgency,
         'user': selectedUsers,
     };
 
-
     tasks.push(task);
-
-    document.getElementById('title').value = ``;
-    document.getElementById('description').value = ``;
-
-    let tasksAsString = JSON.stringify(tasks);
-    backend.setItem('tasks', tasksAsString);
-
-    init();
 }
 
+function saveTaskToBackend() {
+    let tasksAsString = JSON.stringify(tasks);
+    backend.setItem('tasks', tasksAsString);
+}
+
+function resetTask() {
+
+    document.getElementById('title').value = ``;
+    document.getElementById('category').value = ``;
+    document.getElementById('description').value = ``;
+    document.getElementById('date').value = ``;
+    document.getElementById('urgency').value = ``;
+    document.getElementById('selectedImage').innerHTML = `<img src="/img/change-user.png" class="add-task-user-image">`;
+    selectedUsers = [];
+
+}
 function assignTo() {
 
     document.getElementById('assign-section').classList.add('d-none');
@@ -56,12 +69,13 @@ function assignTo() {
 }
 
 function displayUsersList() {
+
     document.getElementById('user-list').classList.remove('d-none');
     document.getElementById('assignedToUser').innerHTML = ``;
 
-    for (let i = 0; i < assignToUsers.length; i++) {
+    for (let i = 0; i < userList.length; i++) {
 
-        let userName = assignToUsers[i]['name'];
+        let userName = userList[i]['name'];
 
 
         document.getElementById('assignedToUser').innerHTML += ` 
@@ -74,10 +88,18 @@ function displayUsersList() {
 }
 
 function selectUser(i) {
-    let id = "selectedUser" + i;
-    document.getElementById(id).style = 'background-color: #2D3E97; color: white;';
-    selectedUsers.push(assignToUsers[i]);
+    let selectedUser = selectedUsers.indexOf(userList[i]);
+    let selectionId = "selectedUser" + i;
 
+    if (selectedUser == -1) {
+        document.getElementById(selectionId).style = 'background-color: #2D3E97; color: white;';
+        selectedUsers.push(userList[i]);
+    }
+
+    else {
+        document.getElementById(selectionId).style = '';
+        selectedUsers.splice(selectedUser, 1);
+    }
 }
 
 function confirmUser() {
@@ -103,16 +125,4 @@ function confirmUser() {
 function deleteTask(position) {
     tasks.splice(position, 1);
     backend.setItem('tasks', JSON.stringify(tasks));
-    console.log(tasks);
-}
-
-function cancelTask() {
-    document.getElementById('title').value = ``;
-    document.getElementById('description').value = ``;
-    document.getElementById('assign-section').innerHTML = `
-    <div id="selectedImage"> <img src="/img/change-user.png" class="add-task-user-image"> </div>
-
-    <div id="add-user-btn"> <button type="button" class="add-user-btn" onclick="assignTo()">
-        </button> </div>
-`;
 }
