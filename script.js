@@ -75,14 +75,14 @@ async function render_backlog() {
         <div id="backlog-task-title${i}" class="backlog-15">
             <p>${tasks[i].title}</p>
         </div>
-        <div id="backlog-task-category${i}" class="backlog-15">
-            <p>${tasks[i].category}</p>
-        </div>
         <div id="backlog-task-due-date${i}" class="backlog-15">
             <p backlog-task-due-date${i}-p>${date_complete}</p>
         </div>
         <div id="backlog-task-details${i}" class="backlog-15">
             <p>${tasks[i].description}</p>
+        </div>
+        <div id="backlog-task-details${i}" class="backlog-15">
+            <p>${tasks[i].category}</p>
         </div>
         <div onclick="deleteTask(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-10">
             <p class="cursor"><img src="./img/trash-2-32.png"></p>
@@ -105,6 +105,32 @@ async function render_backlog() {
             document.getElementById(`backlog-task-name${i}`).innerHTML += `
                 <p class="" > ${tasks[i].user[j].name} </p>`
         }
+        add_urgency_color(i);
+        add_category_color(i);
+    }
+}
+
+function add_category_color(i) {
+    if (tasks[i].category == 'HTML') {
+        document.getElementById(`backlog-task${i}`).classList.add('html-color');
+    }
+    if (tasks[i].category == 'CSS') {
+        document.getElementById(`backlog-task${i}`).classList.add('css-color');
+    }
+    if (tasks[i].category == 'JavaScript') {
+        document.getElementById(`backlog-task${i}`).classList.add('javascript-color');
+    }
+}
+
+function add_urgency_color(i) {
+    if (tasks[i].urgency == 'High') {
+        document.getElementById(`backlog-task${i}`).classList.add('urc-high');
+    }
+    if (tasks[i].urgency == 'Medium') {
+        document.getElementById(`backlog-task${i}`).classList.add('urc-medium');
+    }
+    if (tasks[i].urgency == 'Low') {
+        document.getElementById(`backlog-task${i}`).classList.add('urc-low');
     }
 }
 
@@ -181,7 +207,6 @@ async function load_current_user_local() {
     if (current_userAsText) {
         current_user = JSON.parse(current_userAsText);
     };
-
     document.getElementById('sidebar-user-image').src = current_user[0][2];
     document.getElementById('sidebar-user-name').innerHTML = current_user[0][3];
 }

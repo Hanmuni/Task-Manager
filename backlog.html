@@ -16,7 +16,6 @@
 </head>
 
 <body onload="init_backlog()">
-
     <div class="sidebar-container">
         <div class="sidebar" w3-include-html="templates/sidebar.html"></div>
     </div>
@@ -28,17 +27,67 @@
         <div id="backlog-subtitle-container" class="backlog-subtitle-container">
             <p class="backlog-20">ASSIGNED TO</p>
             <p class="backlog-15">TITLE</p>
-            <p class="backlog-15">CATEGORY</p>
             <p class="backlog-15">DUE DATE</p>
             <p class="backlog-15">DETAILS</p>
-            <p class="backlog-10">DELETE</p>
-            <p class="backlog-10">ADD TO BOARD</p>
+            <p class="backlog-15">CATEGORY</p>
+            <p class="backlog-10"></p>
+            <p class="backlog-10"></p>
         </div>
-        <div id="backlog-task-container">
-
+        <div id="backlog-task-container"></div>
+    </div>
+    <div class="sidebar-right-container">
+        <div class="sidebar-right">
+            <h2>Legend</h2>
+            <div class="sidebar-urgency-over-container">
+                <div class="sidebar-right-header">
+                    <p>URGENCY</p>
+                </div>
+                <div class="sidebar-urgency-container">
+                    <div class="traffic-light">
+                        <div class="traffic-light-red"></div>
+                        <div class="traffic-light-yellow"></div>
+                        <div class="traffic-light-green"></div>
+                    </div>
+                    <div class="traffic-light-text">
+                        <p>high</p>
+                        <p>medium</p>
+                        <p>low</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-category-over-container">
+                <div class="sidebar-right-header">
+                    <p>CATEGORY</p>
+                </div>
+                <div class="sidebar-category-container">
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category-html"></div>
+                        <div class="sidebar-category-css"></div>
+                        <div class="sidebar-category-javascript"></div>
+                    </div>
+                    <div class="sidebar-category-text">
+                        <p>HTML</p>
+                        <p>CSS</p>
+                        <p>Javascript</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-category-over-container">
+                <div class="sidebar-right-header">
+                    <p>ICONS</p>
+                </div>
+                <div class="sidebar-category-container">
+                    <div class="sidebar-categories">
+                        <img src="./img/trash-2-32.png">
+                        <img src="./img/right-circular-32.png">
+                    </div>
+                    <div class="sidebar-category-text">
+                        <p>DELETE</p>
+                        <p>.....</p>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
     </div>
 </body>
 

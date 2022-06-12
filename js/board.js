@@ -87,6 +87,9 @@ function generateTodoHTML(element) {
                     <img src="./img/trash-2-24.png">
                 </div>
             </div>
+            <div class="card-icon-edit-container">
+                <img class="card-icon-edit" src="../img/edit-24.png">
+            </div>
         </div>
     `
 
