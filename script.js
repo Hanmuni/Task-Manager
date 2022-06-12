@@ -79,7 +79,7 @@ async function render_backlog() {
             <p>${tasks[i].category}</p>
         </div>
         <div id="backlog-task-due-date${i}" class="backlog-15">
-            <p>${date_complete}</p>
+            <p backlog-task-due-date${i}-p>${date_complete}</p>
         </div>
         <div id="backlog-task-details${i}" class="backlog-15">
             <p>${tasks[i].description}</p>
@@ -131,12 +131,6 @@ function create_todo(position) {
     console.log(todos);
 }
 
-function delete_todo() {
-    let position = todos.length - 1;
-    todos.splice(position, 1);
-    backend.setItem('todos', JSON.stringify(todos));
-    console.log(todos);
-}
 
 
 /* Fabian*/

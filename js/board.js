@@ -70,7 +70,26 @@ async function updateHTML() {
 }
 
 function generateTodoHTML(element) {
-    return `<div draggable="true" id="${element['id']}" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
+    // return `<div draggable="true" id="${element['id']}" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
+    return `
+        <div draggable="true" id="${element['id']}" ondragstart="startDragging(${element['id']})" class="todo2">
+            <div class="card-icon-title">${element['title']}</div>
+            <div class="card-icons-container">
+                <div class="card-icons-left">
+                    <p class="card-icon-user">${element['user'][0]['shortcut']}</p>
+                    <img class="card-icon-img" src="./img/view-details-24.png">
+                    <div class="card-icon-calender-container">
+                    <img class="card-icon-calender" src="./img/date-to-24.png">
+                    <p>12 / 6</p>
+                    </div>
+                </div>
+                <div onclick="delete_todo(${element['id']})" class="card-icons-right">
+                    <img src="./img/trash-2-24.png">
+                </div>
+            </div>
+        </div>
+    `
+
 }
 
 function startDragging(id) {
@@ -97,4 +116,11 @@ async function order_todos_ids() {
     for (let o = 0; o < todos.length; o++) {
         todos[o].id = o;
     }
+}
+
+function delete_todo(position) {
+    todos.splice(position, 1);
+    backend.setItem('todos', JSON.stringify(todos));
+    updateHTML();
+    console.log(todos);
 }

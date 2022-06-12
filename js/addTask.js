@@ -5,16 +5,19 @@ let tasks = [];
 let assignToUsers = [{
         'name': 'Ole Engelhardt',
         'user-image': './img/ole.png',
-        'email': 'ole.engelhardt@email.com'
+        'email': 'ole.engelhardt@email.com',
+        'shortcut': 'OE',
     },
     {
         'name': 'Fabian Kalus',
         'user-image': './img/p24.jpg',
-        'email': 'fabian.kalus@email.com'
+        'email': 'fabian.kalus@email.com',
+        'shortcut': 'FK',
     }, {
         'name': 'Hong Hanh Chu',
         'user-image': './img/HongHanh.jpg',
-        'email': 'hong-hanh.chu@email.com'
+        'email': 'hong-hanh.chu@email.com',
+        'shortcut': 'HC',
     }
 ];
 
