@@ -1,33 +1,12 @@
-// let todos = [{
-//     'id': 0,
-//     'title': 'planen',
-//     'status': 'todo',
-// }, {
-//     'id': 1,
-//     'title': 'coden',
-//     'status': 'inprogress',
-// }, {
-//     'id': 2,
-//     'title': 'fine tuning',
-//     'status': 'testing',
-// }, {
-//     'id': 3,
-//     'title': 'chillen',
-//     'status': 'done',
-// }];
-
 let currentDraggedElement;
 
 async function init_board() {
-    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
+    setURL('https://gruppe-247.developerakademie.net/smallest_backend_ever');
     await includeHTML();
     await loadAllTasks();
     load_current_user_local();
     await order_todos_ids();
     await updateHTML();
-
-    console.log(todos);
-
 }
 
 async function updateHTML() {
@@ -92,13 +71,10 @@ function generateTodoHTML(element) {
             </div>
         </div>
     `
-
 }
 
 function startDragging(id) {
     currentDraggedElement = id;
-    console.log(currentDraggedElement)
-
 }
 
 function allowDrop(ev) {
@@ -108,11 +84,9 @@ function allowDrop(ev) {
 function moveTo(status) {
     todos[currentDraggedElement]['status'] = status;
     updateHTML();
-    console.log(todos);
     let todosAsString = JSON.stringify(todos);
     backend.setItem('todos', todosAsString);
-    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
-    console.log(todos);
+    setURL('https://gruppe-247.developerakademie.net/smallest_backend_ever');
 }
 
 async function order_todos_ids() {
@@ -125,5 +99,4 @@ function delete_todo(position) {
     todos.splice(position, 1);
     backend.setItem('todos', JSON.stringify(todos));
     updateHTML();
-    console.log(todos);
 }

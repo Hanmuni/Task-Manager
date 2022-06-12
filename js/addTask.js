@@ -119,7 +119,6 @@ function confirmUser() {
     document.getElementById('add-user-btn').innerHTML = `
     <button id="add-user-btn" type="button" class="add-user-btn" onclick="assignTo()"> </button>
     `;
-
 }
 
 function deleteTask(position) {
