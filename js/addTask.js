@@ -1,23 +1,25 @@
 let selectedUsers = [];
 let tasks = [];
 let userList = [{
-        'name': 'Ole Engelhardt',
-        'user-image': './img/p36.jpg',
-        'email': 'ole.engelhardt@email.com',
-        'shortcut': 'OE',
-    },
-    {
-        'name': 'Fabian Kalus',
-        'user-image': './img/p24.jpg',
-        'email': 'fabian.kalus@email.com',
-        'shortcut': 'FK',
-    }, {
-        'name': 'Hong Hanh Chu',
-        'user-image': './img/HongHanh.jpg',
-        'email': 'hong-hanh.chu@email.com',
-        'shortcut': 'HHC',
-    }
+    'name': 'Ole Engelhardt',
+    'user-image': './img/ole.png',
+    'email': 'ole.engelhardt@email.com',
+    'shortcut': 'OE',
+},
+{
+    'name': 'Fabian Kalus',
+    'user-image': './img/p24.jpg',
+    'email': 'fabian.kalus@email.com',
+    'shortcut': 'FK',
+}, {
+    'name': 'Hong Hanh Chu',
+    'user-image': './img/HongHanh.jpg',
+    'email': 'hong-hanh.chu@email.com',
+    'shortcut': 'HHC',
+}
 ];
+
+let atLeastOneUser = false;
 
 function createTask(event) {
     event.preventDefault();
@@ -27,22 +29,30 @@ function createTask(event) {
 }
 
 function writeTask() {
-    let title = document.getElementById('title').value;
-    let category = document.getElementById('category').value;
-    let date = document.getElementById('date').value;
-    let description = document.getElementById('description').value;
-    let urgency = document.getElementById('urgency').value;
 
-    let task = {
-        'title': title,
-        'category': category,
-        'description': description,
-        'date': date,
-        'urgency': urgency,
-        'user': selectedUsers,
-    };
+    if (atLeastOneUser == true) {
+        let title = document.getElementById('title').value;
+        let category = document.getElementById('category').value;
+        let date = document.getElementById('date').value;
+        let description = document.getElementById('description').value;
+        let urgency = document.getElementById('urgency').value;
 
-    tasks.push(task);
+        let task = {
+            'title': title,
+            'category': category,
+            'description': description,
+            'date': date,
+            'urgency': urgency,
+            'user': selectedUsers,
+        };
+
+        tasks.push(task);
+    }
+
+    else {
+        alert('Select at least 1 user for your task');
+    }
+
 }
 
 function saveTaskToBackend() {
@@ -61,7 +71,6 @@ function resetTask() {
     selectedUsers = [];
 
 }
-
 function assignTo() {
 
     document.getElementById('assign-section').classList.add('d-none');
@@ -95,7 +104,9 @@ function selectUser(i) {
     if (selectedUser == -1) {
         document.getElementById(selectionId).style = 'background-color: #2D3E97; color: white;';
         selectedUsers.push(userList[i]);
-    } else {
+    }
+
+    else {
         document.getElementById(selectionId).style = '';
         selectedUsers.splice(selectedUser, 1);
     }
@@ -103,21 +114,30 @@ function selectUser(i) {
 
 function confirmUser() {
 
-    document.getElementById('user-list').classList.add('d-none');
-    document.getElementById('assign-section').classList.remove('d-none');
-    document.getElementById('add-task-final').classList.remove('d-none');
+    if (selectedUsers == "") {
+        atLeastOneUser = false;
+        alert('Select at least 1 user for your task');
 
-    document.getElementById('selectedImage').innerHTML = ``;
-
-    for (let i = 0; i < selectedUsers.length; i++) {
-        document.getElementById('selectedImage').innerHTML += `
-        <img class="add-task-user-image" src="${selectedUsers[i]['user-image']}">
-        `;
     }
 
-    document.getElementById('add-user-btn').innerHTML = `
-    <button id="add-user-btn" type="button" class="add-user-btn" onclick="assignTo()"> </button>
-    `;
+    else {
+        atLeastOneUser = true;
+        document.getElementById('user-list').classList.add('d-none');
+        document.getElementById('assign-section').classList.remove('d-none');
+        document.getElementById('add-task-final').classList.remove('d-none');
+
+        document.getElementById('selectedImage').innerHTML = ``;
+
+        for (let i = 0; i < selectedUsers.length; i++) {
+            document.getElementById('selectedImage').innerHTML += `
+            <img class="add-task-user-image" src="${selectedUsers[i]['user-image']}">
+            `;
+        }
+
+        document.getElementById('add-user-btn').innerHTML = `
+        <button id="add-user-btn" type="button" class="add-user-btn" onclick="assignTo()"> </button>
+        `;
+    }
 }
 
 function deleteTask(position) {
