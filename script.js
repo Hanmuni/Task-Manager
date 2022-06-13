@@ -275,3 +275,10 @@ function change_background_image(src) {
 function show_background_images() {
     document.getElementById('background-images-container').classList.toggle('d-none');
 }
+
+// MOBIL
+
+function open_sidebar_mobil() {
+    document.querySelector('.sidebar-container').style.display = 'flex';
+    document.querySelector('.sidebar').style.display = 'flex';
+}
