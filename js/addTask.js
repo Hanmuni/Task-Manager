@@ -1,22 +1,22 @@
 let selectedUsers = [];
 let tasks = [];
 let userList = [{
-    'name': 'Ole Engelhardt',
-    'user-image': './img/ole.png',
-    'email': 'ole.engelhardt@email.com',
-    'shortcut': 'OE',
-},
-{
-    'name': 'Fabian Kalus',
-    'user-image': './img/p24.jpg',
-    'email': 'fabian.kalus@email.com',
-    'shortcut': 'FK',
-}, {
-    'name': 'Hong Hanh Chu',
-    'user-image': './img/HongHanh.jpg',
-    'email': 'hong-hanh.chu@email.com',
-    'shortcut': 'HHC',
-}
+        'name': 'Ole Engelhardt',
+        'user-image': './img/p36.jpg',
+        'email': 'ole.engelhardt@email.com',
+        'shortcut': 'OE',
+    },
+    {
+        'name': 'Fabian Kalus',
+        'user-image': './img/p24.jpg',
+        'email': 'fabian.kalus@email.com',
+        'shortcut': 'FK',
+    }, {
+        'name': 'Hong Hanh Chu',
+        'user-image': './img/HongHanh.jpg',
+        'email': 'hong-hanh.chu@email.com',
+        'shortcut': 'HHC',
+    }
 ];
 
 function createTask(event) {
@@ -61,6 +61,7 @@ function resetTask() {
     selectedUsers = [];
 
 }
+
 function assignTo() {
 
     document.getElementById('assign-section').classList.add('d-none');
@@ -94,9 +95,7 @@ function selectUser(i) {
     if (selectedUser == -1) {
         document.getElementById(selectionId).style = 'background-color: #2D3E97; color: white;';
         selectedUsers.push(userList[i]);
-    }
-
-    else {
+    } else {
         document.getElementById(selectionId).style = '';
         selectedUsers.splice(selectedUser, 1);
     }

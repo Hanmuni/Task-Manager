@@ -66,8 +66,6 @@ async function render_backlog() {
     document.getElementById('backlog-task-container').innerHTML = '';
     console.log(tasks)
     for (let i = 0; i < tasks.length; i++) {
-        // let date = new Date(tasks[i].date);
-        // date_complete = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
         document.getElementById('backlog-task-container').innerHTML += `
     <div id="backlog-task${i}" class="backlog-task">
         <div id="backlog-task-assigned-to${i}" class="backlog-task-assigned-to backlog-20">
@@ -227,7 +225,8 @@ function render_first_steps_at_help() {
     document.getElementById('help-headline-first-steps').classList.add('aktive-help');
     document.getElementById('help-choosed-image').classList.remove('d-none');
     document.getElementById('help-choosed-image').src = './img/sunset-gf546bd15e_1280.jpg';
-    document.getElementById('help-choosed-text').innerHTML = `WILLKOMMENSTEXT Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam voluptates, numquam corrupti vel repellendus quasi commodi sit et dignissimos, qui cupiditate provident aperiam dolorum? Est dolore quod ea atque accusamus!`
+    document.getElementById('help-choosed-text').innerHTML = `Welcome to the join page of: Ole Engelhardt, Hong Hanh Chu and Fabian Kalus.<br>
+    This is a project management tool based on the kanban-methode. It´s the easiest way to manage your projects and tasks. Try it out.`
 }
 
 function render_add_task_at_help() {
@@ -235,8 +234,8 @@ function render_add_task_at_help() {
     document.getElementById('help-headline-add-task').classList.add('aktive-help');
     document.getElementById('help-choosed-image').classList.remove('d-none');
     document.getElementById('help-choosed-image').src = './img/sunset-gf546bd15e_1280.jpg';
-    document.getElementById('help-choosed-text').innerHTML = `Hier können Sie Aufgaben erstellen, einer Kategorie zuordnen und die Priorität festlegen.
-    Optional können bereits hier einem oder mehreren Usern einer Aufgabe zugewiesen werden.`
+    document.getElementById('help-choosed-text').innerHTML = `In the 'Add Task' area you can add individual tasks.<br>
+    Enter title, category, description, due date, importance and assign the task to one or more user/s. All fields have to been filled.`
 }
 
 function render_backlog_at_help() {
@@ -244,7 +243,9 @@ function render_backlog_at_help() {
     document.getElementById('help-headline-backlog').classList.add('aktive-help');
     document.getElementById('help-choosed-image').classList.remove('d-none');
     document.getElementById('help-choosed-image').src = './img/sunset-gf546bd15e_1280.jpg';
-    document.getElementById('help-choosed-text').innerHTML = `BIN IMMERNOCH UNSICHER WOFÜR BACKLOG JETZT EIGENTLICH DA IST`
+    document.getElementById('help-choosed-text').innerHTML = `Backlog shows every task the team added, except the tasks that are already on the board.<br>
+    At the beggining of a project you can add all tasks and have overview of them at the baglock. Then you can decide, which tasks your team should work on at the next time and push them to the board.<br>
+    The urgency of the task you can see at the left and right border. The colors are assigned according to the traffic-light-system.`
 }
 
 function render_board_at_help() {
@@ -252,7 +253,11 @@ function render_board_at_help() {
     document.getElementById('help-headline-board').classList.add('aktive-help');
     document.getElementById('help-choosed-image').classList.remove('d-none');
     document.getElementById('help-choosed-image').src = './img/sunset-gf546bd15e_1280.jpg';
-    document.getElementById('help-choosed-text').innerHTML = `Im Board sind alle Aufgaben einer jeweiligen Liste zugeordnete. Die Aufgaben lassen sich per Drag an Drop jeweils einer anderen Liste zuordnen. Ebenfalls ist es möglich Aufgaben zu bearbeiten oder zu löschen. Zur besseren Übersichtlichkeit wurden die Aufgaben aufgrund ihrer Priorität nach dem Ampelsystem gekennzeichnet.`
+    document.getElementById('help-choosed-text').innerHTML = `The board consists of four sections. Per drag and drop you can move each task to a different Section.<br>
+    Further informations can be displayed by clicking on a pencil in the right corner of the task. By clicking the trashcan you can delete the task.<br>
+    In the 'todo' section the tasks that are to be processed next are listed. The 'in progress' section lists tasks that are currently being processed.<br>
+    The 'testing' section lists tasks that have been completed but are still being tested for completion. The 'done' section lists tasks that have been successfully tested and thus fully processed.
+    `
 }
 
 function render_impressum_at_help() {
