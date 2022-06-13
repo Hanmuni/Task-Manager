@@ -1,7 +1,7 @@
 let currentDraggedElement;
 
 async function init_board() {
-    setURL('https://gruppe-247.developerakademie.net/smallest_backend_ever');
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     await includeHTML();
     await loadAllTasks();
     load_current_user_local();
@@ -86,7 +86,7 @@ function moveTo(status) {
     updateHTML();
     let todosAsString = JSON.stringify(todos);
     backend.setItem('todos', todosAsString);
-    setURL('https://gruppe-247.developerakademie.net/smallest_backend_ever');
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
 }
 
 async function order_todos_ids() {

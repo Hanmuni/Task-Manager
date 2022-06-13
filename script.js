@@ -14,7 +14,7 @@ let current_user = [];
 let todos = [];
 
 async function init() {
-    setURL('https://gruppe-247.developerakademie.net/smallest_backend_ever');
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     await includeHTML();
     await loadAllTasks();
     await load_current_user_local();
@@ -55,7 +55,7 @@ async function includeHTML() {
 /* Fabian */
 
 async function init_backlog() {
-    setURL('https://gruppe-247.developerakademie.net/smallest_backend_ever');
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     await includeHTML();
     await loadAllTasks();
     await load_current_user_local();
