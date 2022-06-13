@@ -153,7 +153,7 @@ function create_todo(position) {
 
     let todosAsString = JSON.stringify(todos);
     backend.setItem('todos', todosAsString);
-    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
+    setURL('https://gruppe-247.developerakademie.net/smallest_backend_ever');
     console.log(todos);
 }
 
