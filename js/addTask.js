@@ -2,7 +2,7 @@ let selectedUsers = [];
 let tasks = [];
 let userList = [{
     'name': 'Ole Engelhardt',
-    'user-image': './img/ole.png',
+    'user-image': './img/p36.jpg',
     'email': 'ole.engelhardt@email.com',
     'shortcut': 'OE',
 },
