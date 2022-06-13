@@ -1,7 +1,5 @@
 /* Alle */
 
-let tasks = [];
-
 // Profil = [proilnummer Name, Bild, Usesrname, Passwort, E-Mail]
 let profiles = [
     ['profil00', 'GUEST', './img/person-g086296c94_640.png', 'GUEST', 'PASSWORT', '123@mailvorbei.com'],
@@ -13,36 +11,20 @@ let profiles = [
 ]
 
 let current_user = [];
-
-let assignToUsers = [{
-        'name': 'Ole Engelhardt',
-        'user-image': './img/ole.png',
-        'email': 'ole.engelhardt@email.com'
-    },
-    {
-        'name': 'Fabian Kalus',
-        'user-image': './img/fabian.png',
-        'email': 'fabian.kalus@email.com'
-    }, {
-        'name': 'Hong Hanh Chu',
-        'user-image': './img/HongHanh.jpg',
-        'email': 'hong-hanh.chu@email.com'
-    }
-];
-
-let selectedUsers = [];
+let todos = [];
 
 async function init() {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     await includeHTML();
     await loadAllTasks();
-    load_current_user_local();
+    await load_current_user_local();
 }
 
 async function loadAllTasks() {
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
-    console.log(tasks);
+    todos = JSON.parse(backend.getItem('todos')) || [];
+
 }
 
 async function includeHTML() {
@@ -76,39 +58,103 @@ async function init_backlog() {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     await includeHTML();
     await loadAllTasks();
-    load_current_user_local();
+    await load_current_user_local();
     await render_backlog();
 }
 
 async function render_backlog() {
     document.getElementById('backlog-task-container').innerHTML = '';
     console.log(tasks)
-    for (let i = 0; i < tasks.length; i += 2) {
+    for (let i = 0; i < tasks.length; i++) {
         let date = new Date(tasks[i].date);
         date_complete = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
         document.getElementById('backlog-task-container').innerHTML += `
     <div id="backlog-task${i}" class="backlog-task">
-        <div id="backlog-task-assigned-to${i}" class="backlog-task-assigned-to backlog-17">
-            <img src="./img/user.png" class="">
-            <div class="">
-                <p id="backlog-task-name${i}" class="">User Name</p>
-            </div>
+        <div id="backlog-task-assigned-to${i}" class="backlog-task-assigned-to backlog-20">
         </div>
-        <div id="backlog-task-title${i}" class="backlog-17">
+        <div id="backlog-task-title${i}" class="backlog-15">
             <p>${tasks[i].title}</p>
         </div>
-        <div id="backlog-task-category${i}" class="backlog-17">
-            <p>${tasks[i].category}</p>
+        <div id="backlog-task-due-date${i}" class="backlog-15">
+            <p backlog-task-due-date${i}-p>${date_complete}</p>
         </div>
-        <div id="backlog-task-due-date${i}" class="backlog-17">
-            <p>${date_complete}</p>
-        </div>
-        <div id="backlog-task-details${i}" class="backlog-30">
+        <div id="backlog-task-details${i}" class="backlog-15">
             <p>${tasks[i].description}</p>
         </div>
+        <div id="backlog-task-details${i}" class="backlog-15">
+            <p>${tasks[i].category}</p>
+        </div>
+        <div onclick="deleteTask(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-10">
+            <p class="cursor"><img src="./img/trash-2-32.png"></p>
+        </div>
+        <div onclick="create_todo(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-10">
+            <p class="cursor"><img src="./img/right-circular-32.png"></p>
+        </div>
+        
     </div>    
     `;
+        document.getElementById(`backlog-task-assigned-to${i}`).innerHTML = `
+        <div id="backlog-task-image">
+            <img src=${tasks[i].user[0]['user-image']} class="">
+        </div>
+        <div id="backlog-task-name${i}" class="">    
+        </div>
+        `;
+        document.getElementById(`backlog-task-name${i}`).innerHTML = '';
+        for (let j = 0; j < tasks[i].user.length; j++) {
+            document.getElementById(`backlog-task-name${i}`).innerHTML += `
+                <p class="" > ${tasks[i].user[j].name} </p>`
+        }
+        add_urgency_color(i);
+        add_category_color(i);
     }
+}
+
+function add_category_color(i) {
+    if (tasks[i].category == 'HTML') {
+        document.getElementById(`backlog-task${i}`).classList.add('html-color');
+    }
+    if (tasks[i].category == 'CSS') {
+        document.getElementById(`backlog-task${i}`).classList.add('css-color');
+    }
+    if (tasks[i].category == 'JavaScript') {
+        document.getElementById(`backlog-task${i}`).classList.add('javascript-color');
+    }
+}
+
+function add_urgency_color(i) {
+    if (tasks[i].urgency == 'High') {
+        document.getElementById(`backlog-task${i}`).classList.add('urc-high');
+    }
+    if (tasks[i].urgency == 'Medium') {
+        document.getElementById(`backlog-task${i}`).classList.add('urc-medium');
+    }
+    if (tasks[i].urgency == 'Low') {
+        document.getElementById(`backlog-task${i}`).classList.add('urc-low');
+    }
+}
+
+
+function create_todo(position) {
+    let todo = {
+
+        'id': '',
+        'title': tasks[position].title,
+        'category': tasks[position].category,
+        'description': tasks[position].description,
+        'date': tasks[position].date,
+        'urgency': tasks[position].urgency,
+        'user': tasks[position].user,
+        'status': 'todo',
+    };
+    todos.push(todo);
+    tasks.splice(position, 1);
+    backend.setItem('tasks', JSON.stringify(tasks));
+
+    let todosAsString = JSON.stringify(todos);
+    backend.setItem('todos', todosAsString);
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
+    console.log(todos);
 }
 
 
@@ -156,18 +202,16 @@ function save_current_user_local() {
     localStorage.setItem('current_user', current_userAsText);
 }
 
-function load_current_user_local() {
+async function load_current_user_local() {
     let current_userAsText = localStorage.getItem('current_user');
     if (current_userAsText) {
         current_user = JSON.parse(current_userAsText);
     };
-
     document.getElementById('sidebar-user-image').src = current_user[0][2];
     document.getElementById('sidebar-user-name').innerHTML = current_user[0][3];
 }
 
 // HELP
-
 function remove_aktive_help_class() {
     document.getElementById('help-headline-first-steps').classList.remove('aktive-help');
     document.getElementById('help-headline-add-task').classList.remove('aktive-help');
@@ -216,103 +260,3 @@ function render_impressum_at_help() {
     document.getElementById('help-choosed-image').classList.add('d-none');
     document.getElementById('help-choosed-text').innerHTML = `IMPRESSUM / DATENSCHUTZ`
 }
-
-
-/* Hong Hanh */
-function createTask() {
-    let title = document.getElementById('title').value;
-    let category = document.getElementById('category').value;
-    let description = document.getElementById('description').value;
-    let urgency = document.getElementById('urgency').value;
-
-    let task = {
-        'title': title,
-        'category': category,
-        'description': description,
-        'date': new Date().getTime(),
-        'urgency': urgency,
-        'user': selectedUsers,
-    };
-
-
-
-    tasks.push(task);
-    tasks.push(assignTo);
-
-    document.getElementById('title').value = ``;
-    document.getElementById('description').value = ``;
-
-    let tasksAsString = JSON.stringify(tasks);
-    backend.setItem('tasks', tasksAsString);
-
-    init();
-}
-
-function assignTo() {
-
-    document.getElementById('assign-section').classList.add('d-none');
-    document.getElementById('add-task-final').classList.add('d-none');
-    displayUsersList();
-}
-
-function displayUsersList() {
-    document.getElementById('user-list').classList.remove('d-none');
-    document.getElementById('assignedToUser').innerHTML = ``;
-
-    for (let i = 0; i < assignToUsers.length; i++) {
-
-        let userName = assignToUsers[i]['name'];
-
-
-        document.getElementById('assignedToUser').innerHTML += ` 
-    <p onclick="selectUser(${i})" id="selectedUser${i}"> ${userName} </p>   
-         `;
-    }
-
-    document.getElementById('assignConfirm').innerHTML = `<p onclick="confirmUser()"> Confirm</p>`;
-
-}
-
-function selectUser(i) {
-    let id = "selectedUser" + i;
-    document.getElementById(id).style = 'background-color: #2D3E97; color: white;';
-    selectedUsers.push(assignToUsers[i]);
-}
-
-function confirmUser() {
-
-    document.getElementById('user-list').classList.add('d-none');
-    document.getElementById('assign-section').classList.remove('d-none');
-    document.getElementById('add-task-final').classList.remove('d-none');
-
-    document.getElementById('selectedImage').innerHTML = ``;
-
-    for (let i = 0; i < selectedUsers.length; i++) {
-        document.getElementById('selectedImage').innerHTML += `
-        <img class="add-task-user-image" src="${selectedUsers[i]['user-image']}">
-        `;
-    }
-
-    document.getElementById('add-user-btn').innerHTML = `
-    <button id="add-user-btn" type="button" class="add-user-btn" onclick="assignTo()"> </button>
-    `;
-
-}
-
-function deleteTask(position) {
-    tasks.splice(position, 1);
-    backend.setItem('tasks', JSON.stringify(tasks));
-    console.log(tasks);
-}
-
-function cancelTask() {
-    document.getElementById('title').value = ``;
-    document.getElementById('description').value = ``;
-    document.getElementById('assign-section').innerHTML = `
-    <div id="selectedImage"> <img src="/img/change-user.png" class="add-task-user-image"> </div>
-
-    <div id="add-user-btn"> <button type="button" class="add-user-btn" onclick="assignTo()">
-        </button> </div>
-`;
-}
-/* Hong Hanh*/

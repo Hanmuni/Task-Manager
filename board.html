@@ -5,18 +5,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Board - Task Manager </title>
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <script src="./mini_backend.js"></script>
-    <script src="board.js"></script>
-  
-    <title> Task Manager </title>
+    <script src="./script.js"></script>
+    <script src="./js/addTask.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="./js/mini_backend.js"></script>
+
 </head>
 
 <body onload="init_board()">
 
     <header class="sidebar" w3-include-html="templates/sidebar.html"></header>
+
+    <button onclick="delete_todo()">Klicke</button>
 
     <div class="bigscreen smallscreen">
         <div class="totalbox">
@@ -26,12 +30,14 @@
 
         <div class="totalbox">
             <h2> IN PROGRESS </h2>
-            <div class="emptyboxes" id="inprogress" ondrop="moveTo('inprogress')" ondragover="allowDrop(event)"></div>
+            <div class="emptyboxes" id="inprogress" ondrop="moveTo('inprogress')" ondragover="allowDrop(event)">
+            </div>
         </div>
 
         <div class="totalbox">
             <h2> TESTING </h2>
-            <div class="emptyboxes" id="testing" ondrop="moveTo('testing')" ondragover="allowDrop(event)"></div>
+            <div class="emptyboxes" id="testing" ondrop="moveTo('testing')" ondragover="allowDrop(event)">
+            </div>
         </div>
 
         <div class="totalbox">
@@ -40,7 +46,6 @@
         </div>
 
     </div>
-
 
 </body>
 
