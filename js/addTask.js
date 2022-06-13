@@ -21,8 +21,7 @@ let userList = [{
 
 let atLeastOneUser = false;
 
-function createTask(event) {
-    event.preventDefault();
+function createTask() {
     writeTask();
     saveTaskToBackend();
     resetTask();
