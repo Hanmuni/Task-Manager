@@ -46,10 +46,10 @@ async function updateHTML() {
         const element = done[index];
         document.getElementById('done').innerHTML += generateTodoHTML(element);
     }
+    console.log(todos)
 }
 
 function generateTodoHTML(element) {
-    // return `<div draggable="true" id="${element['id']}" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
     return `
         <div draggable="true" id="${element['id']}" ondragstart="startDragging(${element['id']})" class="todo2">
             <div class="card-icon-title">${element['title']}</div>

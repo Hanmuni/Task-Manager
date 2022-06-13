@@ -66,19 +66,19 @@ async function render_backlog() {
     document.getElementById('backlog-task-container').innerHTML = '';
     console.log(tasks)
     for (let i = 0; i < tasks.length; i++) {
-        let date = new Date(tasks[i].date);
-        date_complete = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+        // let date = new Date(tasks[i].date);
+        // date_complete = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
         document.getElementById('backlog-task-container').innerHTML += `
     <div id="backlog-task${i}" class="backlog-task">
         <div id="backlog-task-assigned-to${i}" class="backlog-task-assigned-to backlog-20">
         </div>
-        <div id="backlog-task-title${i}" class="backlog-15">
+        <div id="backlog-task-title${i}" class="backlog-10">
             <p>${tasks[i].title}</p>
         </div>
         <div id="backlog-task-due-date${i}" class="backlog-15">
-            <p backlog-task-due-date${i}-p>${date_complete}</p>
+            <p backlog-task-due-date${i}-p>${tasks[i].date}</p>
         </div>
-        <div id="backlog-task-details${i}" class="backlog-15">
+        <div id="backlog-task-details${i}" class="backlog-15" style="overflow: hidden;">
             <p>${tasks[i].description}</p>
         </div>
         <div id="backlog-task-details${i}" class="backlog-15">
@@ -87,7 +87,7 @@ async function render_backlog() {
         <div onclick="deleteTask(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-10">
             <p class="cursor"><img src="./img/trash-2-32.png"></p>
         </div>
-        <div onclick="create_todo(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-10">
+        <div onclick="create_todo(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-15">
             <p class="cursor"><img src="./img/right-circular-32.png"></p>
         </div>
         
@@ -108,6 +108,7 @@ async function render_backlog() {
         add_urgency_color(i);
         add_category_color(i);
     }
+    console.log(tasks)
 }
 
 function add_category_color(i) {
@@ -259,4 +260,13 @@ function render_impressum_at_help() {
     document.getElementById('help-headline-impressum').classList.add('aktive-help');
     document.getElementById('help-choosed-image').classList.add('d-none');
     document.getElementById('help-choosed-text').innerHTML = `IMPRESSUM / DATENSCHUTZ`
+}
+
+
+function change_background_image(src) {
+    document.getElementById('backlog-container').style.backgroundImage = `url(${src})`;
+}
+
+function show_background_images() {
+    document.getElementById('background-images-container').classList.toggle('d-none');
 }
