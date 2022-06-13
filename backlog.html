@@ -17,27 +17,47 @@
 
 <body onload="init_backlog()">
     <div class="sidebar-container">
-        <div class="sidebar" w3-include-html="templates/sidebar.html"></div>
+        <div class="sidebar" w3-include-html="templates/sidebar.html" style="background-color: rgb(61, 58, 58);"></div>
     </div>
     <div id="backlog-container" class="backlog-container">
-        <div class="headline-section">
-            <div class="headline reset-margin"> <b> Backlog </b> </div>
-            <div class="subheading reset-margin"> Learning Management System Project </div>
-        </div>
         <div id="backlog-subtitle-container" class="backlog-subtitle-container">
-            <p class="backlog-20">ASSIGNED TO</p>
-            <p class="backlog-15">TITLE</p>
-            <p class="backlog-15">DUE DATE</p>
-            <p class="backlog-15">DETAILS</p>
-            <p class="backlog-15">CATEGORY</p>
-            <p class="backlog-10"></p>
-            <p class="backlog-10"></p>
+            <div class="backlog-20">
+                <p>ASSIGNED TO</p>
+            </div>
+            <div class="backlog-10">
+                <p>TITLE</p>
+            </div>
+            <div class="backlog-15">
+                <p>DUE DATE</p>
+            </div>
+            <div class="backlog-15">
+                <p>DETAILS</p>
+            </div>
+            <div class="backlog-15">
+                <p>CATEGORY</p>
+            </div>
+            <div class="backlog-10">
+                <p>DELETE</p>
+            </div>
+            <div class="backlog-15">
+                <p>ADD BOARD</p>
+            </div>
         </div>
         <div id="backlog-task-container"></div>
     </div>
-    <div class="sidebar-right-container">
+    <div class="brush-container" onclick="show_background_images()">
+        <img class="brush-image" src="./img/text-bg-color-48.png">
+    </div>
+    <div class="background-images-container d-none" id="background-images-container">
+        <img onclick="change_background_image('./img/mountain-g2998ce8c5_1280.jpg')" src="./img/mountain-g2998ce8c5_1280.jpg">
+        <img onclick="change_background_image('./img/ball-g8213a2e10_1280.jpg')" src="./img/ball-g8213a2e10_1280.jpg">
+        <img onclick="change_background_image('./img/mountains-g7b2d8ec30_1280.jpg')" src="./img/mountains-g7b2d8ec30_1280.jpg">
+        <img onclick="change_background_image('./img/rainforest-g161b006b3_1280.jpg')" src="./img/rainforest-g161b006b3_1280.jpg">
+        <img onclick="change_background_image('./img/maldives-g4081a95dc_1280.jpg')" src="./img/maldives-g4081a95dc_1280.jpg">
+
+    </div>
+    <!-- <div class="sidebar-right-container">
         <div class="sidebar-right">
-            <h2>Legend</h2>
             <div class="sidebar-urgency-over-container">
                 <div class="sidebar-right-header">
                     <p>URGENCY</p>
@@ -87,7 +107,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </body>
 
