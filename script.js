@@ -76,7 +76,7 @@ async function render_backlog() {
         <div id="backlog-task-due-date${i}" class="backlog-15">
             <p backlog-task-due-date${i}-p>${tasks[i].date}</p>
         </div>
-        <div id="backlog-task-details${i}" class="backlog-15" style="overflow: hidden;">
+        <div id="backlog-task-details${i}" class="backlog-15 details" style="overflow: hidden;">
             <p>${tasks[i].description}</p>
         </div>
         <div id="backlog-task-details${i}" class="backlog-15">
@@ -85,7 +85,7 @@ async function render_backlog() {
         <div onclick="deleteTask(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-10">
             <p class="cursor"><img src="./img/trash-2-32.png"></p>
         </div>
-        <div onclick="create_todo(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-15">
+        <div onclick="create_todo(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-15 add-to-board">
             <p class="cursor"><img src="./img/right-circular-32.png"></p>
         </div>
         
@@ -111,13 +111,13 @@ async function render_backlog() {
 
 function add_category_color(i) {
     if (tasks[i].category == 'HTML') {
-        document.getElementById(`backlog-task${i}`).classList.add('html-color');
+        document.getElementById(`backlog-task-details${i}`).classList.add('html-color');
     }
     if (tasks[i].category == 'CSS') {
-        document.getElementById(`backlog-task${i}`).classList.add('css-color');
+        document.getElementById(`backlog-task-details${i}`).classList.add('css-color');
     }
     if (tasks[i].category == 'JavaScript') {
-        document.getElementById(`backlog-task${i}`).classList.add('javascript-color');
+        document.getElementById(`backlog-task-details${i}`).classList.add('javascript-color');
     }
 }
 
