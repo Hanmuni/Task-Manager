@@ -60,11 +60,11 @@ async function init_backlog() {
     await loadAllTasks();
     await load_current_user_local();
     await render_backlog();
+    await render_backlog_mobil();
 }
 
 async function render_backlog() {
     document.getElementById('backlog-task-container').innerHTML = '';
-    console.log(tasks)
     for (let i = 0; i < tasks.length; i++) {
         document.getElementById('backlog-task-container').innerHTML += `
     <div id="backlog-task${i}" class="backlog-task">
@@ -92,7 +92,7 @@ async function render_backlog() {
     </div>    
     `;
         document.getElementById(`backlog-task-assigned-to${i}`).innerHTML = `
-        <div id="backlog-task-image">
+        <div id="backlog-task-image${i}">
             <img src=${tasks[i].user[0]['user-image']} class="">
         </div>
         <div id="backlog-task-name${i}" class="">    
@@ -109,8 +109,58 @@ async function render_backlog() {
     console.log(tasks)
 }
 
+async function render_backlog_mobil() {
+    document.getElementById('backlog-task-container-mobil').innerHTML = '';
+    for (let i = 0; i < tasks.length; i++) {
+        document.getElementById('backlog-task-container-mobil').innerHTML += `
+        <div class="backlog-one-task-container-mobil" id="backlog-one-task-container-mobil${i}">
+            <div class="bl-title-mobil">
+                <p>${tasks[i].title}</p>
+            </div>
+            <div class="bl-assigned-to-mobil" id="bl-assigned-to-mobil">
+                <img src="${tasks[i].user[0]['user-image']}">
+                <p>${tasks[i].user[0]['name']}</p>
+            </div>
+            <div class="bl-category-date">
+                <div class="bl-category">
+                    <p>CATEGORY</p>
+                    <p>${tasks[i].category}</p>
+                </div>
+                <div class="bl-date">
+                    <p>DATE</p>
+                    <p>${tasks[i].date}</p>
+                </div>
+            </div>
+            <div class="bl-description">
+                <p>DESCRIPTION</p>
+                <p>${tasks[i].description}</p>
+            </div>
+            <div class="bl-icons">
+                <div  onclick="deleteTask(${i}); render_backlog_mobil()" class="bl-delete">
+                    <p>DELETE</p>
+                    <img src="./img/trash-2-32.png">
+                </div>
+                <div onclick="create_todo(${i}); render_backlog_mobil()" class="bl-add-board">
+                    <p>ADD BOARD</p>
+                    <img src="./img/right-circular-32.png">
+                </div>
+            </div>
+        </div>    
+        
+        `
+        add_urgency_color(i);
+        add_category_color(i);
+
+    }
+
+
+
+
+}
+
 function add_category_color(i) {
     if (tasks[i].category == 'HTML') {
+        document.getElementById(`backlog-task-details${i}`).classList.add('html-color');
         document.getElementById(`backlog-task-details${i}`).classList.add('html-color');
     }
     if (tasks[i].category == 'CSS') {
@@ -152,7 +202,7 @@ function create_todo(position) {
 
     let todosAsString = JSON.stringify(todos);
     backend.setItem('todos', todosAsString);
-    setURL('https://gruppe-247.developerakademie.net/smallest_backend_ever');
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     console.log(todos);
 }
 
@@ -281,4 +331,11 @@ function show_background_images() {
 function open_sidebar_mobil() {
     document.querySelector('.sidebar-container').style.display = 'flex';
     document.querySelector('.sidebar').style.display = 'flex';
+    // document.querySelector('.brush-container').style.display = 'none';
+}
+
+function close_sidebar_mobil() {
+    document.querySelector('.sidebar-container').style.display = 'none';
+    document.querySelector('.sidebar').style.display = 'none';
+    // document.querySelector('.brush-container').style.display = 'block';
 }
