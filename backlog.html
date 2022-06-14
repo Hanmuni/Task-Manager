@@ -19,6 +19,9 @@
     <div class="sidebar-container">
         <div class="sidebar" w3-include-html="templates/sidebar.html" style="background-color: rgb(61, 58, 58);"></div>
     </div>
+    <div id="sidebar-container-mobil" class="sidebar-container-mobil">
+        <div class="sidebar-mobil" w3-include-html="templates/sidebar_mobil.html" style="background-color: rgb(61, 58, 58);"></div>
+    </div>
     <div id="backlog-container" class="backlog-container">
         <div id="backlog-subtitle-container" class="backlog-subtitle-container">
             <div class="backlog-20">
@@ -30,7 +33,7 @@
             <div class="backlog-15">
                 <p>DUE DATE</p>
             </div>
-            <div class="backlog-15">
+            <div class="backlog-15 details">
                 <p>DETAILS</p>
             </div>
             <div class="backlog-15">
@@ -44,6 +47,10 @@
             </div>
         </div>
         <div id="backlog-task-container"></div>
+        <div id="backlog-task-container-mobil" class="backlog-task-container-mobil">
+
+        </div>
+
     </div>
     <div class="brush-container" onclick="show_background_images()">
         <img class="brush-image" src="./img/text-bg-color-48.png">
@@ -52,63 +59,12 @@
         <img onclick="change_background_image('./img/mountain-g2998ce8c5_1280.jpg')" src="./img/mountain-g2998ce8c5_1280.jpg">
         <img onclick="change_background_image('./img/ball-g8213a2e10_1280.jpg')" src="./img/ball-g8213a2e10_1280.jpg">
         <img onclick="change_background_image('./img/mountains-g7b2d8ec30_1280.jpg')" src="./img/mountains-g7b2d8ec30_1280.jpg">
-        <img onclick="change_background_image('./img/rainforest-g161b006b3_1280.jpg')" src="./img/rainforest-g161b006b3_1280.jpg">
+        <img onclick="change_background_image('./img/forest-g41de178a8_1280.jpg')" src="./img/forest-g41de178a8_1280.jpg">
         <img onclick="change_background_image('./img/maldives-g4081a95dc_1280.jpg')" src="./img/maldives-g4081a95dc_1280.jpg">
+        <img onclick="change_background_image('./img/post-it-notes-gbad018b7c_1280.jpg')" src="./img/post-it-notes-gbad018b7c_1280.jpg">
+        <img onclick="change_background_image('./img/tree-g2824e4fcd_1280.jpg')" src="./img/tree-g2824e4fcd_1280.jpg">
+    </div>
 
-    </div>
-    <!-- <div class="sidebar-right-container">
-        <div class="sidebar-right">
-            <div class="sidebar-urgency-over-container">
-                <div class="sidebar-right-header">
-                    <p>URGENCY</p>
-                </div>
-                <div class="sidebar-urgency-container">
-                    <div class="traffic-light">
-                        <div class="traffic-light-red"></div>
-                        <div class="traffic-light-yellow"></div>
-                        <div class="traffic-light-green"></div>
-                    </div>
-                    <div class="traffic-light-text">
-                        <p>high</p>
-                        <p>medium</p>
-                        <p>low</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sidebar-category-over-container">
-                <div class="sidebar-right-header">
-                    <p>CATEGORY</p>
-                </div>
-                <div class="sidebar-category-container">
-                    <div class="sidebar-categories">
-                        <div class="sidebar-category-html"></div>
-                        <div class="sidebar-category-css"></div>
-                        <div class="sidebar-category-javascript"></div>
-                    </div>
-                    <div class="sidebar-category-text">
-                        <p>HTML</p>
-                        <p>CSS</p>
-                        <p>Javascript</p>
-                    </div>
-                </div>
-            </div>
-            <div class="sidebar-category-over-container">
-                <div class="sidebar-right-header">
-                    <p>ICONS</p>
-                </div>
-                <div class="sidebar-category-container">
-                    <div class="sidebar-categories">
-                        <img src="./img/trash-2-32.png">
-                        <img src="./img/right-circular-32.png">
-                    </div>
-                    <div class="sidebar-category-text">
-                        <p>DELETE</p>
-                        <p>.....</p>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    </div>
 </body>
 
 </html>

@@ -18,41 +18,46 @@
 <body onload="init()">
 
 
-    <header class="sidebar" w3-include-html="templates/sidebar.html"></header>
+    <div class="sidebar-container">
+        <div class="sidebar" w3-include-html="templates/sidebar.html"></div>
+    </div>
+    <div id="sidebar-container-mobil" class="sidebar-container-mobil">
+        <div class="sidebar-mobil" w3-include-html="templates/sidebar_mobil.html"></div>
+    </div>
 
-        <div>
-            <div class="headline-section fixed-height">
-                <div class="headline" style="font-size: 36px;"> <b> Welcome to JOIN</b> </div>
-                <div class="subheading"> The easiest way to manage your projets and tasks.</div>
+    <div>
+        <div class="headline-section fixed-height">
+            <div class="headline" style="font-size: 36px;"> <b> Welcome to JOIN</b> </div>
+            <div class="subheading"> The easiest way to manage your projets and tasks.</div>
+        </div>
+        <div class="welcome-quicklinks-container">
+            <div class="welcome-quicklink">
+                <a href="./board.html">
+                    <img class="welcome-quicklink-image" src="./img/board-g359295d96_1280.jpg">
+                    <p>BOARD</p>
+                </a>
             </div>
-            <div class="welcome-quicklinks-container">
-                <div class="welcome-quicklink">
-                    <a href="./board.html">
-                        <img class="welcome-quicklink-image" src="./img/board-g359295d96_1280.jpg">
-                        <p>BOARD</p>
-                    </a>
-                </div>
-                <div class="welcome-quicklink">
-                    <a href="./backlog.html">
-                        <img class="welcome-quicklink-image" src="./img/circuit-board-gdc8a687eb_1280.jpg">
-                        <p>BACKLOG</p>
-                    </a>
-                </div>
-                <div class="welcome-quicklink">
-                    <a href="./addTask.html">
-                        <img class="welcome-quicklink-image" src="./img/desk-g0a2bdc816_1280.jpg">
-                        <p>ADD TASK</p>
-                    </a>
-                </div>
-                <div class="welcome-quicklink">
-                    <a href="./help.html">
-                        <img class="welcome-quicklink-image" src="./img/technology-g61e1bba0b_1280.jpg">
-                        <p>HELP</p>
-                    </a>
-                </div>
+            <div class="welcome-quicklink">
+                <a href="./backlog.html">
+                    <img class="welcome-quicklink-image" src="./img/circuit-board-gdc8a687eb_1280.jpg">
+                    <p>BACKLOG</p>
+                </a>
+            </div>
+            <div class="welcome-quicklink">
+                <a href="./addTask.html">
+                    <img class="welcome-quicklink-image" src="./img/desk-g0a2bdc816_1280.jpg">
+                    <p>ADD TASK</p>
+                </a>
+            </div>
+            <div class="welcome-quicklink">
+                <a href="./help.html">
+                    <img class="welcome-quicklink-image" src="./img/technology-g61e1bba0b_1280.jpg">
+                    <p>HELP</p>
+                </a>
             </div>
         </div>
-  
+    </div>
+
 
 </body>
 

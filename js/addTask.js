@@ -2,7 +2,7 @@ let selectedUsers = [];
 let tasks = [];
 let userList = [{
     'name': 'Ole Engelhardt',
-    'user-image': './img/ole.png',
+    'user-image': './img/p36.jpg',
     'email': 'ole.engelhardt@email.com',
     'shortcut': 'OE',
 },
@@ -19,11 +19,20 @@ let userList = [{
 }
 ];
 
-function createTask(event) {
-    event.preventDefault();
-    writeTask();
-    saveTaskToBackend();
-    resetTask();
+function atLeastOneUserSelected() {
+    return selectedUsers.length > 0;
+}
+
+function createTask() {
+    if (atLeastOneUserSelected()) {
+        writeTask();
+        saveTaskToBackend();
+        resetTask();
+    }
+    else {
+        alert('Select at least 1 user for your task');
+    }
+
 }
 
 function writeTask() {
@@ -104,21 +113,27 @@ function selectUser(i) {
 
 function confirmUser() {
 
-    document.getElementById('user-list').classList.add('d-none');
-    document.getElementById('assign-section').classList.remove('d-none');
-    document.getElementById('add-task-final').classList.remove('d-none');
+    if (atLeastOneUserSelected()) {
+        document.getElementById('user-list').classList.add('d-none');
+        document.getElementById('assign-section').classList.remove('d-none');
+        document.getElementById('add-task-final').classList.remove('d-none');
 
-    document.getElementById('selectedImage').innerHTML = ``;
+        document.getElementById('selectedImage').innerHTML = ``;
 
-    for (let i = 0; i < selectedUsers.length; i++) {
-        document.getElementById('selectedImage').innerHTML += `
-        <img class="add-task-user-image" src="${selectedUsers[i]['user-image']}">
-        `;
+        for (let i = 0; i < selectedUsers.length; i++) {
+            document.getElementById('selectedImage').innerHTML += `
+                <img class="add-task-user-image" src="${selectedUsers[i]['user-image']}">
+                `;
+        }
+
+        document.getElementById('add-user-btn').innerHTML = `
+            <button id="add-user-btn" type="button" class="add-user-btn" onclick="assignTo()"> </button>
+            `;
     }
 
-    document.getElementById('add-user-btn').innerHTML = `
-    <button id="add-user-btn" type="button" class="add-user-btn" onclick="assignTo()"> </button>
-    `;
+    else {
+        alert('Select at least 1 user for your task');
+    }
 }
 
 function deleteTask(position) {

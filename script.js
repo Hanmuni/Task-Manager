@@ -60,14 +60,12 @@ async function init_backlog() {
     await loadAllTasks();
     await load_current_user_local();
     await render_backlog();
+    await render_backlog_mobil();
 }
 
 async function render_backlog() {
     document.getElementById('backlog-task-container').innerHTML = '';
-    console.log(tasks)
     for (let i = 0; i < tasks.length; i++) {
-        // let date = new Date(tasks[i].date);
-        // date_complete = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
         document.getElementById('backlog-task-container').innerHTML += `
     <div id="backlog-task${i}" class="backlog-task">
         <div id="backlog-task-assigned-to${i}" class="backlog-task-assigned-to backlog-20">
@@ -78,7 +76,7 @@ async function render_backlog() {
         <div id="backlog-task-due-date${i}" class="backlog-15">
             <p backlog-task-due-date${i}-p>${tasks[i].date}</p>
         </div>
-        <div id="backlog-task-details${i}" class="backlog-15" style="overflow: hidden;">
+        <div id="backlog-task-details${i}" class="backlog-15 details" style="overflow: hidden;">
             <p>${tasks[i].description}</p>
         </div>
         <div id="backlog-task-details${i}" class="backlog-15">
@@ -87,14 +85,14 @@ async function render_backlog() {
         <div onclick="deleteTask(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-10">
             <p class="cursor"><img src="./img/trash-2-32.png"></p>
         </div>
-        <div onclick="create_todo(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-15">
+        <div onclick="create_todo(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-15 add-to-board">
             <p class="cursor"><img src="./img/right-circular-32.png"></p>
         </div>
         
     </div>    
     `;
         document.getElementById(`backlog-task-assigned-to${i}`).innerHTML = `
-        <div id="backlog-task-image">
+        <div id="backlog-task-image${i}">
             <img src=${tasks[i].user[0]['user-image']} class="">
         </div>
         <div id="backlog-task-name${i}" class="">    
@@ -111,15 +109,65 @@ async function render_backlog() {
     console.log(tasks)
 }
 
+async function render_backlog_mobil() {
+    document.getElementById('backlog-task-container-mobil').innerHTML = '';
+    for (let i = 0; i < tasks.length; i++) {
+        document.getElementById('backlog-task-container-mobil').innerHTML += `
+        <div class="backlog-one-task-container-mobil" id="backlog-one-task-container-mobil${i}">
+            <div class="bl-title-mobil">
+                <p>${tasks[i].title}</p>
+            </div>
+            <div class="bl-assigned-to-mobil" id="bl-assigned-to-mobil">
+                <img src="${tasks[i].user[0]['user-image']}">
+                <p>${tasks[i].user[0]['name']}</p>
+            </div>
+            <div class="bl-category-date">
+                <div class="bl-category">
+                    <p>CATEGORY</p>
+                    <p>${tasks[i].category}</p>
+                </div>
+                <div class="bl-date">
+                    <p>DATE</p>
+                    <p>${tasks[i].date}</p>
+                </div>
+            </div>
+            <div class="bl-description">
+                <p>DESCRIPTION</p>
+                <p>${tasks[i].description}</p>
+            </div>
+            <div class="bl-icons">
+                <div  onclick="deleteTask(${i}); render_backlog_mobil()" class="bl-delete">
+                    <p>DELETE</p>
+                    <img src="./img/trash-2-32.png">
+                </div>
+                <div onclick="create_todo(${i}); render_backlog_mobil()" class="bl-add-board">
+                    <p>ADD BOARD</p>
+                    <img src="./img/right-circular-32.png">
+                </div>
+            </div>
+        </div>    
+        
+        `
+        add_urgency_color(i);
+        add_category_color(i);
+
+    }
+
+
+
+
+}
+
 function add_category_color(i) {
     if (tasks[i].category == 'HTML') {
-        document.getElementById(`backlog-task${i}`).classList.add('html-color');
+        document.getElementById(`backlog-task-details${i}`).classList.add('html-color');
+        document.getElementById(`backlog-task-details${i}`).classList.add('html-color');
     }
     if (tasks[i].category == 'CSS') {
-        document.getElementById(`backlog-task${i}`).classList.add('css-color');
+        document.getElementById(`backlog-task-details${i}`).classList.add('css-color');
     }
     if (tasks[i].category == 'JavaScript') {
-        document.getElementById(`backlog-task${i}`).classList.add('javascript-color');
+        document.getElementById(`backlog-task-details${i}`).classList.add('javascript-color');
     }
 }
 
@@ -154,7 +202,7 @@ function create_todo(position) {
 
     let todosAsString = JSON.stringify(todos);
     backend.setItem('todos', todosAsString);
-    setURL('https://gruppe-247.developerakademie.net/smallest_backend_ever');
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     console.log(todos);
 }
 
@@ -227,7 +275,8 @@ function render_first_steps_at_help() {
     document.getElementById('help-headline-first-steps').classList.add('aktive-help');
     document.getElementById('help-choosed-image').classList.remove('d-none');
     document.getElementById('help-choosed-image').src = './img/sunset-gf546bd15e_1280.jpg';
-    document.getElementById('help-choosed-text').innerHTML = `WILLKOMMENSTEXT Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam voluptates, numquam corrupti vel repellendus quasi commodi sit et dignissimos, qui cupiditate provident aperiam dolorum? Est dolore quod ea atque accusamus!`
+    document.getElementById('help-choosed-text').innerHTML = `Welcome to the join page of: Ole Engelhardt, Hong Hanh Chu and Fabian Kalus.<br>
+    This is a project management tool based on the kanban-methode. It´s the easiest way to manage your projects and tasks. Try it out.`
 }
 
 function render_add_task_at_help() {
@@ -235,8 +284,8 @@ function render_add_task_at_help() {
     document.getElementById('help-headline-add-task').classList.add('aktive-help');
     document.getElementById('help-choosed-image').classList.remove('d-none');
     document.getElementById('help-choosed-image').src = './img/sunset-gf546bd15e_1280.jpg';
-    document.getElementById('help-choosed-text').innerHTML = `Hier können Sie Aufgaben erstellen, einer Kategorie zuordnen und die Priorität festlegen.
-    Optional können bereits hier einem oder mehreren Usern einer Aufgabe zugewiesen werden.`
+    document.getElementById('help-choosed-text').innerHTML = `In the 'Add Task' area you can add individual tasks.<br>
+    Enter title, category, description, due date, importance and assign the task to one or more user/s. All fields have to been filled.`
 }
 
 function render_backlog_at_help() {
@@ -244,7 +293,9 @@ function render_backlog_at_help() {
     document.getElementById('help-headline-backlog').classList.add('aktive-help');
     document.getElementById('help-choosed-image').classList.remove('d-none');
     document.getElementById('help-choosed-image').src = './img/sunset-gf546bd15e_1280.jpg';
-    document.getElementById('help-choosed-text').innerHTML = `BIN IMMERNOCH UNSICHER WOFÜR BACKLOG JETZT EIGENTLICH DA IST`
+    document.getElementById('help-choosed-text').innerHTML = `Backlog shows every task the team added, except the tasks that are already on the board.<br>
+    At the beggining of a project you can add all tasks and have overview of them at the baglock. Then you can decide, which tasks your team should work on at the next time and push them to the board.<br>
+    The urgency of the task you can see at the left and right border. The colors are assigned according to the traffic-light-system.`
 }
 
 function render_board_at_help() {
@@ -252,7 +303,11 @@ function render_board_at_help() {
     document.getElementById('help-headline-board').classList.add('aktive-help');
     document.getElementById('help-choosed-image').classList.remove('d-none');
     document.getElementById('help-choosed-image').src = './img/sunset-gf546bd15e_1280.jpg';
-    document.getElementById('help-choosed-text').innerHTML = `Im Board sind alle Aufgaben einer jeweiligen Liste zugeordnete. Die Aufgaben lassen sich per Drag an Drop jeweils einer anderen Liste zuordnen. Ebenfalls ist es möglich Aufgaben zu bearbeiten oder zu löschen. Zur besseren Übersichtlichkeit wurden die Aufgaben aufgrund ihrer Priorität nach dem Ampelsystem gekennzeichnet.`
+    document.getElementById('help-choosed-text').innerHTML = `The board consists of four sections. Per drag and drop you can move each task to a different Section.<br>
+    Further informations can be displayed by clicking on a pencil in the right corner of the task. By clicking the trashcan you can delete the task.<br>
+    In the 'todo' section the tasks that are to be processed next are listed. The 'in progress' section lists tasks that are currently being processed.<br>
+    The 'testing' section lists tasks that have been completed but are still being tested for completion. The 'done' section lists tasks that have been successfully tested and thus fully processed.
+    `
 }
 
 function render_impressum_at_help() {
@@ -269,4 +324,18 @@ function change_background_image(src) {
 
 function show_background_images() {
     document.getElementById('background-images-container').classList.toggle('d-none');
+}
+
+// MOBIL
+
+function open_sidebar_mobil() {
+    document.querySelector('.sidebar-container').style.display = 'flex';
+    document.querySelector('.sidebar').style.display = 'flex';
+    // document.querySelector('.brush-container').style.display = 'none';
+}
+
+function close_sidebar_mobil() {
+    document.querySelector('.sidebar-container').style.display = 'none';
+    document.querySelector('.sidebar').style.display = 'none';
+    // document.querySelector('.brush-container').style.display = 'block';
 }

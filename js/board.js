@@ -59,7 +59,7 @@ function generateTodoHTML(element) {
                     <img class="card-icon-img" src="./img/view-details-24.png">
                     <div class="card-icon-calender-container">
                     <img class="card-icon-calender" src="./img/date-to-24.png">
-                    <p>12 / 6</p>
+                    <p>${element['date']}</p>
                     </div>
                 </div>
                 <div onclick="delete_todo(${element['id']})" class="card-icons-right">

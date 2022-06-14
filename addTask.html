@@ -17,7 +17,12 @@
 
 <body onload="init()">
 
-    <header class="sidebar" w3-include-html="templates/sidebar.html"></header>
+    <header class="sidebar-container">
+        <div class="sidebar" w3-include-html="templates/sidebar.html"></div>
+    </header>
+    <div id="sidebar-container-mobil" class="sidebar-container-mobil">
+        <div class="sidebar-mobil" w3-include-html="templates/sidebar_mobil.html"></div>
+    </div>
 
     <main>
         <div class="headline-section">
@@ -25,7 +30,7 @@
             <div class="subheading"> Learning Management System Project </div>
         </div>
 
-        <form onsubmit="createTask(event)">
+        <form onsubmit="event.preventDefault(), createTask()">
             <div class="add-task-container">
                 <div class="add-task-colum">
 
@@ -93,7 +98,7 @@
                     <div class="add-task-final" id="add-task-final">
 
                         <button type="button" class="cancel-btn" onclick="resetTask()"> CANCEL </button>
-                        <button type="submit" class="create-btn" onclick="createTask()"> CREATE TASK </button>
+                        <button type="submit" class="create-btn"> CREATE TASK </button>
                     </div>
                 </div>
 
@@ -101,7 +106,6 @@
 
 
         </form>
-
     </main>
 
 </body>
