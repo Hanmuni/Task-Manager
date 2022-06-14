@@ -30,7 +30,7 @@
             <div class="subheading"> Learning Management System Project </div>
         </div>
 
-        <form onsubmit="createTask()">
+        <form onsubmit="event.preventDefault(), createTask()">
             <div class="add-task-container">
                 <div class="add-task-colum">
 
@@ -98,7 +98,7 @@
                     <div class="add-task-final" id="add-task-final">
 
                         <button type="button" class="cancel-btn" onclick="resetTask()"> CANCEL </button>
-                        <button type="submit" class="create-btn" onclick="createTask()"> CREATE TASK </button>
+                        <button type="submit" class="create-btn"> CREATE TASK </button>
                     </div>
                 </div>
 
@@ -106,7 +106,7 @@
 
 
         </form>
-
+<button onclick="deleteTask()"></button>
     </main>
 
 </body>

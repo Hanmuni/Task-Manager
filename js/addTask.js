@@ -19,39 +19,39 @@ let userList = [{
 }
 ];
 
-let atLeastOneUser = false;
-
-function createTask() {
-    writeTask();
-    saveTaskToBackend();
-    resetTask();
+function atLeastOneUserSelected() {
+    return selectedUsers.length > 0;
 }
 
-function writeTask() {
-
-    if (atLeastOneUser == true) {
-        let title = document.getElementById('title').value;
-        let category = document.getElementById('category').value;
-        let date = document.getElementById('date').value;
-        let description = document.getElementById('description').value;
-        let urgency = document.getElementById('urgency').value;
-
-        let task = {
-            'title': title,
-            'category': category,
-            'description': description,
-            'date': date,
-            'urgency': urgency,
-            'user': selectedUsers,
-        };
-
-        tasks.push(task);
+function createTask() {
+    if (atLeastOneUserSelected()) {
+        writeTask();
+        saveTaskToBackend();
+        resetTask();
     }
-
     else {
         alert('Select at least 1 user for your task');
     }
 
+}
+
+function writeTask() {
+    let title = document.getElementById('title').value;
+    let category = document.getElementById('category').value;
+    let date = document.getElementById('date').value;
+    let description = document.getElementById('description').value;
+    let urgency = document.getElementById('urgency').value;
+
+    let task = {
+        'title': title,
+        'category': category,
+        'description': description,
+        'date': date,
+        'urgency': urgency,
+        'user': selectedUsers,
+    };
+
+    tasks.push(task);
 }
 
 function saveTaskToBackend() {
@@ -113,14 +113,7 @@ function selectUser(i) {
 
 function confirmUser() {
 
-    if (selectedUsers == "") {
-        atLeastOneUser = false;
-        alert('Select at least 1 user for your task');
-
-    }
-
-    else {
-        atLeastOneUser = true;
+    if (atLeastOneUserSelected()) {
         document.getElementById('user-list').classList.add('d-none');
         document.getElementById('assign-section').classList.remove('d-none');
         document.getElementById('add-task-final').classList.remove('d-none');
@@ -129,13 +122,17 @@ function confirmUser() {
 
         for (let i = 0; i < selectedUsers.length; i++) {
             document.getElementById('selectedImage').innerHTML += `
-            <img class="add-task-user-image" src="${selectedUsers[i]['user-image']}">
-            `;
+                <img class="add-task-user-image" src="${selectedUsers[i]['user-image']}">
+                `;
         }
 
         document.getElementById('add-user-btn').innerHTML = `
-        <button id="add-user-btn" type="button" class="add-user-btn" onclick="assignTo()"> </button>
-        `;
+            <button id="add-user-btn" type="button" class="add-user-btn" onclick="assignTo()"> </button>
+            `;
+    }
+
+    else {
+        alert('Select at least 1 user for your task');
     }
 }
 
