@@ -117,14 +117,14 @@ async function render_backlog_mobil() {
             <div class="bl-title-mobil">
                 <p>${tasks[i].title}</p>
             </div>
-            <div class="bl-assigned-to-mobil" id="bl-assigned-to-mobil">
+            <div class="bl-assigned-to-mobil" id="bl-assigned-to-mobil${i}">
                 <img src="${tasks[i].user[0]['user-image']}">
-                <p>${tasks[i].user[0]['name']}</p>
+                <p id="backlog-task-name-mobil${i}">${tasks[i].user[0]['name']}</p>
             </div>
             <div class="bl-category-date">
                 <div class="bl-category">
                     <p>CATEGORY</p>
-                    <p>${tasks[i].category}</p>
+                    <p id="details-mobil${i}">${tasks[i].category}</p>
                 </div>
                 <div class="bl-date">
                     <p>DATE</p>
@@ -146,10 +146,14 @@ async function render_backlog_mobil() {
                 </div>
             </div>
         </div>    
-        
         `
-        add_urgency_color(i);
-        add_category_color(i);
+        document.getElementById(`backlog-task-name-mobil${i}`).innerHTML = '';
+        for (let j = 0; j < tasks[i].user.length; j++) {
+            document.getElementById(`backlog-task-name-mobil${i}`).innerHTML += `
+                <p class="" > ${tasks[i].user[j].name} </p>`
+        }
+        add_urgency_color_mobil(i);
+        add_category_color_mobil(i);
 
     }
 
@@ -158,10 +162,23 @@ async function render_backlog_mobil() {
 
 }
 
+function add_category_color_mobil(i) {
+    if (tasks[i].category == 'HTML') {
+        document.getElementById(`details-mobil${i}`).classList.add('html-color');
+
+    }
+    if (tasks[i].category == 'CSS') {
+        document.getElementById(`details-mobil${i}`).classList.add('css-color');
+    }
+    if (tasks[i].category == 'JavaScript') {
+        document.getElementById(`details-mobil${i}`).classList.add('javascript-color');
+    }
+}
+
 function add_category_color(i) {
     if (tasks[i].category == 'HTML') {
         document.getElementById(`backlog-task-details${i}`).classList.add('html-color');
-        document.getElementById(`backlog-task-details${i}`).classList.add('html-color');
+
     }
     if (tasks[i].category == 'CSS') {
         document.getElementById(`backlog-task-details${i}`).classList.add('css-color');
@@ -183,6 +200,17 @@ function add_urgency_color(i) {
     }
 }
 
+function add_urgency_color_mobil(i) {
+    if (tasks[i].urgency == 'High') {
+        document.getElementById(`backlog-one-task-container-mobil${i}`).classList.add('urc-high');
+    }
+    if (tasks[i].urgency == 'Medium') {
+        document.getElementById(`backlog-one-task-container-mobil${i}`).classList.add('urc-medium');
+    }
+    if (tasks[i].urgency == 'Low') {
+        document.getElementById(`backlog-one-task-container-mobil${i}`).classList.add('urc-low');
+    }
+}
 
 function create_todo(position) {
     let todo = {
