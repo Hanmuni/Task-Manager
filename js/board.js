@@ -1,5 +1,7 @@
+// Defines which Element is dragged at this very moment
 let currentDraggedElement;
 
+// Opens the tasks and users that are saved in the Backlog via the Backend
 async function init_board() {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     await includeHTML();
@@ -9,6 +11,7 @@ async function init_board() {
     await updateHTML();
 }
 
+// This function filters through the Tasks (coming from Backlog) and puts them in the right column; which in this case will always be "todo". So for this first step, the other 3 Status could also be deleted, but then Drag&Drop would not work.
 async function updateHTML() {
 
     let todo = todos.filter(t => t['status'] == 'todo');
@@ -49,6 +52,7 @@ async function updateHTML() {
     console.log(todos)
 }
 
+// This function creates the DRAGGABLE Task-Container, including delete and edit button, user shortcut and task name
 function generateTodoHTML(element) {
     return `
         <div draggable="true" id="${element['id']}" ondragstart="startDragging(${element['id']})" class="todo2">
@@ -72,7 +76,7 @@ function generateTodoHTML(element) {
         </div>
     `
 }
-
+// The following 3 functions make the Task-Container draggable, or rather define the process of dragging (the ability to be dragged is soley done by "draggable=true")
 function startDragging(id) {
     currentDraggedElement = id;
 }
@@ -95,13 +99,14 @@ async function order_todos_ids() {
     }
 }
 
+// Deletes one task that has been put on the Board from Backlog
 function delete_todo(position) {
     todos.splice(position, 1);
     backend.setItem('todos', JSON.stringify(todos));
     updateHTML();
 }
 
-// DIALOG
+// These following functions enable the small task-container to be enlarged by clicking on it. This works in combination with Board.html, where e.g. we put the onclick-Function "close-dialog" and where we activate d-none via an ID.
 
 function close_dialog() {
     document.getElementById('dialog-container').classList.add('d-none');
@@ -184,6 +189,8 @@ function open_dialog(id) {
         </div>
     
     `;
+
+    // In this part, all the mentioned IDs above in the inner.HTML part of the function open_dialog (title, category) are filled, as they were defined previously already. So it is the same content as it as written in the Backlog/Add_Task-Section
     document.getElementById('title').value = todos[id].title;
     document.getElementById('category').value = todos[id].category;
     document.getElementById('description').value = todos[id].description;
