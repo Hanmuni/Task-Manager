@@ -245,6 +245,40 @@ main {
 }
 
 
+/* DIALOG */
+
+.dialog-container {
+    background-color: rgba(0, 0, 0, 0.349);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog {
+    background-color: white;
+    height: 70vh;
+    width: 60vw;
+    border-radius: 20px;
+    position: relative;
+}
+
+.dialog-close-img {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}
+
+.dialog-close-img:hover {
+    opacity: 0.6;
+}
+
+
 /* Ole */
 
 
