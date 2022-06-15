@@ -67,7 +67,7 @@ function generateTodoHTML(element) {
                 </div>
             </div>
             <div class="card-icon-edit-container">
-                <img class="card-icon-edit" src="../img/edit-24.png">
+                <img onclick="open_dialog(${element['id']})" class="card-icon-edit" src="../img/edit-24.png">
             </div>
         </div>
     `
@@ -99,4 +99,102 @@ function delete_todo(position) {
     todos.splice(position, 1);
     backend.setItem('todos', JSON.stringify(todos));
     updateHTML();
+}
+
+// DIALOG
+
+function close_dialog() {
+    document.getElementById('dialog-container').classList.add('d-none');
+}
+
+function open_dialog(id) {
+    document.getElementById('dialog-container').classList.remove('d-none');
+    document.getElementById('inner-dialog').innerHTML = '';
+    document.getElementById('inner-dialog').innerHTML = `
+    
+        <div class="add-task-container">
+            <div class="add-task-colum">
+
+                <div class="add-task-headline">
+                    <p>TITLE </p>
+
+                    <input required minlength="5" id="title" class="add-task-input">
+                </div>
+                <div class="add-task-headline">
+                    <p> CATEGORY </p>
+
+                    <select id="category" required class="add-task-select">
+                        <option> HTML </option>
+                        <option> CSS </option>
+                        <option> JavaScript </option>
+                    </select>
+
+                </div>
+
+                <div class="add-task-headline">
+                    <p> DESCRIPTION </p>
+
+                    <input required minlength="5" id="description" class="add-task-description">
+                </div>
+
+            </div>
+
+            <div class="add-task-colum">
+
+                <div class="add-task-headline">
+                    <p> DUE DATE </p>
+
+                    <input id="date" required type="date" class="add-task-input">
+                </div>
+
+                <div class="add-task-headline">
+                    <p> URGENCY </p>
+
+                    <select id="urgency" required class="add-task-select">
+                        <option> Low </option>
+                        <option> Medium </option>
+                        <option> High </option>
+                    </select>
+                </div>
+
+                <div class="add-task-assign">
+                    <p> ASSIGNED TO </p>
+
+                    <div class="assign-section" id="assign-section">
+
+                        <div id="selectedImage"> <img src="/img/change-user.png" class="add-task-user-image"> </div>
+
+                        <div id="add-user-btn"> <button type="button" class="add-user-btn" onclick="assignTo()">
+                            </button> </div>
+
+                    </div>
+
+                    <div id="user-list" class="user-list d-none">
+                        <div id="assignedToUser"></div>
+                        <div id="assignConfirm"></div>
+
+                    </div>
+                </div>
+
+                <div class="add-task-final" id="add-task-final">
+                    <button onclick="change_task(${id})" class="create-btn"> CHANGE TASK </button>
+                </div>
+            </div>
+
+        </div>
+    
+    `;
+    document.getElementById('title').value = todos[id].title;
+    document.getElementById('category').value = todos[id].category;
+    document.getElementById('description').value = todos[id].description;
+    document.getElementById('description').value = todos[id].description;
+    document.getElementById('date').value = todos[id].date;
+    document.getElementById('urgency').value = todos[id].urgency;
+    // USERS FEHLT NOCH
+}
+
+function change_task(id) {
+    // jetzt den neuen Wert der Felder in Todos Array übertragen (an der Stelle von der mitgegebenen ID);
+    // MUSST DU MIT BACKEND MACHEN
+    init_board();
 }
