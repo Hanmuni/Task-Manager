@@ -37,20 +37,27 @@
                     </div>
                     <div class="add-task-headline">
                         <p> CATEGORY </p>
+                        <div class="select-container">
+                            <select id="category" required class="add-task-select">
+                            <option> 
+                                <span>HTML</span></option>
 
-                        <select id="category" required class="add-task-select">
-                            <option> HTML </option>
-                            <option> CSS </option>
-                            <option> JavaScript </option>
+                            <option> <p>CSS</p> </option>
+                            <option> <p>Javascript</p> </option>
                         </select>
+                        </div>
 
                     </div>
 
                     <div class="add-task-headline">
                         <p> DESCRIPTION </p>
 
+<<<<<<< HEAD
                             <textarea class="add-task-description" required minlength="1" id="description"> </textarea>
     
+=======
+                        <textarea required minlength="5" id="description" class="add-task-description"></textarea>
+>>>>>>> 219b8dd111c31a811f3112823ac17409be2b5502
                     </div>
 
                 </div>
@@ -65,12 +72,13 @@
 
                     <div class="add-task-headline">
                         <p> URGENCY </p>
-
-                        <select id="urgency" required class="add-task-select">
+                        <div class="select-container">
+                            <select id="urgency" required class="add-task-select">
                             <option> Low </option>
                             <option> Medium </option>
                             <option> High </option>
                         </select>
+                        </div>
                     </div>
 
                     <div class="add-task-assign">

@@ -95,9 +95,8 @@ function displayUsersList() {
 
         let userName = userList[i]['name'];
 
-
         document.getElementById('assignedToUser').innerHTML += ` 
-    <p onclick="selectUser(${i})" id="selectedUser${i}"> ${userName} </p>   
+        <p onclick="selectUser(${i})" id="selectedUser${i}"> ${userName} </p>   
          `;
     }
 
@@ -139,6 +138,7 @@ function confirmUser() {
     } else {
         alert('Select at least 1 user for your task');
     }
+
 }
 
 function deleteTask(position) {
