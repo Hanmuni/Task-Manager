@@ -55,6 +55,7 @@ async function updateHTML() {
     }
     console.log(todos);
     change_card_border_color();
+    console.log(selectedUsers)
 }
 
 function generateTodoHTML(element) {
@@ -246,4 +247,24 @@ function change_task(id) {
     updateHTML();
     document.getElementById('dialog-container').classList.add('d-none');
     selectedUsers = [];
+}
+
+
+function selectUser_board(i) {
+
+    // for (let u = 0; u < userList.length; u++) {
+    for (let s = 0; s < selectedUsers.length; s++) {
+        if (userList[i].name == selectedUsers[s].name) {
+            document.getElementById(`selectedUser${i}`).style = '';
+            // selectedUsers.splice(i, 1);
+        } else {
+            document.getElementById(`selectedUser${i}`).style = 'background-color: #2D3E97; color: white;';
+
+            selectedUsers.push(userList[i]);
+        }
+
+        console.log(userList[i].name);
+        console.log(selectedUsers[s].name);
+    }
+    // }
 }

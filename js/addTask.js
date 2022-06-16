@@ -19,7 +19,7 @@ let userList = [{
     }
 ];
 
-async function init_addtask(){
+async function init_addtask() {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     await includeHTML();
     await loadAllTasks();
@@ -95,9 +95,15 @@ function displayUsersList() {
 
         let userName = userList[i]['name'];
 
-        document.getElementById('assignedToUser').innerHTML += ` 
-        <p onclick="selectUser(${i})" id="selectedUser${i}"> ${userName} </p>   
+        if (document.getElementById('bigscreen')) {
+            document.getElementById('assignedToUser').innerHTML += ` 
+            <p onclick="selectUser_board(${i})" id="selectedUser${i}"> ${userName} </p>   
+             `;
+        } else {
+            document.getElementById('assignedToUser').innerHTML += ` 
+        <p onclick="selectUser(${i})" id="selectedUser${i}">${userName}</p>   
          `;
+        }
     }
 
     document.getElementById('assignConfirm').innerHTML = `<p onclick="confirmUser()"> Confirm</p>`;
