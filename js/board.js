@@ -83,13 +83,13 @@ function generateTodoHTML(element) {
 function change_card_border_color() {
     for (i = 0; i < todos.length; i++) {
         if (todos[i].urgency == 'Low') {
-            document.getElementById(`todo${i}`).style.border = "3px solid green";
+            document.getElementById(`todo${i}`).style.border = "4px solid green";
         }
         if (todos[i].urgency == 'Medium') {
-            document.getElementById(`todo${i}`).style.border = "3px solid yellow";
+            document.getElementById(`todo${i}`).style.border = "4px solid goldenrod";
         }
         if (todos[i].urgency == 'High') {
-            document.getElementById(`todo${i}`).style.border = "3px solid red";
+            document.getElementById(`todo${i}`).style.border = "4px solid red";
         }
     }
 }
@@ -145,19 +145,19 @@ function open_dialog(id) {
                 </div>
                 <div class="add-task-headline">
                     <p> CATEGORY </p>
-
+                    <div class="select-container">
                     <select id="category" required class="add-task-select">
                         <option> HTML </option>
                         <option> CSS </option>
                         <option> JavaScript </option>
                     </select>
-
+                    </div>
                 </div>
 
                 <div class="add-task-headline">
                     <p> DESCRIPTION </p>
 
-                    <input required minlength="5" id="description" class="add-task-description">
+                    <textarea required minlength="5" id="description" class="add-task-description"></textarea>
                 </div>
 
             </div>
@@ -172,12 +172,13 @@ function open_dialog(id) {
 
                 <div class="add-task-headline">
                     <p> URGENCY </p>
-
+                    <div class="select-container">
                     <select id="urgency" required class="add-task-select">
                         <option> Low </option>
                         <option> Medium </option>
                         <option> High </option>
                     </select>
+                    </div>
                 </div>
 
                 <div class="add-task-assign">

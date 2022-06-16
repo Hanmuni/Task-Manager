@@ -300,7 +300,7 @@ main {
 }
 
 .dialog {
-    background-color: white;
+    background-color: #e7f8fd;
     height: 70vh;
     width: 60vw;
     border-radius: 20px;
@@ -417,6 +417,10 @@ main {
     color: white;
     margin-top: 30px;
     margin-bottom: 16px;
+    background-color: rgb(40, 40, 40);
+    font-style: oblique;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .backlog-subtitle-container p {
@@ -860,14 +864,27 @@ main {
     cursor: pointer;
 }
 
-#urgency {
+#urgency,
+#category {
     cursor: pointer;
 }
 
 .add-task-container input,
-.add-task-container select {
+.add-task-container textarea {
     padding-left: 8px;
-    border: 2px solid black;
+    box-shadow: 1px 2px 5px 3px black;
+    border: none;
+    outline: none;
+}
+
+.add-task-container textarea {
+    padding-top: 8px;
+}
+
+.select-container {
+    box-shadow: 1px 2px 5px 3px black;
+    border: none;
+    background-color: white;
 }
 
 ::-webkit-datetime-edit {
@@ -878,6 +895,26 @@ main {
     padding-right: 10px;
     font-size: 20px;
     cursor: pointer;
+}
+
+select {
+    font-weight: bold;
+    outline: none;
+    width: calc(100% - 16px);
+    margin-left: 8px;
+    margin-right: 8px;
+    outline: none;
+    border: none!important;
+}
+
+#date {
+    outline: none;
+    font-weight: bold;
+}
+
+.add-task-headline p {
+    margin-bottom: 10px;
+    font-size: 20px;
 }
 
 
@@ -1077,6 +1114,24 @@ main {
     }
     .brush-container {
         position: fixed;
+        display: none;
+        z-index: 2;
+        top: 30px;
+        right: 30px;
+        left: auto;
+        bottom: auto;
+        transform: translate(0, 0);
+    }
+    .background-images-container {
+        z-index: 2;
+        width: 100vw;
+        left: 0;
+        bottom: 0;
+        transform: translate(0, 0);
+    }
+    .background-images-container img {
+        width: 100px;
+        height: 8vh;
     }
     .backlog-task-container-mobil {
         display: flex;

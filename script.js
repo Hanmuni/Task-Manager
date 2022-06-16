@@ -22,6 +22,14 @@ async function init() {
     document.getElementById('sidebar-link-add-task').style.color = "black"
 }
 
+async function init_welcome() {
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
+    await includeHTML();
+    await loadAllTasks();
+    await load_current_user_local();
+}
+
+
 async function loadAllTasks() {
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
@@ -379,16 +387,17 @@ function show_background_images() {
     document.getElementById('background-images-container').classList.toggle('d-none');
 }
 
+
 // MOBIL
 
 function open_sidebar_mobil() {
     document.querySelector('.sidebar-container').style.display = 'flex';
     document.querySelector('.sidebar').style.display = 'flex';
-    // document.querySelector('.brush-container').style.display = 'none';
+    document.querySelector('.brush-container').style.display = 'flex';
 }
 
 function close_sidebar_mobil() {
     document.querySelector('.sidebar-container').style.display = 'none';
     document.querySelector('.sidebar').style.display = 'none';
-    // document.querySelector('.brush-container').style.display = 'block';
+    document.querySelector('.brush-container').style.display = 'none';
 }
