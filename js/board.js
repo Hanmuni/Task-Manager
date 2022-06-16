@@ -95,9 +95,10 @@ async function order_todos_ids() {
     }
 }
 
-function delete_todo(position) {
+async function delete_todo(position) {
     todos.splice(position, 1);
     backend.setItem('todos', JSON.stringify(todos));
+    await order_todos_ids();
     updateHTML();
 }
 
@@ -105,6 +106,7 @@ function delete_todo(position) {
 
 function close_dialog() {
     document.getElementById('dialog-container').classList.add('d-none');
+    selectedUsers = [];
 }
 
 function open_dialog(id) {
@@ -190,7 +192,24 @@ function open_dialog(id) {
     document.getElementById('description').value = todos[id].description;
     document.getElementById('date').value = todos[id].date;
     document.getElementById('urgency').value = todos[id].urgency;
-    // USERS FEHLT NOCH
+
+    for (let i = 0; i < todos[id].user.length; i++) {
+        for (let j = 0; j < selectedUsers.length; j++) {
+            if (todos[id].user[i].name == selectedUsers[j].name) {
+                return;
+            }
+        }
+        selectedUsers.push(todos[id].user[i]);
+    }
+
+    document.getElementById('selectedImage').innerHTML = ``;
+    for (let i = 0; i < selectedUsers.length; i++) {
+        document.getElementById('selectedImage').innerHTML += `
+            <img class="add-task-user-image" src="${selectedUsers[i]['user-image']}">
+            `;
+    }
+
+    console.log(selectedUsers);
 }
 
 function change_task(id) {
@@ -204,4 +223,5 @@ function change_task(id) {
     backend.setItem('todos', JSON.stringify(todos));
     updateHTML();
     document.getElementById('dialog-container').classList.add('d-none');
+    selectedUsers = [];
 }
