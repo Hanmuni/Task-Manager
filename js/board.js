@@ -194,7 +194,14 @@ function open_dialog(id) {
 }
 
 function change_task(id) {
-    // jetzt den neuen Wert der Felder in Todos Array übertragen (an der Stelle von der mitgegebenen ID);
-    // MUSST DU MIT BACKEND MACHEN
-    init_board();
+    todos[id].title = document.getElementById('title').value;
+    todos[id].category = document.getElementById('category').value;
+    todos[id].description = document.getElementById('description').value;
+    todos[id].description = document.getElementById('description').value;
+    todos[id].date = document.getElementById('date').value;
+    todos[id].urgency = document.getElementById('urgency').value;
+
+    backend.setItem('todos', JSON.stringify(todos));
+    updateHTML();
+    document.getElementById('dialog-container').classList.add('d-none');
 }
