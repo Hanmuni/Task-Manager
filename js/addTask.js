@@ -19,6 +19,15 @@ let userList = [{
     }
 ];
 
+async function init_addtask(){
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
+    await includeHTML();
+    await loadAllTasks();
+    await load_current_user_local();
+    document.getElementById('sidebar-link-add-task').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
+    document.getElementById('sidebar-link-add-task').style.color = "black"
+}
+
 function atLeastOneUserSelected() {
     return selectedUsers.length > 0;
 }

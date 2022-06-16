@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js"></script>
+    <script src="./js/addTask.js"></script>
+    <script src="./js/archive.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="./js/mini_backend.js"></script>
+    <title> Archive - Task Manager </title>
+</head>
+
+<body onload="init_archive()">
+
+    <header class="sidebar-container">
+        <div class="sidebar" w3-include-html="templates/sidebar.html"></div>
+    </header>
+    <div id="sidebar-container-mobil" class="sidebar-container-mobil">
+        <div class="sidebar-mobil" w3-include-html="templates/sidebar_mobil.html"></div>
+    </div>
+
+    <main id="main">
+
+        <div id="backlog-container" class="backlog-container">
+            <div id="backlog-subtitle-container" class="backlog-subtitle-container">
+                <div class="backlog-20">
+                    <p>ASSIGNED TO</p>
+                </div>
+                <div class="backlog-10">
+                    <p>TITLE</p>
+                </div>
+                <div class="backlog-15">
+                    <p>DUE DATE</p>
+                </div>
+                <div class="backlog-15 details">
+                    <p>DETAILS</p>
+                </div>
+                <div class="backlog-15">
+                    <p>CATEGORY</p>
+                </div>
+
+            </div>
+            <div id="backlog-task-container"></div>
+            <div id="backlog-task-container-mobil" class="backlog-task-container-mobil">
+
+            </div>
+            <div w3-include-html="templates/background_img.html"></div>
+        </div>
+
+    </main>
+</body>
+
+</html>

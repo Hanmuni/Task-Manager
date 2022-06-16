@@ -18,24 +18,22 @@ async function init() {
     await includeHTML();
     await loadAllTasks();
     await load_current_user_local();
-    document.getElementById('sidebar-link-add-task').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
-    document.getElementById('sidebar-link-add-task').style.color = "black"
 }
 
 async function loadAllTasks() {
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
     todos = JSON.parse(backend.getItem('todos')) || [];
-
+    
 }
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
-
+    
     for (let i = 0; i < includeElements.length; i++) {
         const element = includeElements[i];
         file = element.getAttribute("w3-include-html");
-
+        
         let response = await fetch(file);
         if (response.ok) {
             element.innerHTML = await response.text();
@@ -71,33 +69,33 @@ async function render_backlog() {
     document.getElementById('backlog-task-container').innerHTML = '';
     for (let i = 0; i < tasks.length; i++) {
         document.getElementById('backlog-task-container').innerHTML += `
-    <div id="backlog-task${i}" class="backlog-task">
+        <div id="backlog-task${i}" class="backlog-task">
         <div id="backlog-task-assigned-to${i}" class="backlog-task-assigned-to backlog-20">
         </div>
         <div id="backlog-task-title${i}" class="backlog-10">
-            <p>${tasks[i].title}</p>
+        <p>${tasks[i].title}</p>
         </div>
         <div id="backlog-task-due-date${i}" class="backlog-15">
-            <p backlog-task-due-date${i}-p>${tasks[i].date}</p>
+        <p backlog-task-due-date${i}-p>${tasks[i].date}</p>
         </div>
         <div id="backlog-task-details${i}" class="backlog-15 details" style="overflow: hidden;">
-            <p>${tasks[i].description}</p>
+        <p>${tasks[i].description}</p>
         </div>
         <div id="backlog-task-details${i}" class="backlog-15">
-            <p>${tasks[i].category}</p>
+        <p>${tasks[i].category}</p>
         </div>
         <div onclick="deleteTask(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-10">
-            <p class="cursor"><img src="./img/trash-2-32.png"></p>
+        <p class="cursor"><img src="./img/trash-2-32.png"></p>
         </div>
         <div onclick="create_todo(${i}); render_backlog()" id="backlog-task-details${i}" class="backlog-15 add-to-board">
-            <p class="cursor"><img src="./img/right-circular-32.png"></p>
+        <p class="cursor"><img src="./img/right-circular-32.png"></p>
         </div>
         
-    </div>    
-    `;
+        </div>    
+        `;
         document.getElementById(`backlog-task-assigned-to${i}`).innerHTML = `
         <div id="backlog-task-image${i}">
-            <img src=${tasks[i].user[0]['user-image']} class="">
+        <img src=${tasks[i].user[0]['user-image']} class="">
         </div>
         <div id="backlog-task-name${i}" class="">    
         </div>
@@ -105,7 +103,7 @@ async function render_backlog() {
         document.getElementById(`backlog-task-name${i}`).innerHTML = '';
         for (let j = 0; j < tasks[i].user.length; j++) {
             document.getElementById(`backlog-task-name${i}`).innerHTML += `
-                <p class="" > ${tasks[i].user[j].name} </p>`
+            <p class="" > ${tasks[i].user[j].name} </p>`
         }
         add_urgency_color(i);
         add_category_color(i);
@@ -118,58 +116,53 @@ async function render_backlog_mobil() {
     for (let i = 0; i < tasks.length; i++) {
         document.getElementById('backlog-task-container-mobil').innerHTML += `
         <div class="backlog-one-task-container-mobil" id="backlog-one-task-container-mobil${i}">
-            <div class="bl-title-mobil">
-                <p>${tasks[i].title}</p>
-            </div>
-            <div class="bl-assigned-to-mobil" id="bl-assigned-to-mobil${i}">
-                <img src="${tasks[i].user[0]['user-image']}">
-                <p id="backlog-task-name-mobil${i}">${tasks[i].user[0]['name']}</p>
-            </div>
-            <div class="bl-category-date">
-                <div class="bl-category">
-                    <p>CATEGORY</p>
-                    <p id="details-mobil${i}">${tasks[i].category}</p>
-                </div>
-                <div class="bl-date">
-                    <p>DATE</p>
-                    <p>${tasks[i].date}</p>
-                </div>
-            </div>
-            <div class="bl-description">
-                <p>DESCRIPTION</p>
-                <p>${tasks[i].description}</p>
-            </div>
-            <div class="bl-icons">
-                <div  onclick="deleteTask(${i}); render_backlog_mobil()" class="bl-delete">
-                    <p>DELETE</p>
-                    <img src="./img/trash-2-32.png">
-                </div>
-                <div onclick="create_todo(${i}); render_backlog_mobil()" class="bl-add-board">
-                    <p>ADD BOARD</p>
-                    <img src="./img/right-circular-32.png">
-                </div>
-            </div>
+        <div class="bl-title-mobil">
+        <p>${tasks[i].title}</p>
+        </div>
+        <div class="bl-assigned-to-mobil" id="bl-assigned-to-mobil${i}">
+        <img src="${tasks[i].user[0]['user-image']}">
+        <p id="backlog-task-name-mobil${i}">${tasks[i].user[0]['name']}</p>
+        </div>
+        <div class="bl-category-date">
+        <div class="bl-category">
+        <p>CATEGORY</p>
+        <p id="details-mobil${i}">${tasks[i].category}</p>
+        </div>
+        <div class="bl-date">
+        <p>DATE</p>
+        <p>${tasks[i].date}</p>
+        </div>
+        </div>
+        <div class="bl-description">
+        <p>DESCRIPTION</p>
+        <p>${tasks[i].description}</p>
+        </div>
+        <div class="bl-icons">
+        <div  onclick="deleteTask(${i}); render_backlog_mobil()" class="bl-delete">
+        <p>DELETE</p>
+        <img src="./img/trash-2-32.png">
+        </div>
+        <div onclick="create_todo(${i}); render_backlog_mobil()" class="bl-add-board">
+        <p>ADD BOARD</p>
+        <img src="./img/right-circular-32.png">
+        </div>
+        </div>
         </div>    
         `
         document.getElementById(`backlog-task-name-mobil${i}`).innerHTML = '';
         for (let j = 0; j < tasks[i].user.length; j++) {
             document.getElementById(`backlog-task-name-mobil${i}`).innerHTML += `
-                <p class="" > ${tasks[i].user[j].name} </p>`
+            <p class="" > ${tasks[i].user[j].name} </p>`
         }
         add_urgency_color_mobil(i);
         add_category_color_mobil(i);
-
     }
-
-
-
-
 }
 
 function add_category_color_mobil(i) {
     if (tasks[i].category == 'HTML') {
         document.getElementById(`details-mobil${i}`).classList.add('html-color');
-
+        
     }
     if (tasks[i].category == 'CSS') {
         document.getElementById(`details-mobil${i}`).classList.add('css-color');
@@ -182,7 +175,7 @@ function add_category_color_mobil(i) {
 function add_category_color(i) {
     if (tasks[i].category == 'HTML') {
         document.getElementById(`backlog-task-details${i}`).classList.add('html-color');
-
+        
     }
     if (tasks[i].category == 'CSS') {
         document.getElementById(`backlog-task-details${i}`).classList.add('css-color');
@@ -218,7 +211,7 @@ function add_urgency_color_mobil(i) {
 
 function create_todo(position) {
     let todo = {
-
+        
         'id': '',
         'title': tasks[position].title,
         'category': tasks[position].category,
@@ -231,7 +224,7 @@ function create_todo(position) {
     todos.push(todo);
     tasks.splice(position, 1);
     backend.setItem('tasks', JSON.stringify(tasks));
-
+    
     let todosAsString = JSON.stringify(todos);
     backend.setItem('todos', todosAsString);
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
@@ -309,7 +302,6 @@ function remove_aktive_help_class() {
     document.getElementById('help-headline-backlog').classList.remove('aktive-help');
     document.getElementById('help-headline-board').classList.remove('aktive-help');
     document.getElementById('help-headline-impressum').classList.remove('aktive-help');
-
 }
 
 function render_first_steps_at_help() {
