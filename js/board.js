@@ -45,6 +45,10 @@ async function updateHTML() {
     for (let index = 0; index < done.length; index++) {
         const element = done[index];
         document.getElementById('done').innerHTML += generateTodoHTML(element);
+        document.getElementById(`card-icon-trash${element['id']}`).innerHTML = `
+        <img onclick="add_archiv(${element['id']})" src="../img/fabian.png">
+        `
+
     }
     console.log(todos)
 }
@@ -62,8 +66,8 @@ function generateTodoHTML(element) {
                     <p>${element['date']}</p>
                     </div>
                 </div>
-                <div onclick="delete_todo(${element['id']})" class="card-icons-right">
-                    <img src="./img/trash-2-24.png">
+                <div id="card-icon-trash${element['id']}" class="card-icons-right">
+                    <img onclick="delete_todo(${element['id']})" src="./img/trash-2-24.png">
                 </div>
             </div>
             <div class="card-icon-edit-container">
