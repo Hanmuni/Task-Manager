@@ -18,6 +18,8 @@ async function init() {
     await includeHTML();
     await loadAllTasks();
     await load_current_user_local();
+    document.getElementById('sidebar-link-add-task').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
+    document.getElementById('sidebar-link-add-task').style.color = "black"
 }
 
 async function loadAllTasks() {
@@ -61,6 +63,8 @@ async function init_backlog() {
     await load_current_user_local();
     await render_backlog();
     await render_backlog_mobil();
+    document.getElementById('sidebar-link-backlog').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
+    document.getElementById('sidebar-link-backlog').style.color = "black"
 }
 
 async function render_backlog() {
@@ -289,6 +293,16 @@ async function load_current_user_local() {
 }
 
 // HELP
+
+async function init_help() {
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
+    await includeHTML();
+    await loadAllTasks();
+    await load_current_user_local();
+    document.getElementById('sidebar-link-help').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
+    document.getElementById('sidebar-link-help').style.color = "black"
+}
+
 function remove_aktive_help_class() {
     document.getElementById('help-headline-first-steps').classList.remove('aktive-help');
     document.getElementById('help-headline-add-task').classList.remove('aktive-help');
@@ -347,7 +361,18 @@ function render_impressum_at_help() {
 
 
 function change_background_image(src) {
-    document.getElementById('backlog-container').style.backgroundImage = `url(${src})`;
+    if (document.getElementById('backlog-container')) {
+        document.getElementById('backlog-container').style.backgroundImage = `url(${src})`;
+    }
+    if (document.getElementById('bigscreen')) {
+        document.getElementById('bigscreen').style.backgroundImage = `url(${src})`;
+    }
+    if (document.getElementById('main')) {
+        document.getElementById('main').style.backgroundImage = `url(${src})`;
+    }
+    if (document.getElementById('help')) {
+        document.getElementById('help').style.backgroundImage = `url(${src})`;
+    }
 }
 
 function show_background_images() {

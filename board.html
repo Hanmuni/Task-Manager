@@ -25,26 +25,26 @@
         <div class="sidebar-mobil" w3-include-html="templates/sidebar_mobil.html"></div>
     </div>
 
-    <div class="bigscreen smallscreen">
+    <div class="bigscreen smallscreen" id="bigscreen">
         <div class="totalbox">
-            <h2> TO DO </h2>
+            <p class="totalbox-header"> TO DO </p>
             <div class="emptyboxes" id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event)"></div>
         </div>
 
         <div class="totalbox">
-            <h2> IN PROGRESS </h2>
+            <p class="totalbox-header"> IN PROGRESS </p>
             <div class="emptyboxes" id="inprogress" ondrop="moveTo('inprogress')" ondragover="allowDrop(event)">
             </div>
         </div>
 
         <div class="totalbox">
-            <h2> TESTING </h2>
+            <p class="totalbox-header"> TESTING </p>
             <div class="emptyboxes" id="testing" ondrop="moveTo('testing')" ondragover="allowDrop(event)">
             </div>
         </div>
 
         <div class="totalbox">
-            <h2> DONE </h2>
+            <p class="totalbox-header"> DONE </p>
             <div class="emptyboxes" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
         </div>
 
@@ -57,7 +57,7 @@
         </div>
 
     </div>
-
+    <div w3-include-html="templates/background_img.html"></div>
 </body>
 
 </html>

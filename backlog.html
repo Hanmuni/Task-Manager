@@ -17,10 +17,10 @@
 
 <body onload="init_backlog()">
     <div class="sidebar-container">
-        <div class="sidebar" w3-include-html="templates/sidebar.html" style="background-color: rgb(61, 58, 58);"></div>
+        <div class="sidebar" w3-include-html="templates/sidebar.html"></div>
     </div>
     <div id="sidebar-container-mobil" class="sidebar-container-mobil">
-        <div class="sidebar-mobil" w3-include-html="templates/sidebar_mobil.html" style="background-color: rgb(61, 58, 58);"></div>
+        <div class="sidebar-mobil" w3-include-html="templates/sidebar_mobil.html"></div>
     </div>
     <div id="backlog-container" class="backlog-container">
         <div id="backlog-subtitle-container" class="backlog-subtitle-container">
@@ -50,20 +50,9 @@
         <div id="backlog-task-container-mobil" class="backlog-task-container-mobil">
 
         </div>
+        <div w3-include-html="templates/background_img.html"></div>
+    </div>
 
-    </div>
-    <div class="brush-container" onclick="show_background_images()">
-        <img class="brush-image" src="./img/text-bg-color-48.png">
-    </div>
-    <div class="background-images-container d-none" id="background-images-container">
-        <img onclick="change_background_image('./img/mountain-g2998ce8c5_1280.jpg')" src="./img/mountain-g2998ce8c5_1280.jpg">
-        <img onclick="change_background_image('./img/ball-g8213a2e10_1280.jpg')" src="./img/ball-g8213a2e10_1280.jpg">
-        <img onclick="change_background_image('./img/mountains-g7b2d8ec30_1280.jpg')" src="./img/mountains-g7b2d8ec30_1280.jpg">
-        <img onclick="change_background_image('./img/forest-g41de178a8_1280.jpg')" src="./img/forest-g41de178a8_1280.jpg">
-        <img onclick="change_background_image('./img/maldives-g4081a95dc_1280.jpg')" src="./img/maldives-g4081a95dc_1280.jpg">
-        <img onclick="change_background_image('./img/post-it-notes-gbad018b7c_1280.jpg')" src="./img/post-it-notes-gbad018b7c_1280.jpg">
-        <img onclick="change_background_image('./img/tree-g2824e4fcd_1280.jpg')" src="./img/tree-g2824e4fcd_1280.jpg">
-    </div>
 
 </body>
 

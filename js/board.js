@@ -7,6 +7,8 @@ async function init_board() {
     load_current_user_local();
     await order_todos_ids();
     await updateHTML();
+    document.getElementById('sidebar-link-board').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
+    document.getElementById('sidebar-link-board').style.color = "black"
 }
 
 async function updateHTML() {
@@ -36,6 +38,7 @@ async function updateHTML() {
     for (let index = 0; index < testing.length; index++) {
         const element = testing[index];
         document.getElementById('testing').innerHTML += generateTodoHTML(element);
+
     }
 
     let done = todos.filter(t => t['status'] == 'done');
@@ -50,17 +53,17 @@ async function updateHTML() {
         `
 
     }
-    console.log(todos)
+    console.log(todos);
+    change_card_border_color();
 }
 
 function generateTodoHTML(element) {
     return `
-        <div draggable="true" id="${element['id']}" ondragstart="startDragging(${element['id']})" class="todo2">
+        <div draggable="true" id="todo${element['id']}" ondragstart="startDragging(${element['id']})" class="todo2">
             <div class="card-icon-title">${element['title']}</div>
             <div class="card-icons-container">
                 <div class="card-icons-left">
                     <p class="card-icon-user">${element['user'][0]['shortcut']}</p>
-                    <img class="card-icon-img" src="./img/view-details-24.png">
                     <div class="card-icon-calender-container">
                     <img class="card-icon-calender" src="./img/date-to-24.png">
                     <p>${element['date']}</p>
@@ -75,6 +78,20 @@ function generateTodoHTML(element) {
             </div>
         </div>
     `
+}
+
+function change_card_border_color() {
+    for (i = 0; i < todos.length; i++) {
+        if (todos[i].urgency == 'Low') {
+            document.getElementById(`todo${i}`).style.border = "3px solid green";
+        }
+        if (todos[i].urgency == 'Medium') {
+            document.getElementById(`todo${i}`).style.border = "3px solid yellow";
+        }
+        if (todos[i].urgency == 'High') {
+            document.getElementById(`todo${i}`).style.border = "3px solid red";
+        }
+    }
 }
 
 function startDragging(id) {

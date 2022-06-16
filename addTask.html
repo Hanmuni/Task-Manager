@@ -24,12 +24,7 @@
         <div class="sidebar-mobil" w3-include-html="templates/sidebar_mobil.html"></div>
     </div>
 
-    <main>
-        <div class="headline-section">
-            <div class="headline"> <b> Add Task </b> </div>
-            <div class="subheading"> Learning Management System Project </div>
-        </div>
-
+    <main id="main">
         <form onsubmit="event.preventDefault(), createTask()">
             <div class="add-task-container">
                 <div class="add-task-colum">
@@ -107,7 +102,7 @@
 
         </form>
     </main>
-
+    <div w3-include-html="templates/background_img.html"></div>
 </body>
 
 </html>
