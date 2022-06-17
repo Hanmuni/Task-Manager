@@ -1,10 +1,7 @@
 let currentDraggedElement;
 
 async function init_board() {
-    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
-    await includeHTML();
-    await loadAllTasks();
-    load_current_user_local();
+    await init();
     await order_todos_ids();
     await updateHTML();
     document.getElementById('sidebar-link-board').style.backgroundColor = "rgba(255, 255, 255, 0.6)"

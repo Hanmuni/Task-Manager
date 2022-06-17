@@ -20,10 +20,7 @@ let userList = [{
 ];
 
 async function init_addtask() {
-    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
-    await includeHTML();
-    await loadAllTasks();
-    await load_current_user_local();
+    await init();
     document.getElementById('sidebar-link-add-task').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
     document.getElementById('sidebar-link-add-task').style.color = "black";
     document.getElementById('main').style.backgroundImage = `url(${background_src})`;
@@ -146,9 +143,4 @@ function confirmUser() {
         alert('Select at least 1 user for your task');
     }
 
-}
-
-function deleteTask(position) {
-    tasks.splice(position, 1);
-    backend.setItem('tasks', JSON.stringify(tasks));
 }
