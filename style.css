@@ -18,7 +18,6 @@ main {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url(./img/mountain-g2998ce8c5_1280.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -140,7 +139,6 @@ main {
 .bigscreen {
     display: flex;
     justify-content: space-around;
-    background-image: url(./img/mountain-g2998ce8c5_1280.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -384,7 +382,6 @@ main {
     min-height: 100vh;
     padding-left: 75px;
     padding-right: 75px;
-    background-image: url(./img/mountain-g2998ce8c5_1280.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -957,7 +954,6 @@ select {
 .help-container {
     display: flex;
     justify-content: space-around;
-    background-image: url(./img/mountain-g2998ce8c5_1280.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

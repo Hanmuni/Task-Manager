@@ -8,7 +8,8 @@ async function init_board() {
     await order_todos_ids();
     await updateHTML();
     document.getElementById('sidebar-link-board').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
-    document.getElementById('sidebar-link-board').style.color = "black"
+    document.getElementById('sidebar-link-board').style.color = "black";
+    document.getElementById('bigscreen').style.backgroundImage = `url(${background_src})`;
 }
 
 async function updateHTML() {

@@ -25,7 +25,8 @@ async function init_addtask() {
     await loadAllTasks();
     await load_current_user_local();
     document.getElementById('sidebar-link-add-task').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
-    document.getElementById('sidebar-link-add-task').style.color = "black"
+    document.getElementById('sidebar-link-add-task').style.color = "black";
+    document.getElementById('main').style.backgroundImage = `url(${background_src})`;
 }
 
 function atLeastOneUserSelected() {

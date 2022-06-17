@@ -12,6 +12,7 @@ let profiles = [
 
 let current_user = [];
 let todos = [];
+let background_src;
 
 async function init() {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
@@ -32,16 +33,16 @@ async function loadAllTasks() {
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
     todos = JSON.parse(backend.getItem('todos')) || [];
-    
+    background_src = JSON.parse(backend.getItem('background_image')) || [];
 }
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
-    
+
     for (let i = 0; i < includeElements.length; i++) {
         const element = includeElements[i];
         file = element.getAttribute("w3-include-html");
-        
+
         let response = await fetch(file);
         if (response.ok) {
             element.innerHTML = await response.text();
@@ -70,7 +71,8 @@ async function init_backlog() {
     await render_backlog();
     await render_backlog_mobil();
     document.getElementById('sidebar-link-backlog').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
-    document.getElementById('sidebar-link-backlog').style.color = "black"
+    document.getElementById('sidebar-link-backlog').style.color = "black";
+    document.getElementById('backlog-container').style.backgroundImage = `url(${background_src})`;
 }
 
 async function render_backlog() {
@@ -170,7 +172,7 @@ async function render_backlog_mobil() {
 function add_category_color_mobil(i) {
     if (tasks[i].category == 'HTML') {
         document.getElementById(`details-mobil${i}`).classList.add('html-color');
-        
+
     }
     if (tasks[i].category == 'CSS') {
         document.getElementById(`details-mobil${i}`).classList.add('css-color');
@@ -183,7 +185,7 @@ function add_category_color_mobil(i) {
 function add_category_color(i) {
     if (tasks[i].category == 'HTML') {
         document.getElementById(`backlog-task-details${i}`).classList.add('html-color');
-        
+
     }
     if (tasks[i].category == 'CSS') {
         document.getElementById(`backlog-task-details${i}`).classList.add('css-color');
@@ -219,7 +221,7 @@ function add_urgency_color_mobil(i) {
 
 function create_todo(position) {
     let todo = {
-        
+
         'id': '',
         'title': tasks[position].title,
         'category': tasks[position].category,
@@ -232,7 +234,7 @@ function create_todo(position) {
     todos.push(todo);
     tasks.splice(position, 1);
     backend.setItem('tasks', JSON.stringify(tasks));
-    
+
     let todosAsString = JSON.stringify(todos);
     backend.setItem('todos', todosAsString);
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
@@ -301,7 +303,8 @@ async function init_help() {
     await loadAllTasks();
     await load_current_user_local();
     document.getElementById('sidebar-link-help').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
-    document.getElementById('sidebar-link-help').style.color = "black"
+    document.getElementById('sidebar-link-help').style.color = "black";
+    document.getElementById('help-container').style.backgroundImage = `url(${background_src})`;
 }
 
 function remove_aktive_help_class() {
@@ -370,9 +373,10 @@ function change_background_image(src) {
     if (document.getElementById('main')) {
         document.getElementById('main').style.backgroundImage = `url(${src})`;
     }
-    if (document.getElementById('help')) {
-        document.getElementById('help').style.backgroundImage = `url(${src})`;
+    if (document.getElementById('help-container')) {
+        document.getElementById('help-container').style.backgroundImage = `url(${src})`;
     }
+    backend.setItem('background_image', JSON.stringify(src));
 }
 
 function show_background_images() {
