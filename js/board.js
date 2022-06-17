@@ -242,6 +242,7 @@ function change_task(id) {
     todos[id].description = document.getElementById('description').value;
     todos[id].date = document.getElementById('date').value;
     todos[id].urgency = document.getElementById('urgency').value;
+    todos[id].user = selectedUsers;
 
     backend.setItem('todos', JSON.stringify(todos));
     updateHTML();
@@ -252,19 +253,15 @@ function change_task(id) {
 
 function selectUser_board(i) {
 
-    // for (let u = 0; u < userList.length; u++) {
-    for (let s = 0; s < selectedUsers.length; s++) {
-        if (userList[i].name == selectedUsers[s].name) {
-            document.getElementById(`selectedUser${i}`).style = '';
-            // selectedUsers.splice(i, 1);
-        } else {
-            document.getElementById(`selectedUser${i}`).style = 'background-color: #2D3E97; color: white;';
-
-            selectedUsers.push(userList[i]);
+    for (let u = 0; u < userList.length; u++) {
+        for (let s = 0; s < selectedUsers.length; s++) {
+            if (userList[i].name == selectedUsers[s].name) {
+                document.getElementById(`selectedUser${i}`).style = '';
+                selectedUsers.splice([s], 1);
+                return;
+            }
         }
-
-        console.log(userList[i].name);
-        console.log(selectedUsers[s].name);
     }
-    // }
+    document.getElementById(`selectedUser${i}`).style = 'background-color: #2D3E97; color: white;';
+    selectedUsers.push(userList[i]);
 }
