@@ -267,10 +267,12 @@ main {
         display: flex;
         flex-direction: column;
     }
+
     .totalbox {
         margin-left: 10px;
         margin-right: 10px;
     }
+
     .emptyboxes {
         width: 54vw;
         height: 40vh;
@@ -934,7 +936,7 @@ select {
     margin-left: 8px;
     margin-right: 8px;
     outline: none;
-    border: none!important;
+    border: none !important;
 }
 
 #date {
@@ -1042,10 +1044,12 @@ select {
     body {
         flex-direction: column;
     }
+
     main {
         flex-direction: column;
         justify-content: flex-start;
     }
+
     .sidebar {
         z-index: 2;
         width: 100vw;
@@ -1056,38 +1060,48 @@ select {
         font-weight: bold;
         display: none;
     }
+
     .sidebar-container {
         display: none;
         position: sticky;
         z-index: 2;
     }
+
     .link {
         font-size: 36px;
     }
+
     .navigation-bar {
         height: auto;
     }
+
     .sidebar-logo img {
         width: 100px;
         height: 100px;
     }
+
     .sidebar-logo {
         padding: 0;
     }
+
     .backlog-container {
         min-height: 90vh;
         width: 100vw;
         padding: 0;
     }
+
     #backlog-task-container {
         display: none;
     }
+
     .backlog-task {
         display: none;
     }
+
     .backlog-subtitle-container {
         display: none;
     }
+
     .sidebar-mobil {
         height: 10vh;
         width: 100vw;
@@ -1096,71 +1110,93 @@ select {
         align-items: center;
         justify-content: space-between;
     }
+
     .sidebar-logo-mobil img {
         height: 6vh;
         padding-left: 30px;
     }
+
     .sidebar-menu-mobil img {
         height: 4vh;
         object-fit: contain;
         padding-right: 30px;
     }
+
     .sidebar-back-arrow {
         display: block;
     }
+
     .welcome-quicklinks-container {
         width: 100vw;
         height: 90vh;
         text-align: center;
     }
+
     .welcome-help img {
         height: 30vh;
         width: 60vw;
     }
+
     .headline-section {
         display: none;
     }
+
     .headline,
     .subheading {
         margin-left: 0px;
         margin-top: 0;
     }
+
     .headline {
         font-size: 32px;
     }
+
     .login-container {
         width: 70vw;
     }
+
     .help-container {
-        width: 100vw;
+        width: auto;
         margin: 0;
+        padding: 8px;
     }
+
     .help-headline {
         height: 10vh;
         display: flex;
         justify-content: center;
-        flex-wrap: wrap;
-        font-size: 18px;
+        flex-wrap: nowrap;
+        font-size: 14px;
+        margin-top: auto;
     }
+
     .help-headline p {
-        width: 28%;
+        width: auto;
         padding: 5px 5px;
         text-align: center;
     }
+
     .help-content-container {
-        height: 80vh;
+        height: auto;
     }
+
     .help-choosed-content {
-        height: 70vh;
+        height: auto;
+        margin-top: 8px;
     }
+
     .help-choosed-content p {
-        width: 80%;
-        font-size: 16px;
+        width: auto;
+        font-size: 14px;
+        margin-top: 8px;
+        padding: 8px;
     }
+
     .help-image {
         width: 100%;
         height: 50%;
     }
+
     .brush-container {
         position: fixed;
         display: none;
@@ -1171,6 +1207,7 @@ select {
         bottom: auto;
         transform: translate(0, 0);
     }
+
     .background-images-container {
         z-index: 2;
         width: 100vw;
@@ -1178,13 +1215,16 @@ select {
         bottom: 0;
         transform: translate(0, 0);
     }
+
     .background-images-container img {
         width: 100px;
         height: 8vh;
     }
+
     .backlog-task-container-mobil {
         display: flex;
     }
+
     .add-task-colum {
         align-items: center;
         display: flex;
@@ -1192,14 +1232,17 @@ select {
         margin-top: 0;
         margin-bottom: 0;
     }
+
     .add-task-headline {
         margin-top: 0;
         margin: 8px;
     }
+
     .add-task-headline p {
         margin-bottom: 0;
         font-size: 16px;
     }
+
     .add-task-container {
         display: flex;
         flex-direction: column;
@@ -1207,32 +1250,40 @@ select {
         text-align: center;
         margin: 8px;
     }
+
     .add-task-input {
         width: 200px;
         height: 18px;
     }
+
     .add-task-select {
         width: 200px;
         height: 18px;
     }
+
     .add-task-description {
         width: 200px;
         height: 60px;
     }
+
     .add-task-assign {
         margin: 0;
     }
+
     .add-task-user-image {
         width: 32px;
         height: 32px;
     }
+
     .cancel-btn {
         width: 70px;
         height: 25px;
     }
+
     .create-btn {
         height: 25px;
     }
+
     .add-task-final {
         margin: 8px;
     }
