@@ -1012,7 +1012,7 @@ select {
 .help-image {
     height: 60%;
     width: 60%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .help-choosed-content p {

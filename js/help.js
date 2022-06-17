@@ -27,7 +27,7 @@ function render_add_task_at_help() {
     remove_aktive_help_class();
     document.getElementById('help-headline-add-task').classList.add('aktive-help');
     document.getElementById('help-choosed-image').classList.remove('d-none');
-    document.getElementById('help-choosed-image').src = './img/sunset-gf546bd15e_1280.jpg';
+    document.getElementById('help-choosed-image').src = './img/addTaskHelp.png';
     document.getElementById('help-choosed-text').innerHTML = `In the 'Add Task' area you can add individual tasks.<br>
     Enter title, category, description, due date, importance and assign the task to one or more user/s. All fields have to been filled.`
 }
