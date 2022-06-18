@@ -1,23 +1,30 @@
 let selectedUsers = [];
 let tasks = [];
 let userList = [{
-    'name': 'Ole Engelhardt',
-    'user-image': './img/p36.jpg',
-    'email': 'ole.engelhardt@email.com',
-    'shortcut': 'OE',
-},
-{
-    'name': 'Fabian Kalus',
-    'user-image': './img/p24.jpg',
-    'email': 'fabian.kalus@email.com',
-    'shortcut': 'FK',
-}, {
-    'name': 'Hong Hanh Chu',
-    'user-image': './img/HongHanh.jpg',
-    'email': 'hong-hanh.chu@email.com',
-    'shortcut': 'HHC',
-}
+        'name': 'Ole Engelhardt',
+        'user-image': './img/p36.jpg',
+        'email': 'ole.engelhardt@email.com',
+        'shortcut': 'OE',
+    },
+    {
+        'name': 'Fabian Kalus',
+        'user-image': './img/p24.jpg',
+        'email': 'fabian.kalus@email.com',
+        'shortcut': 'FK',
+    }, {
+        'name': 'Hong Hanh Chu',
+        'user-image': './img/HongHanh.jpg',
+        'email': 'hong-hanh.chu@email.com',
+        'shortcut': 'HHC',
+    }
 ];
+
+async function init_addtask() {
+    await init();
+    document.getElementById('sidebar-link-add-task').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
+    document.getElementById('sidebar-link-add-task').style.color = "black";
+    document.getElementById('main').style.backgroundImage = `url(${background_src})`;
+}
 
 function atLeastOneUserSelected() {
     return selectedUsers.length > 0;
@@ -28,8 +35,7 @@ function createTask() {
         writeTask();
         saveTaskToBackend();
         resetTask();
-    }
-    else {
+    } else {
         alert('Select at least 1 user for your task');
     }
 
@@ -70,6 +76,7 @@ function resetTask() {
     selectedUsers = [];
 
 }
+
 function assignTo() {
 
     document.getElementById('assign-section').classList.add('d-none');
@@ -86,10 +93,15 @@ function displayUsersList() {
 
         let userName = userList[i]['name'];
 
-
-        document.getElementById('assignedToUser').innerHTML += ` 
-    <p onclick="selectUser(${i})" id="selectedUser${i}"> ${userName} </p>   
+        if (document.getElementById('bigscreen')) {
+            document.getElementById('assignedToUser').innerHTML += ` 
+            <p onclick="selectUser_board(${i})" id="selectedUser${i}"> ${userName} </p>   
+             `;
+        } else {
+            document.getElementById('assignedToUser').innerHTML += ` 
+        <p onclick="selectUser(${i})" id="selectedUser${i}">${userName}</p>   
          `;
+        }
     }
 
     document.getElementById('assignConfirm').innerHTML = `<p onclick="confirmUser()"> Confirm</p>`;
@@ -103,9 +115,7 @@ function selectUser(i) {
     if (selectedUser == -1) {
         document.getElementById(selectionId).style = 'background-color: #2D3E97; color: white;';
         selectedUsers.push(userList[i]);
-    }
-
-    else {
+    } else {
         document.getElementById(selectionId).style = '';
         selectedUsers.splice(selectedUser, 1);
     }
@@ -129,14 +139,8 @@ function confirmUser() {
         document.getElementById('add-user-btn').innerHTML = `
             <button id="add-user-btn" type="button" class="add-user-btn" onclick="assignTo()"> </button>
             `;
-    }
-
-    else {
+    } else {
         alert('Select at least 1 user for your task');
     }
-}
 
-function deleteTask(position) {
-    tasks.splice(position, 1);
-    backend.setItem('tasks', JSON.stringify(tasks));
 }
