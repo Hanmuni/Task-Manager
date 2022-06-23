@@ -25,19 +25,19 @@ function add_archive_html(i) {
             </div>
             <div class=""></div>
         </div>
-        <div class="backlog-10">
+        <div class="backlog-15">
             <p>${archivs[i].title}</p>
         </div>
         <div class="backlog-15">
             <p>${archivs[i].date}</p>
         </div>
-        <div class="backlog-15 details" style="overflow: hidden;">
+        <div class="backlog-20 details" style="overflow: hidden;">
             <p>${archivs[i].description}</p>
         </div>
         <div  class="backlog-15">
             <p>${archivs[i].category}</p>
         </div>
-        <div onclick="deleteArchiv(${i})" class="backlog-10">
+        <div onclick="deleteArchiv(${i})" class="backlog-15">
             <p class="cursor"><img src="./img/trash-2-32.png"></p>
         </div>
     </div> 
@@ -89,7 +89,7 @@ function add_archive_html_mobile(i) {
             <div onclick="deleteArchiv(${i})" class="bl-delete">
                 <p>DELETE</p>
                 <img src="./img/trash-2-32.png">
-                </div>
+            </div>
         </div>
     </div>    
     `

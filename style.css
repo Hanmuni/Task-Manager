@@ -974,7 +974,7 @@ select {
     justify-content: space-around;
     align-items: center;
     font-weight: bold;
-    margin-top: 50px;
+    margin-top: 40px;
     height: 60px;
     background-color: rgb(40, 40, 40);
     color: white;
@@ -1011,18 +1011,20 @@ select {
     height: 60%;
     width: 60%;
     object-fit: contain;
+    margin-top: 20px;
 }
 
 #help-choosed-text {
-    overflow: auto;
+    overflow: hidden;
     font-weight: bold;
-    width: 80%;
-    background-color: rgb(40, 40, 40);
+    width: 100%;
+    background-color: white;
     border-radius: 20px;
     padding: 20px 30px;
     padding-right: 20px;
     border: 1px solid rgba(255, 255, 255, 0.253);
-    color: white;
+    color: rgb(40, 40, 40);
+    margin-top: 20px;
 }
 
 
