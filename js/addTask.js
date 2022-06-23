@@ -142,5 +142,4 @@ function confirmUser() {
     } else {
         alert('Select at least 1 user for your task');
     }
-
 }
