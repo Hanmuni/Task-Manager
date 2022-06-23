@@ -18,7 +18,7 @@ function render_first_steps_at_help() {
     remove_aktive_help_class();
     document.getElementById('help-headline-first-steps').classList.add('aktive-help');
     document.getElementById('help-choosed-image').classList.remove('d-none');
-    document.getElementById('help-choosed-image').src = './img/board-g57184c685_1280.jpg';
+    document.getElementById('help-choosed-image').src = './img/first_steps_help_section.png';
     document.getElementById('help-choosed-text').innerHTML = `Welcome to the join page of: Ole Engelhardt, Hong Hanh Chu and Fabian Kalus.<br>
     This is a project management tool based on the kanban-methode. It´s the easiest way to manage your projects and tasks. Try it out.`
 }
