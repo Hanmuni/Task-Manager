@@ -5,6 +5,10 @@ let todos = [];
 let archivs = [];
 let background_src;
 
+
+/**
+ * standart initialize function, used in every html 
+ */
 async function init() {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     await includeHTML();
@@ -12,6 +16,9 @@ async function init() {
     await load_current_user_local();
 }
 
+/**
+ * load all backlog data
+ */
 async function loadAllTasks() {
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
@@ -20,6 +27,9 @@ async function loadAllTasks() {
     background_src = JSON.parse(backend.getItem('background_image')) || [];
 }
 
+/**
+ * includes the templates
+ */
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
 
@@ -36,14 +46,19 @@ async function includeHTML() {
     }
 }
 
-// MOBIL
-
+/**
+ * open mobil sidebar
+ */
 function open_sidebar_mobil() {
     document.querySelector('.sidebar-container').style.display = 'flex';
     document.querySelector('.sidebar').style.display = 'flex';
     document.querySelector('.brush-container').style.display = 'flex';
 }
 
+// MOBIL
+/**
+ * open mobil sidebar
+ */
 function close_sidebar_mobil() {
     document.querySelector('.sidebar-container').style.display = 'none';
     document.querySelector('.sidebar').style.display = 'none';
@@ -51,7 +66,9 @@ function close_sidebar_mobil() {
 }
 
 // BACKGROUND IMAGE
-
+/**
+ * change backgroundimage in every html document
+ */
 function change_background_image(src) {
     if (document.getElementById('backlog-container')) {
         document.getElementById('backlog-container').style.backgroundImage = `url(${src})`;
@@ -68,6 +85,9 @@ function change_background_image(src) {
     backend.setItem('background_image', JSON.stringify(src));
 }
 
+/**
+ * open and close Backgroundimage container at sidebar
+ */
 function show_background_images() {
     document.getElementById('background-images-container').classList.toggle('d-none');
 }

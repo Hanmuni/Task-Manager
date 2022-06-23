@@ -1,3 +1,6 @@
+/**
+ * users for login example
+ */
 // Profil = [proilnummer Name, Bild, Usesrname, Passwort, E-Mail]
 let profiles = [
     ['profil00', 'GUEST', './img/person-g086296c94_640.png', 'GUEST', 'PASSWORT', '123@mailvorbei.com'],
@@ -8,26 +11,26 @@ let profiles = [
     ['profil05', 'Victor Vorbild', './img/p36.jpg', 'Victory', 'venividi', 'beispiel123@mail.com']
 ]
 
-
+/**
+ * you can use the enter button to login
+ */
 document.addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
         check_login();
     }
 });
 
-function change_passwort_button_type() {
-    if (document.getElementById('login-passwort').type == 'password') {
-        document.getElementById('login-passwort').type = 'text';
-    } else {
-        document.getElementById('login-passwort').type = 'password'
-    }
-}
-
+/**
+ * fill the value of the login inputs with the data of the guest user
+ */
 function guest_login() {
     document.getElementById('login-username').value = profiles[0][3];
     document.getElementById('login-passwort').value = profiles[0][4];
 }
 
+/**
+ * check the input fields, if it´s a correct username and if this name matches with the password
+ */
 function check_login() {
     let input_user_field = document.getElementById('login-username').value;
     let input_passwort_field = document.getElementById('login-passwort').value;
@@ -48,11 +51,17 @@ function check_login() {
     alert('Der eingebene Benutzername ist nicht vergeben.')
 }
 
+/**
+ * save the current user in local storage
+ */
 function save_current_user_local() {
     let current_userAsText = JSON.stringify(current_user);
     localStorage.setItem('current_user', current_userAsText);
 }
 
+/**
+ * show the current user image in the sidebar
+ */
 async function load_current_user_local() {
     let current_userAsText = localStorage.getItem('current_user');
     if (current_userAsText) {

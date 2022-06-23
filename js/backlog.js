@@ -1,3 +1,6 @@
+/**
+ * initialize backlog page
+ */
 async function init_backlog() {
     await init();
     await render_backlog();
@@ -7,6 +10,10 @@ async function init_backlog() {
     document.getElementById('backlog-container').style.backgroundImage = `url(${background_src})`;
 }
 
+
+/**
+ * render backlog page elemente from backend saved as tasks
+ */
 async function render_backlog() {
     document.getElementById('backlog-task-container').innerHTML = '';
     for (let i = 0; i < tasks.length; i++) {
@@ -22,6 +29,11 @@ async function render_backlog() {
     }
 }
 
+/**
+ * add html code to the backlog elements
+ * @param {number} i number of the elemnte in the JSON tasks
+ * 
+ */
 function add_backlog_html(i) {
     return `
     <div id="backlog-task${i}" class="backlog-task">
@@ -53,11 +65,21 @@ function add_backlog_html(i) {
     `
 }
 
+/**
+ * html code of users names
+ * @param {number} i number of the elemnte in the JSON tasks
+ * @param {number} j number of the amount of users the task i have
+ */
 function add_backlog_task_name_html(i, j) {
     return `<p class="" > ${tasks[i].user[j].name} </p>  
     `
 }
 
+
+/**
+ * change the color of the category word corresponding to the category
+ * @param {number} i number of the elemnte in the JSON tasks
+ */
 function add_category_color(i) {
     if (tasks[i].category == 'HTML') {
         document.getElementById(`backlog-task-category${i}`).classList.add('html-color');
@@ -71,6 +93,10 @@ function add_category_color(i) {
     }
 }
 
+/**
+ * change the color of the border left and right corresponding to the urgency
+ * @param {number} i number of the elemnte in the JSON tasks
+ */
 function add_urgency_color(i) {
     if (tasks[i].urgency == 'High') {
         document.getElementById(`backlog-task${i}`).classList.add('urc-high');
@@ -83,6 +109,10 @@ function add_urgency_color(i) {
     }
 }
 
+/**
+ * move a task from the backlog to the board. Now it´s change from a task to a todo. 
+ * @param {number} position number of the elemnte in the JSON tasks
+ */
 function create_todo(position) {
     let todo = {
         'id': '',
@@ -97,15 +127,16 @@ function create_todo(position) {
     todos.push(todo);
     tasks.splice(position, 1);
     backend.setItem('tasks', JSON.stringify(tasks));
-
     let todosAsString = JSON.stringify(todos);
     backend.setItem('todos', todosAsString);
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
     console.log(todos);
 }
 
-
-
+/**
+ * delete the selcted array at tasks
+ *@param {number} position number of the elemnte in the JSON tasks
+ */
 function deleteTask(position) {
     tasks.splice(position, 1);
     backend.setItem('tasks', JSON.stringify(tasks));
@@ -113,6 +144,9 @@ function deleteTask(position) {
 
 // MOBIL BACKLOG
 
+/**
+ * initialize backlog page for mobil
+ */
 async function render_backlog_mobil() {
     document.getElementById('backlog-task-container-mobil').innerHTML = '';
     for (let i = 0; i < tasks.length; i++) {
@@ -128,6 +162,11 @@ async function render_backlog_mobil() {
     }
 }
 
+
+/**
+ * render html code for mobil backlog
+ * @param {number} i number of the elemnte in the JSON tasks 
+ */
 function add_backlog_html_mobil(i) {
     return `
     <div class="backlog-one-task-container-mobil" id="backlog-one-task-container-mobil${i}">
@@ -166,11 +205,20 @@ function add_backlog_html_mobil(i) {
     `
 }
 
+/**
+ * html code of users names - for mobil
+ * @param {number} i number of the elemnte in the JSON tasks
+ * @param {number} j number of the amount of users the task i have
+ */
 function add_backlog_task_name_html_mobil(i, j) {
     return `<p class="" > ${tasks[i].user[j].name} </p> </p>  
     `
 }
 
+/**
+ * change the color of the category word corresponding to the category - for mobil
+ * @param {number} i number of the elemnte in the JSON tasks
+ */
 function add_category_color_mobil(i) {
     if (tasks[i].category == 'HTML') {
         document.getElementById(`details-mobil${i}`).classList.add('html-color');
@@ -183,7 +231,10 @@ function add_category_color_mobil(i) {
         document.getElementById(`details-mobil${i}`).classList.add('javascript-color');
     }
 }
-
+/**
+ * change the color of the border left and right corresponding to the urgency - for mobil
+ * @param {number} i number of the elemnte in the JSON tasks
+ */
 function add_urgency_color_mobil(i) {
     if (tasks[i].urgency == 'High') {
         document.getElementById(`backlog-one-task-container-mobil${i}`).classList.add('urc-high');

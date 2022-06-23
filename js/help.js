@@ -1,3 +1,6 @@
+/**
+ * initialize help
+ */
 async function init_help() {
     await init();
     document.getElementById('sidebar-link-help').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
@@ -5,6 +8,9 @@ async function init_help() {
     document.getElementById('help-container').style.backgroundImage = `url(${background_src})`;
 }
 
+/**
+ * remove aktive from every part in the help header
+ */
 function remove_aktive_help_class() {
     document.getElementById('help-headline-first-steps').classList.remove('aktive-help');
     document.getElementById('help-headline-add-task').classList.remove('aktive-help');
@@ -14,6 +20,9 @@ function remove_aktive_help_class() {
     document.getElementById('help-headline-archiv').classList.remove('aktive-help');
 }
 
+/**
+ * add first steps html and image
+ */
 function render_first_steps_at_help() {
     remove_aktive_help_class();
     document.getElementById('help-headline-first-steps').classList.add('aktive-help');
@@ -23,6 +32,9 @@ function render_first_steps_at_help() {
     This is a project management tool based on the kanban-methode. It´s the easiest way to manage your projects and tasks. Try it out.`
 }
 
+/**
+ * add add tasks html and image
+ */
 function render_add_task_at_help() {
     remove_aktive_help_class();
     document.getElementById('help-headline-add-task').classList.add('aktive-help');
@@ -32,6 +44,9 @@ function render_add_task_at_help() {
     Enter title, category, description, due date, importance and assign the task to one or more user/s. All fields have to been filled.`
 }
 
+/**
+ * add backlog html and image
+ */
 function render_backlog_at_help() {
     remove_aktive_help_class();
     document.getElementById('help-headline-backlog').classList.add('aktive-help');
@@ -42,6 +57,9 @@ function render_backlog_at_help() {
     The urgency of the task you can see at the left and right border. The colors are assigned according to the traffic-light-system.`
 }
 
+/**
+ * add board html and image
+ */
 function render_board_at_help() {
     remove_aktive_help_class();
     document.getElementById('help-headline-board').classList.add('aktive-help');
@@ -54,6 +72,9 @@ function render_board_at_help() {
     `;
 }
 
+/**
+ * add archiv html and image
+ */
 function render_archiv_at_help() {
     remove_aktive_help_class();
     document.getElementById('help-headline-archiv').classList.add('aktive-help');
@@ -63,6 +84,9 @@ function render_archiv_at_help() {
     `;
 }
 
+/**
+ * add impressum and datenschutz text
+ */
 function render_impressum_at_help() {
     remove_aktive_help_class();
     document.getElementById('help-headline-impressum').classList.add('aktive-help');
@@ -100,7 +124,5 @@ function render_impressum_at_help() {
 <h2>Fragen an den Datenschutzbeauftragten</h2>
 <p>Wenn Sie Fragen zum Datenschutz haben, schreiben Sie uns bitte eine E-Mail oder wenden Sie sich direkt an die für den Datenschutz verantwortliche Person in unserer Organisation:</p>
 <p>Fabian Kalus</p>
-<p><em>Die Datenschutzerklärung wurde mithilfe der activeMind AG erstellt, den Experten für <a href="https://www.activemind.de/datenschutz/datenschutzbeauftragter/" target="_blank" rel="noopener">externe Datenschutzbeauftragte</a> (Version #2020-09-30).</em></p>
-    
-    `
+<p><em>Die Datenschutzerklärung wurde mithilfe der activeMind AG erstellt, den Experten für <a href="https://www.activemind.de/datenschutz/datenschutzbeauftragter/" target="_blank" rel="noopener">externe Datenschutzbeauftragte</a> (Version #2020-09-30).</em></p>y    `
 }

@@ -1,5 +1,8 @@
 let currentDraggedElement;
 
+/**
+ * initialize board
+ */
 async function init_board() {
     await init();
     await order_todos_ids();
@@ -9,54 +12,47 @@ async function init_board() {
     document.getElementById('bigscreen').style.backgroundImage = `url(${background_src})`;
 }
 
+/**
+ *  sort the todos in the differt tabel-columns at board
+ */
 async function updateHTML() {
-
     let todo = todos.filter(t => t['status'] == 'todo');
-
     document.getElementById('todo').innerHTML = '';
-
     for (let index = 0; index < todo.length; index++) {
         const element = todo[index];
         document.getElementById('todo').innerHTML += generateTodoHTML(element);
     }
 
     let inprogress = todos.filter(t => t['status'] == 'inprogress');
-
     document.getElementById('inprogress').innerHTML = '';
-
     for (let index = 0; index < inprogress.length; index++) {
         const element = inprogress[index];
         document.getElementById('inprogress').innerHTML += generateTodoHTML(element);
     }
 
     let testing = todos.filter(t => t['status'] == 'testing');
-
     document.getElementById('testing').innerHTML = '';
-
     for (let index = 0; index < testing.length; index++) {
         const element = testing[index];
         document.getElementById('testing').innerHTML += generateTodoHTML(element);
-
     }
 
     let done = todos.filter(t => t['status'] == 'done');
-
     document.getElementById('done').innerHTML = '';
-
     for (let index = 0; index < done.length; index++) {
         const element = done[index];
         document.getElementById('done').innerHTML += generateTodoHTML(element);
         document.getElementById(`card-icon-trash${element['id']}`).innerHTML = `
         <img onclick="create_archiv(${element['id']})" src="./img/archive-icon-64.png">
         `
-
-
     }
-    console.log(todos);
     change_card_border_color();
-    console.log(selectedUsers)
 }
 
+/**
+ * render html code of the tabels
+ * @param {number} element number of the elemnte in the JSON todos 
+ */
 function generateTodoHTML(element) {
     return `
         <div draggable="true" id="todo${element['id']}" ondragstart="startDragging(${element['id']})" class="todo2">
@@ -80,6 +76,9 @@ function generateTodoHTML(element) {
     `
 }
 
+/**
+ * change the color of the border left and right corresponding to the urgency
+ */
 function change_card_border_color() {
     for (i = 0; i < todos.length; i++) {
         if (todos[i].urgency == 'Low') {
@@ -94,14 +93,26 @@ function change_card_border_color() {
     }
 }
 
+/**
+ * start dragging of the element
+ * @param {number} id number of the elemnte in the JSON todos 
+ */
 function startDragging(id) {
     currentDraggedElement = id;
 }
 
+/**
+ * allow drop of the element
+ * @param {number} ev number of the elemnte in the JSON todos
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+/**
+ * change the status of the todo element and save this in backlog, so it can move per drag and drop
+ * @param {word} status status of the element
+ */
 function moveTo(status) {
     todos[currentDraggedElement]['status'] = status;
     updateHTML();
@@ -110,12 +121,20 @@ function moveTo(status) {
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
 }
 
+
+/**
+ * gives id to all todos (important to do this every time the page ist loaded because of the delete function)
+ */
 async function order_todos_ids() {
     for (let o = 0; o < todos.length; o++) {
         todos[o].id = o;
     }
 }
 
+/**
+ * delete a todo element
+ * @param {number} position number of the elemnte in the JSON todos
+ */
 async function delete_todo(position) {
     todos.splice(position, 1);
     backend.setItem('todos', JSON.stringify(todos));
@@ -123,6 +142,10 @@ async function delete_todo(position) {
     updateHTML();
 }
 
+/**
+ *  move a todo from the board to the archiv. Now it´s change from a todo to a archiv. 
+ * @param {number} position number of the elemnte in the JSON todos
+ */
 async function create_archiv(position) {
     let archiv = {
         'title': todos[position].title,
@@ -140,25 +163,26 @@ async function create_archiv(position) {
     let archivsAsString = JSON.stringify(archivs);
     backend.setItem('archivs', archivsAsString);
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
-
     await order_todos_ids();
     updateHTML();
-
-    console.log(archivs);
 }
 
 // DIALOG
-
+/**
+ * close the revise dialog 
+ */
 function close_dialog() {
     document.getElementById('dialog-container').classList.add('d-none');
     selectedUsers = [];
 }
 
+/**
+ * open the revise dialog 
+ */
 function open_dialog(id) {
     document.getElementById('dialog-container').classList.remove('d-none');
     document.getElementById('inner-dialog').innerHTML = '';
     document.getElementById('inner-dialog').innerHTML = `
-    
         <div class="add-task-container">
             <div class="add-task-colum">
                 <div class="add-task-headline">
@@ -211,8 +235,7 @@ function open_dialog(id) {
                     <button onclick="change_task(${id})" class="create-btn"> CHANGE TASK </button>
                 </div>
             </div>
-        </div>
-    
+        </div>    
     `;
     document.getElementById('title').value = todos[id].title;
     document.getElementById('category').value = todos[id].category;
@@ -236,10 +259,12 @@ function open_dialog(id) {
             <img class="add-task-user-image" src="${selectedUsers[i]['user-image']}">
             `;
     }
-
-    console.log(selectedUsers);
 }
 
+/**
+ * change choosen todo in backlog based on the information the user entered by the revise dialog
+ * @param {number} id number of the elemnte in the JSON todos
+ */
 function change_task(id) {
     todos[id].title = document.getElementById('title').value;
     todos[id].category = document.getElementById('category').value;
@@ -255,9 +280,11 @@ function change_task(id) {
     selectedUsers = [];
 }
 
-
+/**
+ * change the users that are selected for the todo
+ * @param {*} i number of the elemnte in the JSON todos
+ */
 function selectUser_board(i) {
-
     for (let u = 0; u < userList.length; u++) {
         for (let s = 0; s < selectedUsers.length; s++) {
             if (userList[i].name == selectedUsers[s].name) {
