@@ -19,6 +19,9 @@ let userList = [{
     }
 ];
 
+/**
+ * initialize addtask
+ */
 async function init_addtask() {
     await init();
     document.getElementById('sidebar-link-add-task').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
@@ -30,6 +33,9 @@ function atLeastOneUserSelected() {
     return selectedUsers.length > 0;
 }
 
+/**
+ * create task element
+ */
 function createTask() {
     if (atLeastOneUserSelected()) {
         writeTask();
@@ -38,9 +44,11 @@ function createTask() {
     } else {
         alert('Select at least 1 user for your task');
     }
-
 }
 
+/**
+ * read the values of the input fields and add them as an task element to tasks
+ */
 function writeTask() {
     let title = document.getElementById('title').value;
     let category = document.getElementById('category').value;
@@ -56,17 +64,21 @@ function writeTask() {
         'urgency': urgency,
         'user': selectedUsers,
     };
-
     tasks.push(task);
 }
 
+/**
+ * save tasks in backend
+ */
 function saveTaskToBackend() {
     let tasksAsString = JSON.stringify(tasks);
     backend.setItem('tasks', tasksAsString);
 }
 
+/**
+ * reset value of the input fields
+ */
 function resetTask() {
-
     document.getElementById('title').value = ``;
     document.getElementById('category').value = ``;
     document.getElementById('description').value = ``;
@@ -74,25 +86,27 @@ function resetTask() {
     document.getElementById('urgency').value = ``;
     document.getElementById('selectedImage').innerHTML = `<img src="/img/change-user.png" class="add-task-user-image">`;
     selectedUsers = [];
-
 }
 
+/**
+ * open assigned user list
+ */
 function assignTo() {
-
     document.getElementById('assign-section').classList.add('d-none');
     document.getElementById('add-task-final').classList.add('d-none');
     displayUsersList();
 }
 
+/**
+ * show assigned to user list
+ */
 function displayUsersList() {
 
     document.getElementById('user-list').classList.remove('d-none');
     document.getElementById('assignedToUser').innerHTML = ``;
 
     for (let i = 0; i < userList.length; i++) {
-
         let userName = userList[i]['name'];
-
         if (document.getElementById('bigscreen')) {
             document.getElementById('assignedToUser').innerHTML += ` 
             <p onclick="selectUser_board(${i})" id="selectedUser${i}"> ${userName} </p>   
@@ -103,11 +117,13 @@ function displayUsersList() {
          `;
         }
     }
-
     document.getElementById('assignConfirm').innerHTML = `<p onclick="confirmUser()"> Confirm</p>`;
-
 }
 
+/**
+ * show which user are selected
+ * @param {number} i number of selected users
+ */
 function selectUser(i) {
     let selectedUser = selectedUsers.indexOf(userList[i]);
     let selectionId = "selectedUser" + i;
@@ -121,6 +137,9 @@ function selectUser(i) {
     }
 }
 
+/**
+ * confirm the selected users
+ */
 function confirmUser() {
 
     if (atLeastOneUserSelected()) {
@@ -129,13 +148,11 @@ function confirmUser() {
         document.getElementById('add-task-final').classList.remove('d-none');
 
         document.getElementById('selectedImage').innerHTML = ``;
-
         for (let i = 0; i < selectedUsers.length; i++) {
             document.getElementById('selectedImage').innerHTML += `
                 <img class="add-task-user-image" src="${selectedUsers[i]['user-image']}">
                 `;
         }
-
         document.getElementById('add-user-btn').innerHTML = `
             <button id="add-user-btn" type="button" class="add-user-btn" onclick="assignTo()"> </button>
             `;

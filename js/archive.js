@@ -7,6 +7,9 @@ async function init_archive() {
     document.getElementById('main').style.backgroundImage = `url(${background_src})`;
 }
 
+/**
+ * initialize archiv
+ */
 function render_archive() {
     document.getElementById('archive-task-container').innerHTML = ``;
     for (let i = 0; i < archivs.length; i++) {
@@ -15,6 +18,10 @@ function render_archive() {
     }
 }
 
+/**
+ * render HTML Code of the element in archivs
+ * @param {number} i number of the elemnte in the JSON archivs 
+ */
 function add_archive_html(i) {
     return `
     <div class="backlog-task">
@@ -44,6 +51,10 @@ function add_archive_html(i) {
     `;
 }
 
+/**
+ * delete the choosen element from archivs
+ * @param {number} position number of the elemnte in the JSON archivs
+ */
 function deleteArchiv(position) {
     archivs.splice(position, 1);
     backend.setItem('archivs', JSON.stringify(archivs));
@@ -51,16 +62,21 @@ function deleteArchiv(position) {
     render_archive_mobile();
 }
 
+/**
+ * render archive for mobil
+ */
 function render_archive_mobile() {
-
     document.getElementById('archive-task-container-mobil').innerHTML = ``;
-
     for (let i = 0; i < archivs.length; i++) {
         document.getElementById('archive-task-container-mobil').innerHTML +=
             add_archive_html_mobile(i);
     }
 }
 
+/**
+ * render HTML Code of the element - for mobil
+ * @param {number} i number of the elemnte in the JSON archivs 
+ */
 function add_archive_html_mobile(i) {
     return `
     <div class="backlog-one-task-container-mobil">

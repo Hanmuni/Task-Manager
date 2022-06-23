@@ -16,27 +16,53 @@ async function init_board() {
  *  sort the todos in the differt tabel-columns at board
  */
 async function updateHTML() {
+    render_todo_table();
+    render_in_progress_table();
+    render_testing_table();
+    render_done_table();
+    change_card_border_color();
+}
+
+/**
+ * render todo in todo table
+ */
+function render_todo_table() {
     let todo = todos.filter(t => t['status'] == 'todo');
     document.getElementById('todo').innerHTML = '';
     for (let index = 0; index < todo.length; index++) {
         const element = todo[index];
         document.getElementById('todo').innerHTML += generateTodoHTML(element);
     }
+}
 
+/**
+ * render todo in in progress table
+ */
+function render_in_progress_table() {
     let inprogress = todos.filter(t => t['status'] == 'inprogress');
     document.getElementById('inprogress').innerHTML = '';
     for (let index = 0; index < inprogress.length; index++) {
         const element = inprogress[index];
         document.getElementById('inprogress').innerHTML += generateTodoHTML(element);
     }
+}
 
+/**
+ * render todo in testing table
+ */
+function render_testing_table() {
     let testing = todos.filter(t => t['status'] == 'testing');
     document.getElementById('testing').innerHTML = '';
     for (let index = 0; index < testing.length; index++) {
         const element = testing[index];
         document.getElementById('testing').innerHTML += generateTodoHTML(element);
     }
+}
 
+/**
+ * render todo in done table
+ */
+function render_done_table() {
     let done = todos.filter(t => t['status'] == 'done');
     document.getElementById('done').innerHTML = '';
     for (let index = 0; index < done.length; index++) {
@@ -46,7 +72,6 @@ async function updateHTML() {
         <img onclick="create_archiv(${element['id']})" src="./img/archive-icon-64.png">
         `
     }
-    change_card_border_color();
 }
 
 /**
@@ -72,8 +97,7 @@ function generateTodoHTML(element) {
             <div class="card-icon-edit-container" id="card-icon-edit-container${element['id']}">
                 <img onclick="open_dialog(${element['id']})" class="card-icon-edit" src="../img/edit-24.png">
             </div>
-        </div>
-    `
+        </div> `
 }
 
 /**
@@ -159,7 +183,6 @@ async function create_archiv(position) {
     archivs.push(archiv);
     todos.splice(position, 1);
     backend.setItem('todos', JSON.stringify(todos));
-
     let archivsAsString = JSON.stringify(archivs);
     backend.setItem('archivs', archivsAsString);
     setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
@@ -182,68 +205,83 @@ function close_dialog() {
 function open_dialog(id) {
     document.getElementById('dialog-container').classList.remove('d-none');
     document.getElementById('inner-dialog').innerHTML = '';
-    document.getElementById('inner-dialog').innerHTML = `
-        <div class="add-task-container">
-            <div class="add-task-colum">
-                <div class="add-task-headline">
-                    <p>TITLE </p>
-                    <input required minlength="5" id="title" class="add-task-input">
-                </div>
-                <div class="add-task-headline">
-                    <p> CATEGORY </p>
-                    <div class="select-container">
-                    <select id="category" required class="add-task-select">
-                        <option> HTML </option>
-                        <option> CSS </option>
-                        <option> JavaScript </option>
-                    </select>
-                    </div>
-                </div>
-                <div class="add-task-headline">
-                    <p> DESCRIPTION </p>
-                    <textarea required minlength="5" id="description" class="add-task-description"></textarea>
-                </div>
-            </div>
-            <div class="add-task-colum">
-                <div class="add-task-headline">
-                    <p> DUE DATE </p>
-                    <input id="date" required type="date" class="add-task-input">
-                </div>
-                <div class="add-task-headline">
-                    <p> URGENCY </p>
-                    <div class="select-container">
-                    <select id="urgency" required class="add-task-select">
-                        <option> Low </option>
-                        <option> Medium </option>
-                        <option> High </option>
-                    </select>
-                    </div>
-                </div>
-                <div class="add-task-assign">
-                    <p> ASSIGNED TO </p>
-                    <div class="assign-section" id="assign-section">
-                        <div id="selectedImage"> <img src="/img/change-user.png" class="add-task-user-image"> </div>
-                        <div id="add-user-btn"> <button type="button" class="add-user-btn" onclick="assignTo()">
-                            </button> </div>
-                    </div>
-                    <div id="user-list" class="user-list d-none">
-                        <div id="assignedToUser"></div>
-                        <div id="assignConfirm"></div>
-                    </div>
-                </div>
-                <div class="add-task-final" id="add-task-final">
-                    <button onclick="change_task(${id})" class="create-btn"> CHANGE TASK </button>
-                </div>
-            </div>
-        </div>    
-    `;
+    render_open_dialog_HTML(id);
     document.getElementById('title').value = todos[id].title;
     document.getElementById('category').value = todos[id].category;
     document.getElementById('description').value = todos[id].description;
     document.getElementById('description').value = todos[id].description;
     document.getElementById('date').value = todos[id].date;
     document.getElementById('urgency').value = todos[id].urgency;
+    render_users_open_dialog(id);
+}
 
+/**
+ * render HTML Code in Dialog
+ * @param {number} id number of the elemnte in the JSON todos
+ */
+function render_open_dialog_HTML(id) {
+    document.getElementById('inner-dialog').innerHTML = `
+    <div class="add-task-container">
+        <div class="add-task-colum">
+            <div class="add-task-headline">
+                <p>TITLE </p>
+                <input required minlength="5" id="title" class="add-task-input">
+            </div>
+            <div class="add-task-headline">
+                <p> CATEGORY </p>
+                <div class="select-container">
+                <select id="category" required class="add-task-select">
+                    <option> HTML </option>
+                    <option> CSS </option>
+                    <option> JavaScript </option>
+                </select>
+                </div>
+            </div>
+            <div class="add-task-headline">
+                <p> DESCRIPTION </p>
+                <textarea required minlength="5" id="description" class="add-task-description"></textarea>
+            </div>
+        </div>
+        <div class="add-task-colum">
+            <div class="add-task-headline">
+                <p> DUE DATE </p>
+                <input id="date" required type="date" class="add-task-input">
+            </div>
+            <div class="add-task-headline">
+                <p> URGENCY </p>
+                <div class="select-container">
+                <select id="urgency" required class="add-task-select">
+                    <option> Low </option>
+                    <option> Medium </option>
+                    <option> High </option>
+                </select>
+                </div>
+            </div>
+            <div class="add-task-assign">
+                <p> ASSIGNED TO </p>
+                <div class="assign-section" id="assign-section">
+                    <div id="selectedImage"> <img src="/img/change-user.png" class="add-task-user-image"> </div>
+                    <div id="add-user-btn"> <button type="button" class="add-user-btn" onclick="assignTo()">
+                        </button> </div>
+                </div>
+                <div id="user-list" class="user-list d-none">
+                    <div id="assignedToUser"></div>
+                    <div id="assignConfirm"></div>
+                </div>
+            </div>
+            <div class="add-task-final" id="add-task-final">
+                <button onclick="change_task(${id})" class="create-btn"> CHANGE TASK </button>
+            </div>
+        </div>
+    </div>    
+`;
+}
+
+/**
+ * render users in open dialog
+ * @param {number} id number of the elemnte in the JSON todos
+ */
+function render_users_open_dialog(id) {
     for (let i = 0; i < todos[id].user.length; i++) {
         for (let j = 0; j < selectedUsers.length; j++) {
             if (todos[id].user[i].name == selectedUsers[j].name) {
@@ -252,7 +290,6 @@ function open_dialog(id) {
         }
         selectedUsers.push(todos[id].user[i]);
     }
-
     document.getElementById('selectedImage').innerHTML = ``;
     for (let i = 0; i < selectedUsers.length; i++) {
         document.getElementById('selectedImage').innerHTML += `
