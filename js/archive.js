@@ -8,9 +8,7 @@ async function init_archive() {
 }
 
 function render_archive() {
-
     document.getElementById('archive-task-container').innerHTML = ``;
-
     for (let i = 0; i < archivs.length; i++) {
         document.getElementById('archive-task-container').innerHTML +=
             add_archive_html(i);
@@ -39,14 +37,14 @@ function add_archive_html(i) {
         <div  class="backlog-15">
             <p>${archivs[i].category}</p>
         </div>
-        <div onclick="deleteTask(${i})" class="backlog-10">
+        <div onclick="deleteArchiv(${i})" class="backlog-10">
             <p class="cursor"><img src="./img/trash-2-32.png"></p>
         </div>
     </div> 
     `;
 }
 
-function deleteTask(position) {
+function deleteArchiv(position) {
     archivs.splice(position, 1);
     backend.setItem('archivs', JSON.stringify(archivs));
     render_archive();
@@ -88,7 +86,7 @@ function add_archive_html_mobile(i) {
             <p>${archivs[i].description}</p>
         </div>
         <div class="bl-icons">
-            <div onclick="deleteTask(${i})" class="bl-delete">
+            <div onclick="deleteArchiv(${i})" class="bl-delete">
                 <p>DELETE</p>
                 <img src="./img/trash-2-32.png">
                 </div>
