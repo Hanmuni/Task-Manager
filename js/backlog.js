@@ -104,6 +104,8 @@ function create_todo(position) {
     console.log(todos);
 }
 
+
+
 function deleteTask(position) {
     tasks.splice(position, 1);
     backend.setItem('tasks', JSON.stringify(tasks));

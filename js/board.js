@@ -47,8 +47,9 @@ async function updateHTML() {
         const element = done[index];
         document.getElementById('done').innerHTML += generateTodoHTML(element);
         document.getElementById(`card-icon-trash${element['id']}`).innerHTML = `
-        <img onclick="add_archiv(${element['id']})" src="../img/fabian.png">
+        <img onclick="create_archiv(${element['id']})" src="../img/fabian.png">
         `
+
 
     }
     console.log(todos);
@@ -72,7 +73,7 @@ function generateTodoHTML(element) {
                     <img onclick="delete_todo(${element['id']})" src="./img/trash-2-24.png">
                 </div>
             </div>
-            <div class="card-icon-edit-container">
+            <div class="card-icon-edit-container" id="card-icon-edit-container${element['id']}">
                 <img onclick="open_dialog(${element['id']})" class="card-icon-edit" src="../img/edit-24.png">
             </div>
         </div>
@@ -120,6 +121,30 @@ async function delete_todo(position) {
     backend.setItem('todos', JSON.stringify(todos));
     await order_todos_ids();
     updateHTML();
+}
+
+async function create_archiv(position) {
+    let archiv = {
+        'title': todos[position].title,
+        'category': todos[position].category,
+        'description': todos[position].description,
+        'date': todos[position].date,
+        'urgency': todos[position].urgency,
+        'user': todos[position].user,
+        'status': 'archived',
+    };
+    archivs.push(archiv);
+    todos.splice(position, 1);
+    backend.setItem('todos', JSON.stringify(todos));
+
+    let archivsAsString = JSON.stringify(archivs);
+    backend.setItem('archivs', archivsAsString);
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
+
+    await order_todos_ids();
+    updateHTML();
+
+    console.log(archivs);
 }
 
 // DIALOG
