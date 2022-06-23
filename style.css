@@ -262,21 +262,6 @@ main {
     object-fit: contain;
 }
 
-@media (max-width: 1000px) {
-    .smallscreen {
-        display: flex;
-        flex-direction: column;
-    }
-    .totalbox {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-    .emptyboxes {
-        width: 54vw;
-        height: 40vh;
-    }
-}
-
 
 /* DIALOG */
 
@@ -1241,6 +1226,25 @@ select {
     }
     .add-task-final {
         margin: 8px;
+    }
+    .smallscreen {
+        display: flex;
+        flex-direction: column;
+    }
+    .totalbox {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .emptyboxes {
+        width: 100%;
+        min-height: 40vh;
+    }
+    .dialog-container {
+        position: fixed;
+    }
+    .dialog-close-img {
+        right: -60px;
+        top: -20px;
     }
 }
 
