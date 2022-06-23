@@ -2,6 +2,7 @@
 
 let current_user = [];
 let todos = [];
+let archivs = [];
 let background_src;
 
 async function init() {
@@ -15,6 +16,7 @@ async function loadAllTasks() {
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
     todos = JSON.parse(backend.getItem('todos')) || [];
+    archivs = JSON.parse(backend.getItem('archivs')) || [];
     background_src = JSON.parse(backend.getItem('background_image')) || [];
 }
 

@@ -47,8 +47,9 @@ async function updateHTML() {
         const element = done[index];
         document.getElementById('done').innerHTML += generateTodoHTML(element);
         document.getElementById(`card-icon-trash${element['id']}`).innerHTML = `
-        <img onclick="add_archiv(${element['id']})" src="../img/fabian.png">
+        <img onclick="create_archiv(${element['id']})" src="../img/fabian.png">
         `
+
 
     }
     console.log(todos);
@@ -72,7 +73,7 @@ function generateTodoHTML(element) {
                     <img onclick="delete_todo(${element['id']})" src="./img/trash-2-24.png">
                 </div>
             </div>
-            <div class="card-icon-edit-container">
+            <div class="card-icon-edit-container" id="card-icon-edit-container${element['id']}">
                 <img onclick="open_dialog(${element['id']})" class="card-icon-edit" src="../img/edit-24.png">
             </div>
         </div>
@@ -122,6 +123,30 @@ async function delete_todo(position) {
     updateHTML();
 }
 
+async function create_archiv(position) {
+    let archiv = {
+        'title': todos[position].title,
+        'category': todos[position].category,
+        'description': todos[position].description,
+        'date': todos[position].date,
+        'urgency': todos[position].urgency,
+        'user': todos[position].user,
+        'status': 'archived',
+    };
+    archivs.push(archiv);
+    todos.splice(position, 1);
+    backend.setItem('todos', JSON.stringify(todos));
+
+    let archivsAsString = JSON.stringify(archivs);
+    backend.setItem('archivs', archivsAsString);
+    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
+
+    await order_todos_ids();
+    updateHTML();
+
+    console.log(archivs);
+}
+
 // DIALOG
 
 function close_dialog() {
@@ -136,10 +161,8 @@ function open_dialog(id) {
     
         <div class="add-task-container">
             <div class="add-task-colum">
-
                 <div class="add-task-headline">
                     <p>TITLE </p>
-
                     <input required minlength="5" id="title" class="add-task-input">
                 </div>
                 <div class="add-task-headline">
@@ -152,23 +175,16 @@ function open_dialog(id) {
                     </select>
                     </div>
                 </div>
-
                 <div class="add-task-headline">
                     <p> DESCRIPTION </p>
-
                     <textarea required minlength="5" id="description" class="add-task-description"></textarea>
                 </div>
-
             </div>
-
             <div class="add-task-colum">
-
                 <div class="add-task-headline">
                     <p> DUE DATE </p>
-
                     <input id="date" required type="date" class="add-task-input">
                 </div>
-
                 <div class="add-task-headline">
                     <p> URGENCY </p>
                     <div class="select-container">
@@ -179,31 +195,22 @@ function open_dialog(id) {
                     </select>
                     </div>
                 </div>
-
                 <div class="add-task-assign">
                     <p> ASSIGNED TO </p>
-
                     <div class="assign-section" id="assign-section">
-
                         <div id="selectedImage"> <img src="/img/change-user.png" class="add-task-user-image"> </div>
-
                         <div id="add-user-btn"> <button type="button" class="add-user-btn" onclick="assignTo()">
                             </button> </div>
-
                     </div>
-
                     <div id="user-list" class="user-list d-none">
                         <div id="assignedToUser"></div>
                         <div id="assignConfirm"></div>
-
                     </div>
                 </div>
-
                 <div class="add-task-final" id="add-task-final">
                     <button onclick="change_task(${id})" class="create-btn"> CHANGE TASK </button>
                 </div>
             </div>
-
         </div>
     
     `;
