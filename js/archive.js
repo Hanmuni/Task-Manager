@@ -23,6 +23,7 @@ function add_archive_html(i) {
         <div  class="backlog-task-assigned-to backlog-20">
             <div>
                 <img src=${archivs[i].user[0]['user-image']}>
+                <p>${archivs[i].user[0]['name']}</p>
             </div>
             <div class=""></div>
         </div>

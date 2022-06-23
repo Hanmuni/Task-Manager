@@ -47,7 +47,7 @@ async function updateHTML() {
         const element = done[index];
         document.getElementById('done').innerHTML += generateTodoHTML(element);
         document.getElementById(`card-icon-trash${element['id']}`).innerHTML = `
-        <img onclick="create_archiv(${element['id']})" src="../img/fabian.png">
+        <img onclick="create_archiv(${element['id']})" src="./img/archive-icon-64.png">
         `
 
 
