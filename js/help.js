@@ -51,7 +51,7 @@ function render_board_at_help() {
     Further informations can be displayed by clicking on a pencil in the right corner of the task. By clicking the trashcan you can delete the task.<br>
     In the 'todo' section the tasks that are to be processed next are listed. The 'in progress' section lists tasks that are currently being processed.<br>
     The 'testing' section lists tasks that have been completed but are still being tested for completion. The 'done' section lists tasks that have been successfully tested and thus fully processed.
-    `
+    `;
 }
 
 function render_archiv_at_help() {
@@ -59,11 +59,8 @@ function render_archiv_at_help() {
     document.getElementById('help-headline-archiv').classList.add('aktive-help');
     document.getElementById('help-choosed-image').classList.remove('d-none');
     document.getElementById('help-choosed-image').src = './img/sunset-gf546bd15e_1280.jpg';
-    document.getElementById('help-choosed-text').innerHTML = `The board consists of four sections. Per drag and drop you can move each task to a different Section.<br>
-    Further informations can be displayed by clicking on a pencil in the right corner of the task. By clicking the trashcan you can delete the task.<br>
-    In the 'todo' section the tasks that are to be processed next are listed. The 'in progress' section lists tasks that are currently being processed.<br>
-    The 'testing' section lists tasks that have been completed but are still being tested for completion. The 'done' section lists tasks that have been successfully tested and thus fully processed.
-    `
+    document.getElementById('help-choosed-text').innerHTML = `The archive section stores all your tasks from the 'done'-section from the board.
+    `;
 }
 
 function render_impressum_at_help() {
