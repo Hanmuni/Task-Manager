@@ -84,7 +84,7 @@ function resetTask() {
     document.getElementById('description').value = ``;
     document.getElementById('date').value = ``;
     document.getElementById('urgency').value = ``;
-    document.getElementById('selectedImage').innerHTML = `<img src="/img/change-user.png" class="add-task-user-image">`;
+    document.getElementById('selectedImage').innerHTML = `<img src="./img/change-user.png" class="add-task-user-image">`;
     selectedUsers = [];
 }
 

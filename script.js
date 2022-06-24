@@ -7,10 +7,10 @@ let background_src;
 
 
 /**
- * standart initialize function, used in every html 
+ * standart initialize function, used in every html
  */
 async function init() {
-    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
+    setURL('https://gruppe-247.developerakademie.net/smallest_backend_ever');
     await includeHTML();
     await loadAllTasks();
     await load_current_user_local();
@@ -36,7 +36,6 @@ async function includeHTML() {
     for (let i = 0; i < includeElements.length; i++) {
         const element = includeElements[i];
         file = element.getAttribute("w3-include-html");
-
         let response = await fetch(file);
         if (response.ok) {
             element.innerHTML = await response.text();

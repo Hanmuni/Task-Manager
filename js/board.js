@@ -142,7 +142,7 @@ function moveTo(status) {
     updateHTML();
     let todosAsString = JSON.stringify(todos);
     backend.setItem('todos', todosAsString);
-    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
+    setURL('https://gruppe-247.developerakademie.net/smallest_backend_ever');
 }
 
 
@@ -185,7 +185,7 @@ async function create_archiv(position) {
     backend.setItem('todos', JSON.stringify(todos));
     let archivsAsString = JSON.stringify(archivs);
     backend.setItem('archivs', archivsAsString);
-    setURL('http://gruppe-247.developerakademie.net/smallest_backend_ever');
+    setURL('https://gruppe-247.developerakademie.net/smallest_backend_ever');
     await order_todos_ids();
     updateHTML();
 }
