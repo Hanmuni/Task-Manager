@@ -143,7 +143,7 @@ function moveTo(status) {
     updateHTML();
     let todosAsString = JSON.stringify(todos);
     backend.setItem('todos', todosAsString);
-    setURL('https://fabian-kalus.developerakademie.net/Task-Manager/smallest_backend_ever');
+    console.log(todos)
 }
 
 
@@ -186,7 +186,6 @@ async function create_archiv(position) {
     backend.setItem('todos', JSON.stringify(todos));
     let archivsAsString = JSON.stringify(archivs);
     backend.setItem('archivs', archivsAsString);
-    setURL('https://fabian-kalus.developerakademie.net/Task-Manager/smallest_backend_ever');
     await order_todos_ids();
     updateHTML();
 }

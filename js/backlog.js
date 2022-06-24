@@ -130,7 +130,6 @@ function create_todo(position) {
     backend.setItem('tasks', JSON.stringify(tasks));
     let todosAsString = JSON.stringify(todos);
     backend.setItem('todos', todosAsString);
-    setURL('https://fabian-kalus.developerakademie.net/Task-Manager/smallest_backend_ever');
     console.log(todos);
 }
 

@@ -10,7 +10,7 @@ let background_src;
  * standart initialize function, used in every html
  */
 async function init() {
-    setURL('https://fabian-kalus.developerakademie.net/Task-Manager/smallest_backend_ever');
+    setURL('http://gruppe-247.developerakademie.net/Task-Manager/smallest_backend_ever');
     await includeHTML();
     await loadAllTasks();
 }

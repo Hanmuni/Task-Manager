@@ -334,7 +334,7 @@ main {
 }
 
 .background-images-container {
-    position: absolute;
+    position: fixed;
     left: 75px;
     bottom: 250px;
     width: 150px;
@@ -1016,15 +1016,9 @@ select {
 /* HELP */
 
 
-/* Impressum */
-
-
-/* Impressum */
-
-
 /* END */
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     body {
         flex-direction: column;
     }
