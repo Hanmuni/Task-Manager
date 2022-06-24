@@ -56,6 +56,7 @@ function open_sidebar_mobil() {
     document.querySelector('.sidebar-container').style.display = 'flex';
     document.querySelector('.sidebar').style.display = 'flex';
     document.querySelector('.brush-container').style.display = 'flex';
+    document.querySelector('.welcome-help').style.display = 'none';
 }
 
 // MOBIL
@@ -66,6 +67,7 @@ function close_sidebar_mobil() {
     document.querySelector('.sidebar-container').style.display = 'none';
     document.querySelector('.sidebar').style.display = 'none';
     document.querySelector('.brush-container').style.display = 'none';
+    document.querySelector('.welcome-help').style.display = 'flex';
 }
 
 // BACKGROUND IMAGE
