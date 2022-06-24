@@ -3,6 +3,7 @@
  */
 async function init_help() {
     await init();
+    await load_current_user_local();
     document.getElementById('sidebar-link-help').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
     document.getElementById('sidebar-link-help').style.color = "black";
     document.getElementById('help-container').style.backgroundImage = `url(${background_src})`;

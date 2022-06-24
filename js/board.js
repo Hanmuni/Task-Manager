@@ -5,6 +5,7 @@ let currentDraggedElement;
  */
 async function init_board() {
     await init();
+    await load_current_user_local();
     await order_todos_ids();
     await updateHTML();
     document.getElementById('sidebar-link-board').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
@@ -95,7 +96,7 @@ function generateTodoHTML(element) {
                 </div>
             </div>
             <div class="card-icon-edit-container" id="card-icon-edit-container${element['id']}">
-                <img onclick="open_dialog(${element['id']})" class="card-icon-edit" src="../img/edit-24.png">
+                <img onclick="open_dialog(${element['id']})" class="card-icon-edit" src="./img/edit-24.png">
             </div>
         </div> `
 }

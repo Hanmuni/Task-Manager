@@ -13,6 +13,10 @@ async function init() {
     setURL('https://fabian-kalus.developerakademie.net/Task-Manager/smallest_backend_ever');
     await includeHTML();
     await loadAllTasks();
+}
+
+async function init_welcome() {
+    await init();
     await load_current_user_local();
 }
 

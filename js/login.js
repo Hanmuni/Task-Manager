@@ -3,12 +3,12 @@
  */
 // Profil = [proilnummer Name, Bild, Usesrname, Passwort, E-Mail]
 let profiles = [
-    ['profil00', 'GUEST', '../img/person-g086296c94_640.png', 'GUEST', 'PASSWORT', '123@mailvorbei.com'],
-    ['profil01', 'Max Mustermann', '../img/p24.jpg', 'Mustermann15', 'x', 'beispiel123@mail.com'],
-    ['profil02', 'Brigitte Beispiel', '../img/p26.jpg', 'B.Beispiel', 'katzenliebhaberin', 'beispiel123@mail.com'],
-    ['profil03', 'Emily Example', '../img/p30.jpg', 'Example92', 'passwort5', 'beispiel123@mail.com'],
-    ['profil04', 'Michelle Modell', '../img/p33.jpg', 'M.odell', 'supermodell', 'beispiel123@mail.com'],
-    ['profil05', 'Victor Vorbild', '../img/p36.jpg', 'Victory', 'venividi', 'beispiel123@mail.com']
+    ['profil00', 'GUEST', './img/person-g086296c94_640.png', 'GUEST', 'PASSWORT', '123@mailvorbei.com'],
+    ['profil01', 'Max Mustermann', './img/p24.jpg', 'Mustermann15', 'x', 'beispiel123@mail.com'],
+    ['profil02', 'Brigitte Beispiel', './img/p26.jpg', 'B.Beispiel', 'katzenliebhaberin', 'beispiel123@mail.com'],
+    ['profil03', 'Emily Example', './img/p30.jpg', 'Example92', 'passwort5', 'beispiel123@mail.com'],
+    ['profil04', 'Michelle Modell', './img/p33.jpg', 'M.odell', 'supermodell', 'beispiel123@mail.com'],
+    ['profil05', 'Victor Vorbild', './img/p36.jpg', 'Victory', 'venividi', 'beispiel123@mail.com']
 ]
 
 /**

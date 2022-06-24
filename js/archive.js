@@ -1,5 +1,6 @@
 async function init_archive() {
     await init();
+    await load_current_user_local();
     render_archive();
     render_archive_mobile();
     document.getElementById('sidebar-link-archive').style.backgroundColor = "rgba(255, 255, 255, 0.6)"

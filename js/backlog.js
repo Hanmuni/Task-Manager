@@ -3,6 +3,7 @@
  */
 async function init_backlog() {
     await init();
+    await load_current_user_local();
     await render_backlog();
     await render_backlog_mobil();
     document.getElementById('sidebar-link-backlog').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
