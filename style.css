@@ -555,6 +555,20 @@ main {
     overflow: hidden;
 }
 
+.empty-backlog-container {
+    width: 100%;
+    margin-top: 100px;
+    text-align: center;
+    color: rgb(255, 80, 80);
+    font-size: 36px;
+}
+
+.empty-backlog-container p {
+    background-color: rgb(40, 40, 40);
+    padding: 20px;
+    border-radius: 20px;
+}
+
 
 /* LOGIN */
 
@@ -1182,7 +1196,7 @@ select {
         margin: 8px;
     }
     .add-task-headline p {
-        margin-bottom: 0;
+        margin-bottom: 5px;
         font-size: 16px;
     }
     .add-task-container {

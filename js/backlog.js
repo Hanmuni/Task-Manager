@@ -17,6 +17,7 @@ async function init_backlog() {
  */
 function render_backlog() {
     document.getElementById('backlog-task-container').innerHTML = '';
+    render_empty_backlog();
     for (let i = 0; i < tasks.length; i++) {
         document.getElementById('backlog-task-container').innerHTML +=
             add_backlog_html(i);
@@ -27,6 +28,19 @@ function render_backlog() {
         }
         add_urgency_color(i);
         add_category_color(i);
+    }
+}
+
+/**
+ * create an div container if backlog is empty
+ */
+function render_empty_backlog() {
+    if (tasks.length == 0) {
+        document.getElementById('backlog-task-container').innerHTML = `
+        <div class="empty-backlog-container">
+        <p>Backlog is empty, you should add a task.</p>
+        </div>
+        `
     }
 }
 
@@ -115,6 +129,16 @@ function add_urgency_color(i) {
  * @param {number} position number of the elemnte in the JSON tasks
  */
 function create_todo(position) {
+    let todo;
+    create_todo_element(position);
+    tasks.splice(position, 1);
+    backend.setItem('tasks', JSON.stringify(tasks));
+    let todosAsString = JSON.stringify(todos);
+    backend.setItem('todos', todosAsString);
+    console.log(todos);
+}
+
+function create_todo_element(position) {
     let todo = {
         'id': '',
         'title': tasks[position].title,
@@ -126,11 +150,6 @@ function create_todo(position) {
         'status': 'todo',
     };
     todos.push(todo);
-    tasks.splice(position, 1);
-    backend.setItem('tasks', JSON.stringify(tasks));
-    let todosAsString = JSON.stringify(todos);
-    backend.setItem('todos', todosAsString);
-    console.log(todos);
 }
 
 /**
@@ -149,6 +168,7 @@ function deleteTask(position) {
  */
 function render_backlog_mobil() {
     document.getElementById('backlog-task-container-mobil').innerHTML = '';
+    render_empty_backlog_mobil();
     for (let i = 0; i < tasks.length; i++) {
         document.getElementById('backlog-task-container-mobil').innerHTML +=
             add_backlog_html_mobil(i);
@@ -244,5 +264,18 @@ function add_urgency_color_mobil(i) {
     }
     if (tasks[i].urgency == 'Low') {
         document.getElementById(`backlog-one-task-container-mobil${i}`).classList.add('urc-low');
+    }
+}
+
+/**
+ * create an div container if backlog is empty - for mobil
+ */
+function render_empty_backlog_mobil() {
+    if (tasks.length == 0) {
+        document.getElementById('backlog-task-container-mobil').innerHTML = `
+        <div class="empty-backlog-container" style="width: 80%;">
+        <p>Backlog is empty, you should add a task.</p>
+        </div>
+        `
     }
 }
