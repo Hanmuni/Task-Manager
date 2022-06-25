@@ -3,9 +3,9 @@
  */
 async function init_backlog() {
     await init();
-    await load_current_user_local();
-    await render_backlog();
-    await render_backlog_mobil();
+    load_current_user_local();
+    render_backlog();
+    render_backlog_mobil();
     document.getElementById('sidebar-link-backlog').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
     document.getElementById('sidebar-link-backlog').style.color = "black";
     document.getElementById('backlog-container').style.backgroundImage = `url(${background_src})`;
@@ -15,7 +15,7 @@ async function init_backlog() {
 /**
  * render backlog page elemente from backend saved as tasks
  */
-async function render_backlog() {
+function render_backlog() {
     document.getElementById('backlog-task-container').innerHTML = '';
     for (let i = 0; i < tasks.length; i++) {
         document.getElementById('backlog-task-container').innerHTML +=
@@ -147,7 +147,7 @@ function deleteTask(position) {
 /**
  * initialize backlog page for mobil
  */
-async function render_backlog_mobil() {
+function render_backlog_mobil() {
     document.getElementById('backlog-task-container-mobil').innerHTML = '';
     for (let i = 0; i < tasks.length; i++) {
         document.getElementById('backlog-task-container-mobil').innerHTML +=

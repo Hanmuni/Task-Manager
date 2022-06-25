@@ -5,9 +5,10 @@ let currentDraggedElement;
  */
 async function init_board() {
     await init();
-    await load_current_user_local();
-    await order_todos_ids();
-    await updateHTML();
+
+    load_current_user_local();
+    order_todos_ids();
+    updateHTML();
     document.getElementById('sidebar-link-board').style.backgroundColor = "rgba(255, 255, 255, 0.6)"
     document.getElementById('sidebar-link-board').style.color = "black";
     document.getElementById('bigscreen').style.backgroundImage = `url(${background_src})`;
@@ -16,7 +17,7 @@ async function init_board() {
 /**
  *  sort the todos in the differt tabel-columns at board
  */
-async function updateHTML() {
+function updateHTML() {
     render_todo_table();
     render_in_progress_table();
     render_testing_table();
@@ -150,7 +151,7 @@ function moveTo(status) {
 /**
  * gives id to all todos (important to do this every time the page ist loaded because of the delete function)
  */
-async function order_todos_ids() {
+function order_todos_ids() {
     for (let o = 0; o < todos.length; o++) {
         todos[o].id = o;
     }
@@ -160,10 +161,10 @@ async function order_todos_ids() {
  * delete a todo element
  * @param {number} position number of the elemnte in the JSON todos
  */
-async function delete_todo(position) {
+function delete_todo(position) {
     todos.splice(position, 1);
     backend.setItem('todos', JSON.stringify(todos));
-    await order_todos_ids();
+    order_todos_ids();
     updateHTML();
 }
 
@@ -186,7 +187,7 @@ async function create_archiv(position) {
     backend.setItem('todos', JSON.stringify(todos));
     let archivsAsString = JSON.stringify(archivs);
     backend.setItem('archivs', archivsAsString);
-    await order_todos_ids();
+    order_todos_ids();
     updateHTML();
 }
 

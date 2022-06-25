@@ -58,16 +58,3 @@ function save_current_user_local() {
     let current_userAsText = JSON.stringify(current_user);
     localStorage.setItem('current_user', current_userAsText);
 }
-
-/**
- * show the current user image in the sidebar
- */
-async function load_current_user_local() {
-    let current_userAsText = localStorage.getItem('current_user');
-    if (current_userAsText) {
-        current_user = JSON.parse(current_userAsText);
-    };
-    document.getElementById('sidebar-user-image').src = current_user[0][2];
-    document.getElementById('sidebar-user-name').innerHTML = current_user[0][3];
-    console.log(current_user)
-}

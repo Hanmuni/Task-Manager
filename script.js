@@ -17,7 +17,7 @@ async function init() {
 
 async function init_welcome() {
     await init();
-    await load_current_user_local();
+    load_current_user_local();
 }
 
 /**
@@ -88,6 +88,18 @@ function change_background_image(src) {
         document.getElementById('help-container').style.backgroundImage = `url(${src})`;
     }
     backend.setItem('background_image', JSON.stringify(src));
+}
+
+/**
+ * show the current user image in the sidebar
+ */
+function load_current_user_local() {
+    let current_userAsText = localStorage.getItem('current_user');
+    if (current_userAsText) {
+        current_user = JSON.parse(current_userAsText);
+    };
+    document.getElementById('sidebar-user-image').src = current_user[0][2];
+    document.getElementById('sidebar-user-name').innerHTML = current_user[0][3];
 }
 
 /**
