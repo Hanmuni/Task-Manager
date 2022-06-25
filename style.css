@@ -290,6 +290,8 @@ main {
     right: 20px;
     top: 20px;
     cursor: pointer;
+    height: 36px;
+    width: 36px;
 }
 
 .dialog-close-img:hover {
@@ -1251,8 +1253,13 @@ select {
         position: fixed;
     }
     .dialog-close-img {
-        right: -60px;
-        top: -20px;
+        width: 24px;
+        height: 24px;
+        top: 8px;
+        right: 8px;
+    }
+    .dialog {
+        height: auto;
     }
 }
 

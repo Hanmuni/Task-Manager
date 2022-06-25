@@ -173,6 +173,16 @@ function delete_todo(position) {
  * @param {number} position number of the elemnte in the JSON todos
  */
 async function create_archiv(position) {
+    create_archiv_element(position);
+    todos.splice(position, 1);
+    backend.setItem('todos', JSON.stringify(todos));
+    let archivsAsString = JSON.stringify(archivs);
+    backend.setItem('archivs', archivsAsString);
+    order_todos_ids();
+    updateHTML();
+}
+
+function create_archiv_element(position) {
     let archiv = {
         'title': todos[position].title,
         'category': todos[position].category,
@@ -183,12 +193,6 @@ async function create_archiv(position) {
         'status': 'archived',
     };
     archivs.push(archiv);
-    todos.splice(position, 1);
-    backend.setItem('todos', JSON.stringify(todos));
-    let archivsAsString = JSON.stringify(archivs);
-    backend.setItem('archivs', archivsAsString);
-    order_todos_ids();
-    updateHTML();
 }
 
 // DIALOG
@@ -291,11 +295,18 @@ function render_users_open_dialog(id) {
         }
         selectedUsers.push(todos[id].user[i]);
     }
+    render_selectedUsers();
+}
+
+/**
+ * render the users that are selected in the todo element
+ */
+function render_selectedUsers() {
     document.getElementById('selectedImage').innerHTML = ``;
     for (let i = 0; i < selectedUsers.length; i++) {
         document.getElementById('selectedImage').innerHTML += `
-            <img class="add-task-user-image" src="${selectedUsers[i]['user-image']}">
-            `;
+        <img class="add-task-user-image" src="${selectedUsers[i]['user-image']}">
+        `;
     }
 }
 
