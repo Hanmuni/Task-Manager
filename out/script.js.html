@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* Alle */
+
+let current_user = [];
+let todos = [];
+let archivs = [];
+let background_src;
+
+
+/**
+ * standart initialize function, used in every html
+ */
+async function init() {
+    setURL('https://gruppe-247.developerakademie.net/Task-Manager/smallest_backend_ever');
+    await includeHTML();
+    await loadAllTasks();
+}
+
+async function init_welcome() {
+    await init();
+    load_current_user_local();
+}
+
+/**
+ * load all backlog data
+ */
+async function loadAllTasks() {
+    await downloadFromServer();
+    tasks = JSON.parse(backend.getItem('tasks')) || [];
+    todos = JSON.parse(backend.getItem('todos')) || [];
+    archivs = JSON.parse(backend.getItem('archivs')) || [];
+    background_src = JSON.parse(backend.getItem('background_image')) || [];
+}
+
+/**
+ * includes the templates
+ */
+async function includeHTML() {
+    let includeElements = document.querySelectorAll('[w3-include-html]');
+
+    for (let i = 0; i &lt; includeElements.length; i++) {
+        const element = includeElements[i];
+        file = element.getAttribute("w3-include-html");
+        let response = await fetch(file);
+        if (response.ok) {
+            element.innerHTML = await response.text();
+        } else {
+            element.innerHTML = 'Page not found';
+        }
+    }
+}
+
+/**
+ * open mobil sidebar
+ */
+function open_sidebar_mobil() {
+    document.querySelector('.sidebar-container').style.display = 'flex';
+    document.querySelector('.sidebar').style.display = 'flex';
+    document.querySelector('.brush-container').style.display = 'flex';
+    if (document.querySelector('.welcome-help')) {
+        document.querySelector('.welcome-help').style.display = 'none';
+    }
+}
+
+// MOBIL
+/**
+ * open mobil sidebar
+ */
+function close_sidebar_mobil() {
+    document.querySelector('.sidebar-container').style.display = 'none';
+    document.querySelector('.sidebar').style.display = 'none';
+    document.querySelector('.brush-container').style.display = 'none';
+    if (document.querySelector('.welcome-help')) {
+        document.querySelector('.welcome-help').style.display = 'flex';
+    }
+}
+
+// BACKGROUND IMAGE
+/**
+ * change backgroundimage in every html document
+ */
+function change_background_image(src) {
+    if (document.getElementById('backlog-container')) {
+        document.getElementById('backlog-container').style.backgroundImage = `url(${src})`;
+    }
+    if (document.getElementById('bigscreen')) {
+        document.getElementById('bigscreen').style.backgroundImage = `url(${src})`;
+    }
+    if (document.getElementById('main')) {
+        document.getElementById('main').style.backgroundImage = `url(${src})`;
+    }
+    if (document.getElementById('help-container')) {
+        document.getElementById('help-container').style.backgroundImage = `url(${src})`;
+    }
+    backend.setItem('background_image', JSON.stringify(src));
+}
+
+/**
+ * show the current user image in the sidebar
+ */
+function load_current_user_local() {
+    let current_userAsText = localStorage.getItem('current_user');
+    if (current_userAsText) {
+        current_user = JSON.parse(current_userAsText);
+    };
+    document.getElementById('sidebar-user-image').src = current_user[0][2];
+    document.getElementById('sidebar-user-name').innerHTML = current_user[0][3];
+}
+
+/**
+ * open and close Backgroundimage container at sidebar
+ */
+function show_background_images() {
+    document.getElementById('background-images-container').classList.toggle('d-none');
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#change_background_image">change_background_image</a></li><li><a href="global.html#close_sidebar_mobil">close_sidebar_mobil</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#load_current_user_local">load_current_user_local</a></li><li><a href="global.html#loadAllTasks">loadAllTasks</a></li><li><a href="global.html#open_sidebar_mobil">open_sidebar_mobil</a></li><li><a href="global.html#show_background_images">show_background_images</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Jun 27 2022 10:44:17 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
